@@ -14,21 +14,32 @@ export const metadata: Metadata = {
 
 export default function LutealSleepStrategyPost() {
     const tocItems = [
+        { id: "overview", label: "한눈에 보기" },
         { id: "why", label: "왜 황체기에 잠이 뒤틀릴까?" },
-        { id: "controls", label: "체온·카페인·식사 컨트롤" },
+        { id: "heat", label: "체온·카페인·식사 컨트롤" },
+        { id: "timing", label: "시간대별 루틴" },
         { id: "routine", label: "취침 전 루틴" },
+        { id: "faq", label: "FAQ" },
     ];
 
     const controls = [
-        "침실 20~22도, 얇은 이불, 선풍기/쿨패드 활용",
-        "카페인 13~14시 컷오프, 알코올 취침 3시간 전 중단",
-        "저녁은 취침 3시간 전 마무리, 가벼운 단백질·섬유질 위주",
+        "침실 20~22도, 얇은 이불, 선풍기/쿨패드로 체온 하강 돕기",
+        "카페인 13~14시 컷오프, 알코올은 취침 3시간 전 이후 중단",
+        "저녁 식사 취침 3시간 전 마감, 단백질·섬유질 위주, 포만감 7부",
+        "생리 전 부종 예방: 나트륨 줄이고 칼륨(바나나·잎채소) 보강",
+    ];
+
+    const timing = [
+        "아침: 기상 후 30분 내 햇빛 10분, 물 1컵, 단백질 아침",
+        "오전: 집중 업무 배치, 카페인 허용 시간대",
+        "오후: 14시 이후 카페인 금지, 점심 후 10~15분 걷기",
+        "저녁: 격한 운동 대신 요가·스트레칭, 식사는 취침 3시간 전 종료",
     ];
 
     const bedtime = [
-        "블루라이트 60분 차단, 저조도 조명",
+        "블루라이트 60분 차단, 노란빛 스탠드로 조도 낮추기",
         "미지근한 샤워 후 4-7-8 호흡 4세트",
-        "코로 길게 내쉬는 호흡 + 목·어깨 스트레칭 5분",
+        "코로 길게 내쉬며 목·어깨 스트레칭 5분 + 바디스캔",
     ];
 
     return (
@@ -62,16 +73,39 @@ export default function LutealSleepStrategyPost() {
                 </header>
 
                 <ContentWithToc items={tocItems}>
-                    <section id="why">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-4">왜 황체기에 잠이 뒤틀릴까?</h2>
-                        <p className="text-gray-700">프로게스테론 영향으로 체온이 올라가고, 이는 입면을 방해합니다. 카페인·야식은 이를 더 악화시킵니다.</p>
+                    <section id="overview" className="bg-blue-50 border border-blue-100 rounded-2xl p-6 space-y-2">
+                        <p className="text-sm font-semibold text-blue-700">요약 답변</p>
+                        <p className="text-gray-800">
+                            황체기에는 체온을 낮추고 카페인·알코올을 앞당겨 끊으며, 취침 3시간 전 식사 마감과 스크린 차단 60분이
+                            수면 질을 가장 크게 높입니다.
+                        </p>
+                        <p className="text-xs text-blue-700">* 부종이 동반되면 나트륨을 줄이고 칼륨 식품·가벼운 걷기를 병행하세요.</p>
                     </section>
 
-                    <section id="controls" className="space-y-3">
+                    <section id="why">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4">왜 황체기에 잠이 뒤틀릴까?</h2>
+                        <p className="text-gray-700">
+                            프로게스테론 영향으로 코어 체온이 0.3~0.5℃ 오르며 입면이 지연됩니다. 늦은 카페인·야식은 체온 하강을 막고,
+                            수면 압력을 떨어뜨려 밤중 각성을 유발합니다.
+                        </p>
+                    </section>
+
+                    <section id="heat" className="space-y-3">
                         <h2 className="text-3xl font-bold text-gray-900 mb-4">체온·카페인·식사 컨트롤</h2>
                         <Card className="border-l-4 border-blue-500">
                             <CardContent className="pt-5 text-sm text-gray-700 space-y-2">
                                 {controls.map((item) => (
+                                    <p key={item}>• {item}</p>
+                                ))}
+                            </CardContent>
+                        </Card>
+                    </section>
+
+                    <section id="timing" className="space-y-3">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4">시간대별 루틴</h2>
+                        <Card className="border border-blue-100 shadow-sm">
+                            <CardContent className="pt-5 text-sm text-gray-700 space-y-2">
+                                {timing.map((item) => (
                                     <p key={item}>• {item}</p>
                                 ))}
                             </CardContent>
@@ -87,6 +121,16 @@ export default function LutealSleepStrategyPost() {
                                 ))}
                             </CardContent>
                         </Card>
+                    </section>
+
+                    <section id="faq" className="space-y-4">
+                        <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. 생리 직전 부종이 심하면?</p>
+                            <p>A. 나트륨 많은 국물·가공식품을 줄이고 칼륨·마그네슘 식품을 늘리며, 30분 걷기·종아리 펌핑을 추가하세요.</p>
+                            <p className="font-semibold">Q. 카페인을 끊기 어렵다면?</p>
+                            <p>A. 점진적 감량(1~2주)으로 컷오프를 14시로 앞당기고, 디카페인/허브티로 대체해 금단 두통을 줄입니다.</p>
+                        </div>
                     </section>
                 </ContentWithToc>
 

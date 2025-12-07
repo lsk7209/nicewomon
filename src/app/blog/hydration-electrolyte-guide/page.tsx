@@ -14,9 +14,12 @@ export const metadata: Metadata = {
 
 export default function HydrationElectrolyteGuidePost() {
     const tocItems = [
+        { id: "overview", label: "한눈에 보기" },
         { id: "why", label: "왜 전해질이 중요할까?" },
         { id: "how", label: "하루 섭취 가이드" },
         { id: "tips", label: "부종·카페인 관리" },
+        { id: "schedule", label: "시간대별 수분 루틴" },
+        { id: "faq", label: "FAQ" },
     ];
 
     return (
@@ -54,6 +57,15 @@ export default function HydrationElectrolyteGuidePost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
+                        <section id="overview" className="bg-teal-50 border border-teal-100 rounded-2xl p-6 space-y-2">
+                            <p className="text-sm font-semibold text-teal-700">요약 답변</p>
+                            <p className="text-gray-800">
+                                체중(kg)×30~35ml 물, 카페인 14시 컷오프, 활동량 많은 날은 저당 전해질 음료 소량, 나트륨↓ 칼륨·마그네슘↑
+                                조합이 부종 없이 에너지를 유지하는 핵심입니다.
+                            </p>
+                            <p className="text-xs text-teal-700">* 만성 질환·신장 문제가 있으면 의료진 상담 후 섭취량을 조정하세요.</p>
+                        </section>
+
                         <section id="why">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">왜 전해질이 중요할까?</h2>
                             <p className="text-gray-700">수분 흡수, 근육·신경 기능, 체온 조절에 핵심입니다. 땀·카페인·알코올이 많으면 전해질 손실이 커집니다.</p>
@@ -66,6 +78,7 @@ export default function HydrationElectrolyteGuidePost() {
                                     <p>체중(kg) × 30~35ml로 물 섭취량 계산</p>
                                     <p>활동량·땀 많을 때는 저당 전해질 음료 소량 추가</p>
                                     <p>칼륨 음식(바나나, 시금치), 마그네슘(견과, 녹색채소) 섭취</p>
+                                    <p>나트륨: 가공식품·국물 줄이고, 레이블로 나트륨 1일 % 확인</p>
                                 </CardContent>
                             </Card>
                         </section>
@@ -79,6 +92,28 @@ export default function HydrationElectrolyteGuidePost() {
                                     <p>• 하루 30분 걷기·종아리 펌핑으로 순환 개선</p>
                                 </CardContent>
                             </Card>
+                        </section>
+
+                        <section id="schedule" className="space-y-3">
+                            <h2 className="text-2xl font-bold text-gray-900">시간대별 수분 루틴</h2>
+                            <Card className="border border-teal-100 shadow-sm">
+                                <CardContent className="pt-5 text-sm text-gray-700 space-y-2">
+                                    <p>아침: 기상 직후 물 1컵, 카페인 전 가벼운 수분 보충</p>
+                                    <p>오전: 집중 시간대 전후 소량씩(200~300ml) 나눠 마시기</p>
+                                    <p>운동/땀 많은 날: 운동 전·중·후 200~300ml씩, 저당 전해질 음료는 1회 250ml 이내</p>
+                                    <p>저녁: 취침 2시간 전 이후 과다 수분 섭취를 줄여 야간뇨 예방</p>
+                                </CardContent>
+                            </Card>
+                        </section>
+
+                        <section id="faq" className="space-y-4">
+                            <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                            <div className="space-y-2 text-sm text-gray-700">
+                                <p className="font-semibold">Q. 카페인 음료도 수분 섭취로 포함되나요?</p>
+                                <p>A. 소량은 포함되지만 이뇨가 있으므로 총량 계산 시 물 중심으로 80% 이상을 채우고, 카페인은 14시 이전에 제한하세요.</p>
+                                <p className="font-semibold">Q. 부종이 있는데 물을 줄여야 하나요?</p>
+                                <p>A. 물을 과도하게 줄이기보다 나트륨을 줄이고 칼륨·마그네슘을 늘리며, 움직임을 추가하는 편이 안전합니다.</p>
+                            </div>
                         </section>
                     </div>
                 </div>

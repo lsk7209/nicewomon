@@ -29,6 +29,15 @@ export default function BloodSugarGuidePage() {
                 </header>
 
                 <div className="prose prose-lg max-w-none space-y-10">
+                    <section className="bg-white rounded-2xl shadow-lg p-8 border border-teal-100 space-y-3">
+                        <p className="text-sm font-semibold text-teal-700">핵심 요약</p>
+                        <p className="text-gray-800">
+                            식사 순서(채소·단백질 → 탄수), 식후 10~15분 걷기, 카페인·단 음식은 오전에 제한, 간식은 단백질+섬유 조합이
+                            혈당 스파이크를 줄이는 핵심입니다.
+                        </p>
+                        <p className="text-xs text-teal-700">* 임신성 당뇨·약물 복용 중이면 의료진과 상담 후 조정하세요.</p>
+                    </section>
+
                     <section className="bg-white rounded-2xl shadow-lg p-8 border border-teal-100">
                         <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                             <Utensils className="w-6 h-6 text-teal-600" />
@@ -83,6 +92,36 @@ export default function BloodSugarGuidePage() {
                         <p className="text-gray-700 text-sm">
                             임신성 당뇨, 당뇨 약물 복용, 만성 질환이 있다면 식단 변경 전에 의료진 상담이 필요합니다.
                         </p>
+                    </section>
+
+                    <section className="bg-white rounded-2xl shadow p-8 border border-teal-100 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">하루 루틴 예시</h2>
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                            <li>아침: 단백질+섬유 중심(계란+채소), 카페인 오전에 제한</li>
+                            <li>점심: 채소/단백질 → 탄수 순서, 식후 10~15분 걷기</li>
+                            <li>간식: 그릭요거트+견과, 삶은 달걀+채소 스틱</li>
+                            <li>저녁: 취침 3시간 전 마감, 국물·당류 음료 최소화</li>
+                        </ul>
+                    </section>
+
+                    <section className="bg-teal-50 border border-teal-100 rounded-2xl p-8 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">자가 체크리스트</h2>
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                            <li>주 5일 이상 식사 순서 실천, 식사 간격 3~4시간 유지</li>
+                            <li>카페인 14시 이전, 단 음료·디저트 주 2회 이하</li>
+                            <li>식후 10~15분 걷기 주 5회 이상</li>
+                            <li>주 3회 이상 근력/유산소 포함한 20~30분 운동</li>
+                        </ul>
+                    </section>
+
+                    <section className="bg-white rounded-2xl shadow p-8 border border-teal-100 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. 단 음료를 완전히 끊기 어렵다면?</p>
+                            <p>A. 주 2회로 횟수부터 제한하고, 식사 직후 소량 섭취로 혈당 변동을 줄입니다. 탄산수·무가당 차로 대체하세요.</p>
+                            <p className="font-semibold">Q. 운동은 언제가 좋을까?</p>
+                            <p>A. 식후 10~15분 걷기가 가장 간단하며, 저녁 고강도 운동은 수면을 방해할 수 있어 취침 3시간 이전에 마칩니다.</p>
+                        </div>
                     </section>
                 </div>
 

@@ -36,6 +36,19 @@ export default function SymptomsGuidePage() {
                 </header>
 
                 <div className="prose prose-lg max-w-none space-y-10">
+                    <section className="bg-white rounded-2xl shadow-lg p-8 border border-rose-100 space-y-3">
+                        <p className="text-sm font-semibold text-rose-700">핵심 요약</p>
+                        <p className="text-gray-800">
+                            증상 완화의 우선순위는 수면(7~8h), 혈당 안정(식사 순서·간격), 스트레스 감속(호흡·걷기)입니다.
+                            의료 경고 신호는 흉통·호흡곤란·실신·지속 통증이며, 발생 시 즉시 진료가 필요합니다.
+                        </p>
+                        <ul className="text-sm text-gray-700 space-y-1">
+                            <li>• 리듬: 기상/취침 시간 편차 ±30분, 카페인 14시 컷오프</li>
+                            <li>• 식사: 채소/단백질 → 탄수화물 순서, 식후 10분 걷기</li>
+                            <li>• 스트레스: 4-7-8 호흡 4세트, 10분 산책으로 코르티솔 리셋</li>
+                        </ul>
+                    </section>
+
                     <section className="grid md:grid-cols-2 gap-6">
                         {symptoms.map((item) => (
                             <Card key={item.title} className="border-l-4 border-rose-400 h-full">
@@ -54,6 +67,38 @@ export default function SymptomsGuidePage() {
                         ))}
                     </section>
 
+                    <section className="bg-rose-50 border border-rose-100 rounded-2xl p-8 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">증상별 심화 포인트</h2>
+                        <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                            <div className="space-y-1">
+                                <p className="font-semibold text-rose-700">홍조/야간 발한</p>
+                                <p>저녁 알코올·카페인 제한, 침실 20~22도, 이소플라본 식품 소량</p>
+                            </div>
+                            <div className="space-y-1">
+                                <p className="font-semibold text-rose-700">수면 장애</p>
+                                <p>스크린 차단 60분, 저조도 조명, 마그네슘·글라이신 식품, 10분 스트레칭</p>
+                            </div>
+                            <div className="space-y-1">
+                                <p className="font-semibold text-rose-700">기분 기복/불안</p>
+                                <p>카페인 감량, 단백질 아침, 산책 10~20분으로 세로토닌 리셋</p>
+                            </div>
+                            <div className="space-y-1">
+                                <p className="font-semibold text-rose-700">피로/탈모</p>
+                                <p>철분·비타민D 확인, 수면 7~8h, 단백질 1.2g/kg, 스트레스 호흡</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="bg-white rounded-2xl shadow p-8 border border-rose-100 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">자가 점검 체크리스트</h2>
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                            <li>주 5일 이상 7시간 수면, 기상 시간 편차 ±30분 이내</li>
+                            <li>카페인 14시 이전, 알코올 주 2회 이하</li>
+                            <li>식사 순서(채소/단백질 → 탄수)와 식후 10분 걷기 실천</li>
+                            <li>주 5일 10분 이상 햇빛·걷기, 호흡/명상 10분</li>
+                        </ul>
+                    </section>
+
                     <section className="bg-white rounded-2xl shadow-lg p-8 space-y-3 border border-rose-100">
                         <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                             <ClipboardCheck className="w-6 h-6 text-rose-600" />
@@ -66,6 +111,16 @@ export default function SymptomsGuidePage() {
                             <li>체중 급변, 설명되지 않는 발열/통증</li>
                         </ul>
                         <p className="text-xs text-rose-700">* 본 가이드는 정보 제공용이며, 증상이 지속되면 반드시 전문의 진료를 받으세요.</p>
+                    </section>
+
+                    <section className="bg-rose-50 border border-rose-100 rounded-2xl p-8 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. 갑작스런 불면이 생기면 무엇부터?</p>
+                            <p>A. 카페인·알코올 시간 확인 → 스크린 60분 차단 → 4-7-8 호흡과 스트레칭 후에도 지속되면 의료 상담을 권장합니다.</p>
+                            <p className="font-semibold">Q. 영양 보충제는 바로 시작해도 되나요?</p>
+                            <p>A. 철분·비타민D는 과잉 위험이 있으니 혈액검사 결과를 확인하거나 전문의와 상의 후 시작하세요.</p>
+                        </div>
                     </section>
                 </div>
 
