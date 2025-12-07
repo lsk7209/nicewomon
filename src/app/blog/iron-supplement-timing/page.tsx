@@ -2,13 +2,13 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Calendar, Clock, Pill, Coffee } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Pill, Coffee, NotebookPen, AlertTriangle, SunMedium, Moon } from "lucide-react";
 import { Toc } from "@/components/layout/Toc";
 
 export const metadata: Metadata = {
     title: "철분제 언제 먹어야 할까? 흡수 높이는 타이밍 | 나이스우먼 블로그",
-    description: "철분제를 효과적으로 먹는 시간, 피해야 할 음식·음료, 비타민C와의 병용 팁을 정리했습니다.",
-    keywords: ["철분제", "복용 시간", "흡수", "비타민C", "커피 차"],
+    description: "철분제를 효과적으로 먹는 시간, 비타민C 동시 섭취, 칼슘·카페인 간격, 아침/취침 전 사례별 가이드를 정리했습니다.",
+    keywords: ["철분제", "복용 시간", "흡수", "비타민C", "커피 차", "칼슘 간격"],
     alternates: { canonical: "https://nicewomen.kr/blog/iron-supplement-timing" },
 };
 
@@ -18,6 +18,7 @@ export default function IronSupplementTimingPost() {
         { id: "why", label: "타이밍이 중요한 이유" },
         { id: "timing", label: "복용 시간·방법" },
         { id: "avoid", label: "함께 피해야 할 것" },
+        { id: "plan", label: "시간대별 예시" },
         { id: "checklist", label: "체크리스트" },
         { id: "faq", label: "FAQ" },
     ];
@@ -49,6 +50,7 @@ export default function IronSupplementTimingPost() {
                     </div>
                     <p className="text-lg text-gray-700">
                         철분 흡수는 타이밍과 함께 먹는 음식에 크게 좌우됩니다. 커피·차·칼슘은 멀리하고, 비타민C와 함께 복용하세요.
+                        아침 공복이 어려우면 취침 2~3시간 전, 소량 식사와 함께하는 차선책을 활용하세요.
                     </p>
                 </header>
 
@@ -57,26 +59,47 @@ export default function IronSupplementTimingPost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
-                        <section id="summary" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-2">
+                        <section id="summary" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-3">
                             <p className="text-sm font-semibold text-amber-700">핵심 요약</p>
-                            <p className="text-gray-800">
-                                아침 공복 또는 취침 2~3시간 전, 비타민C와 함께, 카페인·유제품·멀티미네랄과는 2시간 이상 간격을 둡니다.
-                                하루 2회라면 8~12시간 간격으로 나눠 복용하세요.
-                            </p>
+                            <div className="grid md:grid-cols-3 gap-3 text-sm text-gray-900">
+                                <Card className="border border-amber-100">
+                                    <CardContent className="pt-4 space-y-1">
+                                        <p className="text-xs font-semibold text-amber-700 uppercase">타이밍</p>
+                                        <p>1순위: 아침 공복+비타민 C 50~100mg</p>
+                                        <p>2순위: 취침 2~3h 전 (역류 없을 때)</p>
+                                    </CardContent>
+                                </Card>
+                                <Card className="border border-amber-100">
+                                    <CardContent className="pt-4 space-y-1">
+                                        <p className="text-xs font-semibold text-amber-700 uppercase">간격</p>
+                                        <p>칼슘·커피·차·유제품·멀티미네랄과 2h 이상</p>
+                                        <p>하루 2회 시 8~12h 간격</p>
+                                    </CardContent>
+                                </Card>
+                                <Card className="border border-amber-100">
+                                    <CardContent className="pt-4 space-y-1">
+                                        <p className="text-xs font-semibold text-amber-700 uppercase">불편 시</p>
+                                        <p>반 용량+소량 식사, 제형 변경(글루콘산염 등), 분할 복용</p>
+                                    </CardContent>
+                                </Card>
+                            </div>
                         </section>
 
                         <section id="why">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">타이밍이 중요한 이유</h2>
-                            <p className="text-gray-700">철분은 위산이 충분할 때, 경쟁하는 미네랄 없이 섭취해야 흡수가 잘 됩니다.</p>
+                            <p className="text-gray-700">철분은 위산이 충분할 때, 경쟁하는 미네랄 없이 섭취해야 흡수가 잘 됩니다. 카페인·칼슘·탄닌은 흡수를 떨어뜨리고, 비타민 C는 2~3배 높여 줍니다.</p>
                         </section>
 
                         <section id="timing" className="space-y-3">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">언제, 어떻게 먹을까?</h2>
-                            <Card className="border-l-4 border-amber-500">
-                                <CardContent className="pt-5 text-sm text-gray-700 space-y-2">
-                                    <p>아침 공복 또는 취침 2~3시간 전, 비타민C(오렌지 주스)와 함께</p>
-                                    <p>하루 2회라면 8~12시간 간격</p>
-                                    <p>속 불편함이 있으면 소량 식사와 함께, 단 커피·유제품은 피하기</p>
+                            <Card className="border border-amber-200">
+                                <CardContent className="pt-5 text-sm text-gray-800 space-y-2">
+                                    <p className="font-semibold text-amber-700 flex items-center gap-2"><SunMedium className="w-4 h-4" /> 아침</p>
+                                    <p>기상 직후 물 300ml + 비타민 C 50~100mg, 철분 공복 복용</p>
+                                    <p className="font-semibold text-amber-700 flex items-center gap-2"><Moon className="w-4 h-4" /> 취침 전 대안</p>
+                                    <p>취침 2~3h 전, 역류 없을 때만. 속 불편 시 바나나 반 개 등 소량 식사와 복용</p>
+                                    <p className="font-semibold text-amber-700">하루 2회</p>
+                                    <p>8~12h 간격(예: 07:00 / 19:00). 칼슘·커피·유제품은 각 2h 이상 띄우기</p>
                                 </CardContent>
                             </Card>
                         </section>
@@ -92,13 +115,27 @@ export default function IronSupplementTimingPost() {
                             </Card>
                         </section>
 
+                        <section id="plan" className="bg-amber-50 border border-amber-100 rounded-2xl p-6 space-y-3">
+                            <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                                <NotebookPen className="w-5 h-5 text-amber-600" />
+                                시간대별 예시 (1일 1~2회)
+                            </h3>
+                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <li>옵션 A: 07:00 공복 복용 → 커피/유제품은 09:00 이후</li>
+                                <li>옵션 B: 22:00 취침 2~3h 전 복용 → 저녁 식사는 19:00 이전</li>
+                                <li>1일 2회: 07:00 / 19:00, 각 복용 전후 칼슘·커피 2h 이상 간격</li>
+                                <li>위 불편 시 첫 3일은 반 용량→정량으로 적응</li>
+                            </ul>
+                        </section>
+
                         <section id="checklist" className="bg-amber-50 border border-amber-100 rounded-2xl p-6 space-y-2">
                             <h2 className="text-2xl font-bold text-gray-900">체크리스트</h2>
                             <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
-                                <li>복용 시간: 공복 아침 또는 취침 2~3시간 전</li>
-                                <li>동시 복용 피하기: 커피/차, 유제품, 멀티미네랄</li>
-                                <li>비타민C와 함께, 필요 시 8~12시간 간격 2회 분할</li>
-                                <li>복부 불편 시 소량 식사와 복용 후, 커피/유제품은 2시간 뒤</li>
+                                <li>복용 시간: 1순위 공복 아침, 2순위 취침 2~3h 전</li>
+                                <li>간격: 커피/차/칼슘/유제품/멀티미네랄과 2h 이상</li>
+                                <li>비타민 C 50~100mg 동시 섭취, 1일 2회면 8~12h 간격</li>
+                                <li>불편 시 반 용량 3일 → 정량, 소량 식사와 함께</li>
+                                <li>지속 통증·흑변·구토 시 즉시 복용 중단 후 상담</li>
                             </ul>
                         </section>
 
@@ -109,6 +146,10 @@ export default function IronSupplementTimingPost() {
                                 <p>A. 식후 30분에 복용하거나, 용량을 반으로 나눠 하루 2회로 분할해 보세요. 지속되면 의료진과 상의가 필요합니다.</p>
                                 <p className="font-semibold">Q. 다른 영양제와 함께 먹어도 될까?</p>
                                 <p>A. 칼슘·아연이 있는 멀티미네랄, 커피/차, 유제품과는 2시간 이상 간격을 두는 것이 안전합니다.</p>
+                                <p className="font-semibold">Q. 비타민 C는 얼마나?</p>
+                                <p>A. 50~100mg이면 충분합니다. 위가 민감하면 물과 함께 복용하고, 과량(500mg 이상)은 피하세요.</p>
+                                <p className="font-semibold">Q. 임신/수유 중에도 동일한가?</p>
+                                <p>A. 1일 200mg 카페인 이하, 철분 처방량은 의료진 지시를 따르세요. 간격·비타민 C 원칙은 동일합니다.</p>
                             </div>
                         </section>
                     </div>

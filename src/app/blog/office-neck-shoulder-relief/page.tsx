@@ -1,18 +1,26 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, Clock, StretchHorizontal, Laptop2, MoveHorizontal } from "lucide-react";
+import { Calendar, Clock, StretchHorizontal, Laptop2, MoveHorizontal, Ruler, Timer, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContentWithToc } from "@/components/layout/ContentWithToc";
 
 export const metadata: Metadata = {
     title: "사무직 목·어깨 통증 줄이는 10분 루틴 | 나이스우먼 블로그",
-    description: "책상 높이·모니터 세팅, 10분 스트레칭 루틴, 1시간 주기 마이크로 브레이크로 목·어깨 통증을 낮추는 방법.",
-    keywords: ["목 통증", "어깨 통증", "사무직", "스트레칭", "자세 교정"],
+    description: "책상 높이·모니터 세팅, 10분 스트레칭 루틴, 1시간 주기 마이크로 브레이크와 시간표 예시로 목·어깨 통증을 낮추는 방법.",
+    keywords: ["목 통증", "어깨 통증", "사무직", "스트레칭", "자세 교정", "거북목"],
     alternates: { canonical: "https://nicewomen.kr/blog/office-neck-shoulder-relief" },
 };
 
 export default function OfficeNeckShoulderReliefPost() {
+    const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
+        { id: "setup", label: "책상·모니터 세팅" },
+        { id: "routine", label: "10분 루틴" },
+        { id: "schedule", label: "근무 시간표 예시" },
+        { id: "micro", label: "마이크로 브레이크" },
+    ];
+
     const micro = [
         "1시간마다 2~3분: 목 측굴/회전 스트레칭, 어깨 롤링 10회",
         "10분마다 10초: 시선 멀리 두기(눈 피로 완화)",
@@ -55,14 +63,48 @@ export default function OfficeNeckShoulderReliefPost() {
                     </p>
                 </header>
 
-                <ContentWithToc>
-                    <section id="summary" className="bg-white border border-sky-100 rounded-2xl p-6">
+                <ContentWithToc items={tocItems}>
+                    <section id="summary" className="bg-white border border-sky-100 rounded-2xl p-6 space-y-3">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">한눈에 보기</h2>
+                        <p className="text-sm text-gray-700">모니터 상단은 눈높이, 의자 등받이 100~110도, 1시간마다 2~3분 움직이기. 10분 루틴으로 긴장을 풀고, 하루 시간표에 마이크로 브레이크를 예약하세요.</p>
                         <ul className="list-disc pl-5 text-gray-700 space-y-1">
                             {setup.map((s) => (
                                 <li key={s}>{s}</li>
                             ))}
                         </ul>
+                    </section>
+
+                    <section id="setup" className="bg-sky-50 border border-sky-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Ruler className="w-5 h-5 text-sky-600" />
+                            책상·모니터 세팅
+                        </h2>
+                        <div className="grid md:grid-cols-2 gap-3 text-sm text-gray-800">
+                            <Card className="border border-sky-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="font-semibold text-gray-900">모니터</p>
+                                    <p>상단이 눈높이와 같거나 2~3cm 아래, 거리 50~70cm</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-sky-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="font-semibold text-gray-900">키보드·손목</p>
+                                    <p>팔꿈치 90도, 손목 중립. 높이 안 맞으면 팜레스트 사용</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-sky-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="font-semibold text-gray-900">의자</p>
+                                    <p>등받이 100~110도, 발바닥 전체가 닿도록 높이 조정</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-sky-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="font-semibold text-gray-900">노트북 사용</p>
+                                    <p>노트북은 스탠드+외장 키보드/마우스 필수로 거북목 방지</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </section>
 
                     <section id="routine" className="space-y-4">
@@ -103,6 +145,20 @@ export default function OfficeNeckShoulderReliefPost() {
                                 <li key={m}>{m}</li>
                             ))}
                         </ul>
+                    </section>
+
+                    <section id="schedule" className="bg-white border border-sky-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Timer className="w-5 h-5 text-sky-600" />
+                            근무 시간표 예시 (09:00~18:00)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
+                            <li>09:00~11:00: 매 60분 2분 스트레칭, 10시 10초 시선 멀리</li>
+                            <li>11:30 점심 후: 5분 걷기, 허리 폄 스트레칭 1분</li>
+                            <li>14:00·15:00·16:00: 목 측굴/회전 각 10초×3세트 + 어깨 롤링</li>
+                            <li>17:30 마감 전: 가슴 열기 1분, 장비 높이 재정렬</li>
+                        </ul>
+                        <p className="text-xs text-gray-600">캘린더 반복 알림을 미리 걸어두면 실천율이 올라갑니다.</p>
                     </section>
                 </ContentWithToc>
 

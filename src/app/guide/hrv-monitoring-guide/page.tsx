@@ -1,14 +1,14 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, Clock, ActivitySquare, HeartPulse, AlertCircle } from "lucide-react";
+import { Calendar, Clock, ActivitySquare, HeartPulse, AlertCircle, NotebookPen, Activity, Ruler } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContentWithToc } from "@/components/layout/ContentWithToc";
 
 export const metadata: Metadata = {
     title: "HRV로 회복·스트레스 모니터링 가이드 | 나이스우먼",
-    description: "웨어러블 HRV 지표를 이해하고, 회복일 결정, 수면·운동 강도 조절에 활용하는 방법.",
-    keywords: ["HRV", "심박변이도", "회복", "스트레스", "운동 강도"],
+    description: "웨어러블 HRV 지표를 이해하고, 회복일 결정, 수면·운동 강도 조절에 활용하는 방법. 아침 고정 측정, 연령대별 참고 범위, 주기/감염 시 해석 팁 포함.",
+    keywords: ["HRV", "심박변이도", "회복", "스트레스", "운동 강도", "RMSSD"],
     alternates: { canonical: "https://nicewomen.kr/guide/hrv-monitoring-guide" },
 };
 
@@ -30,6 +30,7 @@ export default function HrvMonitoringGuide() {
         { id: "uses", label: "HRV 활용 포인트" },
         { id: "steps", label: "3단계 운영" },
         { id: "ranges", label: "수치 이해" },
+        { id: "protocol", label: "측정 프로토콜" },
         { id: "caution", label: "해석 시 유의" },
         { id: "faq", label: "FAQ" },
     ];
@@ -65,12 +66,28 @@ export default function HrvMonitoringGuide() {
                 </header>
 
                 <ContentWithToc items={tocItems}>
-                    <section id="summary" className="bg-white border border-indigo-100 rounded-2xl p-6 space-y-2">
+                    <section id="summary" className="bg-white border border-indigo-100 rounded-2xl p-6 space-y-3">
                         <p className="text-sm font-semibold text-indigo-700">핵심 요약</p>
-                        <p className="text-gray-800">
-                            HRV는 개인 베이스라인 대비 상승/하락을 보는 지표입니다. 아침 고정 시간·동일 기기 측정, 하락 시 수면·카페인·운동 강도를
-                            조정해 회복일을 만들고, 급격한 하락이 반복되면 휴식과 의료 상담을 고려하세요.
-                        </p>
+                        <div className="grid md:grid-cols-3 gap-3 text-sm text-gray-900">
+                            <Card className="border border-indigo-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-indigo-700 uppercase">측정</p>
+                                    <p>아침 기상 직후, 동일 기기로 2주간 베이스라인 확보</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-indigo-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-indigo-700 uppercase">판단</p>
+                                    <p>RMSSD가 평소 대비 -10~20% 이상 하락하면 회복일, + 상승 시 강도 소폭 증가</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-indigo-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-indigo-700 uppercase">대응</p>
+                                    <p>수면·카페인 컷·저강도 운동으로 회복, 감염/주기/음주 여부를 함께 기록</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </section>
 
                     <section id="uses" className="bg-white border border-indigo-100 rounded-2xl p-6">
@@ -97,6 +114,18 @@ export default function HrvMonitoringGuide() {
                         ))}
                     </section>
 
+                    <section id="protocol" className="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-indigo-600" />
+                            측정 프로토콜 (아침 고정)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
+                            <li>기상 직후, 같은 자세(누워/앉아) 1~2분 측정</li>
+                            <li>동일 기기·동일 시간대, 2주간 베이스라인 평균 확보</li>
+                            <li>주기·음주·격한 운동·감염 여부를 간단히 메모</li>
+                        </ul>
+                    </section>
+
                     <section id="caution" className="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 space-y-3">
                         <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
                             <AlertCircle className="w-5 h-5 text-amber-600" />
@@ -115,6 +144,22 @@ export default function HrvMonitoringGuide() {
                             개인마다 절대값이 다르므로 “내 베이스라인 대비 변화”가 중요합니다. 일반적으로 아침 RMSSD가 평소 대비 10~20% 이상
                             하락하면 회복일을 고려하고, 연속 상승 시 강도를 서서히 올릴 수 있습니다.
                         </p>
+                        <div className="grid md:grid-cols-2 gap-3 text-sm text-gray-800">
+                            <Card className="border border-indigo-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="font-semibold text-gray-900">참고 범위(대략적)</p>
+                                    <p>20~30대 여성 RMSSD 45~70ms, 40~50대 35~60ms (개인차 큼)</p>
+                                    <p>수면·운동·음주·주기에 따라 하루 10~30% 변동 가능</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-indigo-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="font-semibold text-gray-900">해석 팁</p>
+                                    <p>하락: 수면 연장, 카페인 컷, 저강도·회복일</p>
+                                    <p>상승: 컨디션 양호, 강도를 소폭(10~15%) 올리되 연속 하락 주의</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </section>
 
                     <section id="faq" className="space-y-4">
@@ -124,6 +169,10 @@ export default function HrvMonitoringGuide() {
                             <p>A. 패턴만 참고하고, 의사결정은 아침 고정 시점 기준으로 합니다. 낮 측정은 급격한 스트레스/과훈련 알림 정도로 활용하세요.</p>
                             <p className="font-semibold">Q. 생리 주기와 HRV?</p>
                             <p>A. 황체기에 HRV가 일시 하락할 수 있습니다. 주기 정보를 기록해 변화를 구분하면 해석이 쉬워집니다.</p>
+                            <p className="font-semibold">Q. 감염·음주 후 하락은?</p>
+                            <p>A. 수면·수분·전해질을 우선 확보하고, 24~48시간 저강도/휴식으로 회복일을 둡니다.</p>
+                            <p className="font-semibold">Q. 어떤 기기를 써야 하나요?</p>
+                            <p>A. 동일 기기로 일관 측정이 중요합니다. 기기마다 수치가 달라도 “내 베이스라인 대비 변화”를 보면 됩니다.</p>
                         </div>
                     </section>
                 </ContentWithToc>
