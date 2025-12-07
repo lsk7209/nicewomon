@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, Clock, Wind, CloudRain, AlertTriangle } from "lucide-react";
+import { Calendar, Clock, Wind, CloudRain, AlertTriangle, NotebookPen, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContentWithToc } from "@/components/layout/ContentWithToc";
@@ -23,6 +23,15 @@ export default function AirQualitySleepGuide() {
         "가습기 물은 매일 교체, 주 1회 이상 세척",
         "청정기 필터 교체 주기 확인, 창문 환기는 미세먼지 낮은 시간대(아침 일시적 피크 주의)",
         "건조한 날 코막힘 시 식염수 세척 후 취침",
+    ];
+
+    const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
+        { id: "steps", label: "핵심 3단계" },
+        { id: "caution", label: "청정·가습 체크" },
+        { id: "alert", label: "호흡기 민감 시" },
+        { id: "selfcheck", label: "자가 체크" },
+        { id: "faq", label: "FAQ" },
     ];
 
     return (
@@ -55,10 +64,34 @@ export default function AirQualitySleepGuide() {
                     </p>
                 </header>
 
-                <ContentWithToc>
+                <ContentWithToc items={tocItems}>
+                    <section id="summary" className="bg-white border border-sky-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">한눈에 보기</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-sky-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-sky-700 uppercase">청정</p>
+                                    <p>PM2.5 확인, 청정기 자동+수동 강도, 필터 주기 체크</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-sky-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-sky-700 uppercase">가습</p>
+                                    <p>습도 40~55%, 물 매일 교체·주 1회 세척, 과가습·곰팡이 주의</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-sky-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-sky-700 uppercase">콘디션</p>
+                                    <p>귀가 후 샤워/세안, 침구 먼지 털기, 건조 시 식염수 세척 후 취침</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
+
                     <section id="steps" className="bg-white border border-sky-100 rounded-2xl p-6">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">핵심 3단계</h2>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                             {steps.map((s) => (
                                 <li key={s}>{s}</li>
                             ))}
@@ -73,7 +106,7 @@ export default function AirQualitySleepGuide() {
                                     <Wind className="w-5 h-5 text-sky-600" />
                                     청정기
                                 </h3>
-                                <p className="text-gray-700 text-sm">필터 주기 확인, 자동 모드 외 고농도 시간대 수동 강도 상향.</p>
+                                <p className="text-gray-800 text-base leading-relaxed">필터 주기 확인, 자동 모드 외 고농도 시간대 수동 강도 상향.</p>
                             </CardContent>
                         </Card>
                         <Card className="border border-sky-100">
@@ -82,7 +115,7 @@ export default function AirQualitySleepGuide() {
                                     <CloudRain className="w-5 h-5 text-indigo-600" />
                                     가습기
                                 </h3>
-                                <p className="text-gray-700 text-sm">물 매일 교체, 주 1회 세척, 습도 40~55% 유지.</p>
+                                <p className="text-gray-800 text-base leading-relaxed">물 매일 교체, 주 1회 세척, 습도 40~55% 유지.</p>
                             </CardContent>
                         </Card>
                     </section>
@@ -92,11 +125,45 @@ export default function AirQualitySleepGuide() {
                             <AlertTriangle className="w-5 h-5 text-amber-600" />
                             호흡기 민감 시
                         </h3>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                             {caution.map((c) => (
                                 <li key={c}>{c}</li>
                             ))}
                         </ul>
+                    </section>
+
+                    <section id="selfcheck" className="bg-white border border-sky-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-sky-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>자다가 코막힘/기침/목 건조로 자주 깬다</li>
+                            <li>청정기 필터·가습기 세척 주기를 놓치기 쉽다</li>
+                            <li>미세먼지·건조한 날에도 환기/습도 조절이 불규칙하다</li>
+                        </ul>
+                        <p className="text-sm text-sky-700">2점 이상이면 습도 40~55% 유지, 청정기 필터/가습기 세척 주기를 달력·알림에 등록하고, 취침 전 식염수 세척을 1주간 시험하세요.</p>
+                    </section>
+
+                    <section id="faq" className="bg-sky-50 border border-sky-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Info className="w-5 h-5 text-sky-600" />
+                            FAQ
+                        </h3>
+                        <div className="space-y-3 text-base text-gray-800 leading-relaxed">
+                            <div>
+                                <p className="font-semibold">Q. 미세먼지 심한 날 환기는 어떻게 하나요?</p>
+                                <p>농도가 낮은 시간대(비가 온 직후, 늦은 밤/새벽)을 짧게(5~10분) 환기하고, 환기 후 청정기를 강하게 돌립니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 가습기와 공기청정기를 같이 써도 되나요?</p>
+                                <p>가능합니다. 다만 과가습을 피하고, 두 기기의 공기 흐름이 겹치지 않게 거리를 둡니다. 필터/세척 주기는 지켜주세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 건조해서 코가 막히면?</p>
+                                <p>식염수 세척 후 취침하고, 가습은 40~55%를 넘지 않게 유지하세요. 증상이 지속되면 알레르기/비염 진료를 권장합니다.</p>
+                            </div>
+                        </div>
                     </section>
                 </ContentWithToc>
 

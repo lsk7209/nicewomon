@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, Clock, Sun, Moon, ListChecks } from "lucide-react";
+import { Calendar, Clock, Sun, Moon, ListChecks, NotebookPen, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContentWithToc } from "@/components/layout/ContentWithToc";
@@ -23,6 +23,15 @@ export default function MorningEveningRoutineGuide() {
         "취침 2시간 전 조도 50~100 lux로 낮추기",
         "카페인 오후 2시 이후 컷, 알코올·늦은 식사 피하기",
         "블루라이트 최소화, 10분 스트레칭·호흡",
+    ];
+
+    const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
+        { id: "morning", label: "아침 루틴" },
+        { id: "evening", label: "저녁 루틴" },
+        { id: "stack", label: "루틴 스택" },
+        { id: "selfcheck", label: "자가 체크" },
+        { id: "faq", label: "FAQ" },
     ];
 
     return (
@@ -49,19 +58,43 @@ export default function MorningEveningRoutineGuide() {
                             <span>4분 읽기</span>
                         </div>
                     </div>
-                    <p className="text-lg text-gray-700">
+                    <p className="text-lg text-gray-800 leading-relaxed">
                         하루의 시작과 끝을 규칙화하면 수면 질과 에너지가 안정됩니다.
-                        빛·수분·조도·카페인 컷오프를 기반으로 간단한 루틴을 설계하세요.
+                        AEO 요약, 자가 체크, FAQ를 참고해 빛·컷오프·조도 루틴을 바로 적용하세요.
                     </p>
                 </header>
 
-                <ContentWithToc>
+                <ContentWithToc items={tocItems}>
+                    <section id="summary" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">한눈에 보기</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">아침</p>
+                                    <p>기상 30분 내 햇빛 10~15분 + 물 1컵, 3분 스트레칭·호흡, 단백질·섬유 아침</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">저녁</p>
+                                    <p>취침 2시간 전 조도 50~100 lux, 카페인 14시 컷, 블루라이트 최소화, 10분 스트레칭</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">유연성</p>
+                                    <p>야근/교대 시: 기상 고정·햇빛/라이트박스·짧은 낮잠(20분)으로 리듬 보정</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
+
                     <section id="morning" className="bg-white border border-amber-100 rounded-2xl p-6">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
                             <Sun className="w-5 h-5 text-amber-600" />
                             아침 루틴 (15분)
                         </h2>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                             {morning.map((m) => (
                                 <li key={m}>{m}</li>
                             ))}
@@ -73,7 +106,7 @@ export default function MorningEveningRoutineGuide() {
                             <Moon className="w-5 h-5 text-indigo-600" />
                             저녁 루틴 (60~120분 전)
                         </h2>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                             {evening.map((e) => (
                                 <li key={e}>{e}</li>
                             ))}
@@ -88,9 +121,43 @@ export default function MorningEveningRoutineGuide() {
                                     <ListChecks className="w-5 h-5 text-amber-600" />
                                     3가지 체크
                                 </h3>
-                                <p className="text-gray-700 text-sm">빛(아침), 컷오프(오후), 조도(저녁)만 지켜도 수면 위생이 크게 개선됩니다.</p>
+                                <p className="text-gray-800 text-base leading-relaxed">빛(아침), 컷오프(오후), 조도(저녁)만 지켜도 수면 위생이 크게 개선됩니다.</p>
                             </CardContent>
                         </Card>
+                    </section>
+
+                    <section id="selfcheck" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-amber-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>기상·취침 시간이 날마다 2시간 이상 다르다</li>
+                            <li>오후 늦게까지 카페인/스크린을 사용한다</li>
+                            <li>아침 햇빛/저녁 조도 루틴을 지키지 못한다</li>
+                        </ul>
+                        <p className="text-sm text-amber-700">2점 이상이면 기상 고정→아침 햇빛→14시 컷오프→저녁 조도 낮추기 순서로 2주간 적용하세요.</p>
+                    </section>
+
+                    <section id="faq" className="bg-amber-50 border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Info className="w-5 h-5 text-amber-600" />
+                            FAQ
+                        </h3>
+                        <div className="space-y-3 text-base text-gray-800 leading-relaxed">
+                            <div>
+                                <p className="font-semibold">Q. 야근/교대 시 루틴은?</p>
+                                <p>기상 시간을 먼저 고정하고, 기상 직후 라이트박스/햇빛, 짧은 낮잠(20분), 카페인 컷오프를 유지해 리듬을 맞추세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 아침 햇빛을 못 볼 때는?</p>
+                                <p>라이트박스 10~15분(2,500~10,000 lux)을 기상 후 바로 사용하세요. 밤낮 교대 시에도 동일하게 적용합니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 저녁에 피곤해서 루틴을 놓칩니다.</p>
+                                <p>취침 2시간 전부터 조도를 먼저 낮추고, 스크린을 멀리 두며, 10분 스트레칭·호흡만 남기는 최소 루틴을 설정하세요.</p>
+                            </div>
+                        </div>
                     </section>
                 </ContentWithToc>
 
