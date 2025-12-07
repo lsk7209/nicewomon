@@ -19,6 +19,15 @@ export default function BurnoutRecoveryStepsPost() {
         { title: "리듬 회복", detail: "주 3회 20분 걷기+가벼운 근력, 주말 리커버리 데이, 10분 마음챙김." },
     ];
 
+    const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
+        { id: "plan", label: "3단계 회복 플랜" },
+        { id: "scripts", label: "알림·응답 스크립트" },
+        { id: "dayplan", label: "샘플 하루 리듬" },
+        { id: "checklist", label: "체크리스트" },
+        { id: "faq", label: "FAQ" },
+    ];
+
     return (
         <div className="bg-gradient-to-b from-orange-50 via-white to-orange-50 min-h-screen">
             <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
@@ -49,7 +58,7 @@ export default function BurnoutRecoveryStepsPost() {
                     </p>
                 </header>
 
-                <ContentWithToc>
+                <ContentWithToc items={tocItems}>
                     <section id="summary" className="bg-white border border-orange-100 rounded-2xl p-6">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">핵심 요약</h2>
                         <ul className="list-disc pl-5 text-gray-700 space-y-1">
@@ -81,6 +90,37 @@ export default function BurnoutRecoveryStepsPost() {
                             <li>“오늘은 응답이 느릴 수 있어요. 내일 오전까지 회신할게요.”</li>
                             <li>업무/개인 알림 분리, 집중 시간 2블록 확보</li>
                         </ul>
+                    </section>
+
+                    <section id="dayplan" className="bg-white border border-orange-100 rounded-2xl p-6 space-y-2">
+                        <h3 className="text-2xl font-bold text-gray-900">샘플 하루 리듬</h3>
+                        <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <li>아침: 기상 후 햇빛 10분, 단백질 아침, 카페인 1회</li>
+                            <li>오전: 집중 블록 90분×2, 알림 끄기</li>
+                            <li>점심 후: 10~15분 걷기, 카페인 마지막 컵</li>
+                            <li>오후: 가벼운 업무/정리, 5분 호흡</li>
+                            <li>저녁: 스트레칭/걷기 20분, 스크린 60분 차단, 취침 루틴</li>
+                        </ul>
+                    </section>
+
+                    <section id="checklist" className="bg-orange-50 border border-orange-100 rounded-2xl p-6 space-y-2">
+                        <h3 className="text-xl font-bold text-gray-900">체크리스트</h3>
+                        <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <li>수면 7~8h, 카페인 14시 컷</li>
+                            <li>집중 블록 2개, 알림/메신저 창 분리</li>
+                            <li>주 3회 20분 걷기+근력, 주 1회 완전 휴식일</li>
+                            <li>회의·요청에 “응답 시간 알리기” 스크립트 사용</li>
+                        </ul>
+                    </section>
+
+                    <section id="faq" className="space-y-4">
+                        <h3 className="text-2xl font-bold text-gray-900">FAQ</h3>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. 휴가를 바로 내기 어렵다면?</p>
+                            <p>A. 최소한 오후 1~2시간 “방해 금지” 블록을 확보해 수면·식사·산책으로 급한 회복을 우선하세요.</p>
+                            <p className="font-semibold">Q. 운동이 버거울 때?</p>
+                            <p>A. 10분 걷기+5분 스트레칭부터 시작하고, 주 1회는 완전 휴식일을 설정해 회복을 확보하세요.</p>
+                        </div>
                     </section>
                 </ContentWithToc>
 

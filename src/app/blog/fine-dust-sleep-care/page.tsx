@@ -22,9 +22,11 @@ export default function FineDustSleepCarePost() {
     ];
 
     const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
         { id: "checklist", label: "하루 체크리스트" },
         { id: "humid", label: "가습·온도 설정" },
         { id: "routine", label: "취침 전 루틴" },
+        { id: "faq", label: "FAQ" },
     ];
 
     return (
@@ -62,6 +64,14 @@ export default function FineDustSleepCarePost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
+                    <section id="summary" className="bg-white rounded-2xl shadow-sm border border-blue-100 p-6 space-y-2">
+                        <p className="text-sm font-semibold text-blue-700">핵심 요약</p>
+                        <p className="text-gray-800">
+                            귀가 후 세정, 취침 1시간 전 공기청정·가습 45~55%, 온도 20~22도, 취침 2~3시간 전 온수 샤워,
+                            미세먼지 낮은 시간대 5분 환기가 기본입니다.
+                        </p>
+                    </section>
+
                     <section id="checklist" className="bg-white rounded-2xl shadow-sm border border-blue-100 p-6 space-y-3">
                         <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                             <Wind className="w-6 h-6 text-blue-600" />
@@ -95,6 +105,16 @@ export default function FineDustSleepCarePost() {
                         <p className="text-gray-700 text-sm">
                             따뜻한 샤워로 코막힘을 완화하고, 침실 문을 닫아 외부 공기 유입을 줄입니다. 가볍게 스트레칭 후 바로 누워 깊은 호흡을 5세트 반복하세요.
                         </p>
+                    </section>
+
+                    <section id="faq" className="space-y-4">
+                        <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. 환기를 꼭 해야 하나요?</p>
+                            <p>A. 실내 CO₂가 높아지면 졸림·두통이 생길 수 있습니다. 미세먼지 수치가 낮은 시간대에 3~5분 짧게 환기하세요.</p>
+                            <p className="font-semibold">Q. 가습기 물은 얼마나 자주 교체?</p>
+                            <p>A. 매일 물 교체·세척, 주 1회 살균 세척을 권장합니다. 필터 수명도 확인하세요.</p>
+                        </div>
                     </section>
                     </div>
                 </div>

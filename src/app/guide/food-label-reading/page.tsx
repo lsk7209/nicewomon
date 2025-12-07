@@ -20,6 +20,15 @@ export default function FoodLabelReadingGuide() {
         "포화지방/트랜스지방: 포화지방 1g↑ 제품, 트랜스 0g 확인",
     ];
 
+    const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
+        { id: "checklist", label: "1분 체크리스트" },
+        { id: "daily", label: "1일 기준치 감 잡기" },
+        { id: "warnings", label: "주의 라벨 신호" },
+        { id: "examples", label: "라벨 읽기 예시" },
+        { id: "faq", label: "FAQ" },
+    ];
+
     return (
         <div className="bg-gradient-to-b from-amber-50 via-white to-amber-50 min-h-screen">
             <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
@@ -50,7 +59,15 @@ export default function FoodLabelReadingGuide() {
                     </p>
                 </header>
 
-                <ContentWithToc>
+                <ContentWithToc items={tocItems}>
+                    <section id="summary" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-2">
+                        <p className="text-sm font-semibold text-amber-700">핵심 요약</p>
+                        <p className="text-gray-800">
+                            1) 1회 제공량 함정 확인 2) 당류 10g+ 주의 3) 나트륨 %DV 체크(하루 소금 5g 이하) 4) 포화지방 높고 트랜스 0g 확인.
+                            1분만 투자해도 혈당·혈압 관리에 큰 차이를 만듭니다.
+                        </p>
+                    </section>
+
                     <section id="checklist" className="bg-white border border-amber-100 rounded-2xl p-6">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">1분 체크리스트</h2>
                         <ul className="list-disc pl-5 text-gray-700 space-y-1">
@@ -86,6 +103,25 @@ export default function FoodLabelReadingGuide() {
                             <li>당류 10g+ 간식, 나트륨 600mg+ 컵라면류</li>
                             <li>포화지방 5g+ 버터/크림 기반 제품</li>
                         </ul>
+                    </section>
+
+                    <section id="examples" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-2">
+                        <h3 className="text-2xl font-bold text-gray-900">라벨 읽기 예시</h3>
+                        <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <li>간식 바: 당류 12g → 주 1회 이하, 나트륨 150mg이면 괜찮은 편</li>
+                            <li>컵라면: 나트륨 1500~2000mg → 국물은 거의 남기기</li>
+                            <li>시리얼: 1회 제공량 30g인데 실제 섭취는 60g? 당류·칼로리를 2배로 계산</li>
+                        </ul>
+                    </section>
+
+                    <section id="faq" className="bg-amber-50 border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900">FAQ</h3>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. “트랜스지방 0g”이 안전하다는 뜻인가요?</p>
+                            <p>A. 0.5g 미만은 0g으로 표시될 수 있습니다. 가공유지(쇼트닝/마가린)가 앞쪽에 있으면 섭취를 줄이세요.</p>
+                            <p className="font-semibold">Q. %DV는 어떻게 보나요?</p>
+                            <p>A. 나트륨 20% 이상이면 고나트륨 식품입니다. 당류는 %DV가 없으므로 g 단위를 직접 확인하세요.</p>
+                        </div>
                     </section>
                 </ContentWithToc>
 

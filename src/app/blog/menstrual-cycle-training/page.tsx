@@ -14,9 +14,13 @@ export const metadata: Metadata = {
 
 export default function MenstrualCycleTrainingPost() {
     const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
         { id: "why", label: "주기별로 나누는 이유" },
         { id: "plan", label: "주기별 운동 가이드" },
+        { id: "warmup", label: "체크리스트 & 준비" },
+        { id: "sample", label: "샘플 주간 루틴" },
         { id: "tips", label: "부상·피로 관리 팁" },
+        { id: "faq", label: "FAQ" },
     ];
 
     return (
@@ -54,6 +58,14 @@ export default function MenstrualCycleTrainingPost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
+                        <section id="summary" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-2">
+                            <p className="text-sm font-semibold text-rose-700">핵심 요약</p>
+                            <p className="text-gray-800">
+                                난포기: 강도↑(근력/인터벌), 배란기: 수분·전해질 보충하며 중강도, 황체기: 저강도·회복 위주.
+                                수면 7~8h, 철분·단백질·마그네슘을 확보하면 피로/부상 리스크가 줄어듭니다.
+                            </p>
+                        </section>
+
                         <section id="why">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">왜 주기별로 나눌까?</h2>
                             <p className="text-gray-700">난포기는 에너지와 회복이 좋은 시기, 황체기는 체온·피로가 올라가니 강도 조절이 필요합니다.</p>
@@ -70,6 +82,26 @@ export default function MenstrualCycleTrainingPost() {
                             </Card>
                         </section>
 
+                        <section id="warmup" className="bg-rose-50 border border-rose-100 rounded-2xl p-6 space-y-2">
+                            <h2 className="text-2xl font-bold text-gray-900">체크리스트 & 준비</h2>
+                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <li>철분/단백질: 체중(kg)×1.2g 단백질, 월경 많은 날 철분 식품 보강</li>
+                                <li>수분/전해질: 배란기·고강도 날 전해질 소량, 평일 물 30~35ml/kg</li>
+                                <li>수면: 7~8h, 카페인 컷오프 13~14시</li>
+                                <li>워밍업: 8~10분 동적 스트레칭, 황체기는 길게(12분) 진행</li>
+                            </ul>
+                        </section>
+
+                        <section id="sample" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-2">
+                            <h2 className="text-2xl font-bold text-gray-900">샘플 주간 루틴 (4일)</h2>
+                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <li>Day1 난포기: 스쿼트/히프힌지 3×8~10, 인터벌 바이크 10분</li>
+                                <li>Day2 휴식 또는 걷기 30분</li>
+                                <li>Day3 배란기: 상체/코어 중강도 + 유산소 20분</li>
+                                <li>Day4 황체기: 필라테스/요가 30분, 가벼운 밴드 운동</li>
+                            </ul>
+                        </section>
+
                         <section id="tips" className="space-y-3">
                             <h2 className="text-2xl font-bold text-gray-900">부상·피로 관리 팁</h2>
                             <Card className="border-l-4 border-rose-300">
@@ -79,6 +111,16 @@ export default function MenstrualCycleTrainingPost() {
                                     <p>• 카페인 컷오프, 수면 7~8h 확보</p>
                                 </CardContent>
                             </Card>
+                        </section>
+
+                        <section id="faq" className="space-y-4">
+                            <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                            <div className="space-y-2 text-sm text-gray-700">
+                                <p className="font-semibold">Q. 황체기에 근력은 아예 쉬어야 할까?</p>
+                                <p>A. 저중량·고반복, 코어 안정화·밸런스 위주로 전환하면 루틴을 끊지 않고 이어갈 수 있습니다.</p>
+                                <p className="font-semibold">Q. 생리 중 운동은?</p>
+                                <p>A. 통증·어지러움이 없다면 가벼운 걷기/스트레칭은 도움이 됩니다. 통증·어지러움이 있으면 휴식이 우선입니다.</p>
+                            </div>
                         </section>
                     </div>
                 </div>
