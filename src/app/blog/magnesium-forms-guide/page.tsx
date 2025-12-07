@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Calendar, Clock, Pill, Moon, Dumbbell } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Pill, Moon, Dumbbell, NotebookPen, AlertCircle } from "lucide-react";
 import { Toc } from "@/components/layout/Toc";
 
 export const metadata: Metadata = {
@@ -27,8 +27,10 @@ export default function MagnesiumFormsGuidePost() {
     ];
 
     const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
         { id: "forms", label: "형태별 특징" },
         { id: "timing", label: "목적별 타이밍" },
+        { id: "selfcheck", label: "자가 체크" },
         { id: "caution", label: "복용 시 주의" },
     ];
 
@@ -66,7 +68,31 @@ export default function MagnesiumFormsGuidePost() {
                     <div className="md:sticky md:top-24 h-fit">
                         <Toc items={tocItems} />
                     </div>
-                    <div className="prose prose-lg max-w-none space-y-8">
+                    <div className="prose prose-lg max-w-none space-y-10">
+                    <section id="summary" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">한눈에 보기</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">수면/긴장</p>
+                                    <p>글리시네이트 200~400mg, 취침 30~60분 전, 카페인 컷 병행</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">근육/운동 후</p>
+                                    <p>시트레이트/말레이트 200~400mg, 운동 후 수분과 함께</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">PMS/심계항진</p>
+                                    <p>타우레이트 소량 분복, 심장 증상·약물 복용 시 의료 상담</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
+
                     <section id="forms" className="bg-white rounded-2xl shadow-sm border border-amber-100 p-6 space-y-3">
                         <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                             <Pill className="w-6 h-6 text-amber-600" />
@@ -76,8 +102,8 @@ export default function MagnesiumFormsGuidePost() {
                             <Card key={f.name} className="border-l-4 border-amber-500">
                                 <CardContent className="pt-5">
                                     <p className="font-semibold text-gray-900">{f.name}</p>
-                                    <p className="text-gray-700 text-sm">{f.use}</p>
-                                    <p className="text-gray-600 text-xs">{f.note}</p>
+                                    <p className="text-gray-800 text-base leading-relaxed">{f.use}</p>
+                                    <p className="text-gray-700 text-sm leading-relaxed">{f.note}</p>
                                 </CardContent>
                             </Card>
                         ))}
@@ -92,10 +118,23 @@ export default function MagnesiumFormsGuidePost() {
                             <Card key={r.title} className="border-l-4 border-amber-400">
                                 <CardContent className="pt-5">
                                     <p className="font-semibold text-gray-900">{r.title}</p>
-                                    <p className="text-gray-700 text-sm">{r.detail}</p>
+                                    <p className="text-gray-800 text-base leading-relaxed">{r.detail}</p>
                                 </CardContent>
                             </Card>
                         ))}
+                    </section>
+
+                    <section id="selfcheck" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-amber-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>신장/심장 질환, 저혈압, 약물 복용(항생제·갑상선)이 있다</li>
+                            <li>설사·복통이 자주 있거나, 복용 후 속이 불편하다</li>
+                            <li>카페인·알코올 섭취가 많아 수면·긴장 완화 효과가 떨어진다</li>
+                        </ul>
+                        <p className="text-sm text-amber-700">2점 이상이면 의료 상담 후 소량·분복으로 시작하고, 컷오프(카페인·알코올)도 함께 적용하세요.</p>
                     </section>
 
                     <section id="caution" className="bg-amber-50 border border-amber-100 rounded-2xl p-6 space-y-2">
@@ -103,7 +142,7 @@ export default function MagnesiumFormsGuidePost() {
                             <Dumbbell className="w-5 h-5" />
                             복용 시 주의
                         </h3>
-                        <p className="text-gray-700 text-sm">
+                        <p className="text-gray-800 text-base leading-relaxed">
                             신장 질환, 저혈압, 약물 복용(항생제·갑상선 호르몬 등)이 있다면 복용 전 의료진과 상담이 필요합니다.
                             과량 복용 시 설사·복통이 생길 수 있어 소량으로 나누어 시작하세요.
                         </p>

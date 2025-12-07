@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Heart, TrendingDown, TrendingUp, AlertCircle } from "lucide-react";
+import { ContentWithToc } from "@/components/layout/ContentWithToc";
+import { Heart, TrendingDown, TrendingUp, AlertCircle, NotebookPen, Info, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "호르몬 기초 지식 - 여성 호르몬의 모든 것 | 나이스우먼",
@@ -12,6 +13,15 @@ export const metadata: Metadata = {
 };
 
 export default function HormoneBasicsPage() {
+    const tocItems = [
+        { id: "summary", label: "핵심 요약" },
+        { id: "hormones", label: "주요 여성 호르몬" },
+        { id: "life", label: "연령별 변화" },
+        { id: "balance", label: "밸런스 유지법" },
+        { id: "selfcheck", label: "자가 체크" },
+        { id: "faq", label: "FAQ" },
+    ];
+
     return (
         <div className="bg-gradient-to-b from-rose-50 via-white to-rose-50 min-h-screen">
             <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
@@ -26,17 +36,38 @@ export default function HormoneBasicsPage() {
                         여성 호르몬의 모든 것
                     </h1>
 
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                        에스트로겐, 프로게스테론의 역할과 연령별 변화를 이해하고
-                        <br />
-                        <strong className="text-gray-800">호르몬 밸런스를 유지하는 방법</strong>을 알아보세요
+                    <p className="text-lg text-gray-800 leading-relaxed">
+                        에스트로겐·프로게스테론의 역할과 연령별 변화를 한눈에 정리했습니다.
+                        AEO 요약, 자가 체크(0~3점), 연령대별 관리 포인트로 바로 적용하세요.
                     </p>
                 </header>
 
-                {/* Main Content */}
-                <div className="prose prose-lg max-w-none space-y-12">
-                    {/* Section 1: 주요 여성 호르몬 */}
-                    <section className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+                <ContentWithToc items={tocItems}>
+                    <section id="summary" className="bg-white border border-rose-100 rounded-2xl p-6 md:p-8 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">핵심 요약</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-rose-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-rose-700 uppercase">20~30대</p>
+                                    <p>호르몬 전성기, 주기 안정·피부/기분 좋음 → 규칙 운동·영양 유지</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-rose-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-rose-700 uppercase">40대 전환기</p>
+                                    <p>주기 불규칙·홍조·수면 장애 시작 → 카페인/알코올 컷, 근력+비타민 D</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-rose-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-rose-700 uppercase">50대 이후</p>
+                                    <p>에스트로겐 급감, 골다공증·심혈관 리스크 ↑ → 골밀도/지질 검사, HRT 상담 고려</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
+
+                    <section id="hormones" className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
                         <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                             <span className="text-4xl">🌸</span>
                             주요 여성 호르몬
@@ -47,14 +78,13 @@ export default function HormoneBasicsPage() {
                                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                                     에스트로겐 (Estrogen)
                                 </h3>
-                                <p className="text-gray-700 leading-relaxed mb-4">
-                                    에스트로겐은 여성의 생식 기능과 전반적인 건강에 가장 중요한 호르몬입니다.
-                                    난소에서 주로 생성되며, 사춘기부터 폐경기까지 여성의 몸에서 핵심적인 역할을 합니다.
+                                <p className="text-gray-800 leading-relaxed mb-4">
+                                    여성 생식·뼈·심혈관·피부·기분에 폭넓게 관여합니다. 사춘기~폐경 전까지 난소에서 주로 생성됩니다.
                                 </p>
 
                                 <div className="bg-rose-50 rounded-xl p-6 space-y-3">
                                     <h4 className="font-bold text-gray-900 mb-3">주요 역할</h4>
-                                    <ul className="space-y-2 text-gray-700">
+                                    <ul className="space-y-2 text-gray-800 leading-relaxed">
                                         <li className="flex items-start gap-2">
                                             <span className="text-rose-600 mt-1">•</span>
                                             <span><strong>생식 기능:</strong> 자궁 내막 성장, 배란 조절, 임신 준비</span>
@@ -83,14 +113,13 @@ export default function HormoneBasicsPage() {
                                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                                     프로게스테론 (Progesterone)
                                 </h3>
-                                <p className="text-gray-700 leading-relaxed mb-4">
-                                    프로게스테론은 배란 후 황체에서 분비되는 호르몬으로,
-                                    임신 유지와 생리 주기 조절에 핵심적인 역할을 합니다.
+                                <p className="text-gray-800 leading-relaxed mb-4">
+                                    배란 후 황체에서 분비되어 임신 유지·주기 안정·수면에 기여합니다.
                                 </p>
 
                                 <div className="bg-purple-50 rounded-xl p-6 space-y-3">
                                     <h4 className="font-bold text-gray-900 mb-3">주요 역할</h4>
-                                    <ul className="space-y-2 text-gray-700">
+                                    <ul className="space-y-2 text-gray-800 leading-relaxed">
                                         <li className="flex items-start gap-2">
                                             <span className="text-purple-600 mt-1">•</span>
                                             <span><strong>임신 유지:</strong> 자궁 내막 안정화, 착상 지원</span>
@@ -113,8 +142,7 @@ export default function HormoneBasicsPage() {
                         </div>
                     </section>
 
-                    {/* Section 2: 연령별 호르몬 변화 */}
-                    <section className="bg-gradient-to-br from-rose-50 to-purple-50 rounded-2xl p-8 md:p-12">
+                    <section id="life" className="bg-gradient-to-br from-rose-50 to-purple-50 rounded-2xl p-8 md:p-12">
                         <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                             <span className="text-4xl">📊</span>
                             연령별 호르몬 변화
@@ -128,7 +156,7 @@ export default function HormoneBasicsPage() {
                                         20~30대: 호르몬 전성기
                                     </CardTitle>
                                 </CardHeader>
-                                <CardContent className="space-y-3 text-gray-700">
+                                <CardContent className="space-y-3 text-gray-800 leading-relaxed text-base">
                                     <p>
                                         <strong>특징:</strong> 에스트로겐과 프로게스테론이 가장 활발하게 분비되는 시기
                                     </p>
@@ -153,7 +181,7 @@ export default function HormoneBasicsPage() {
                                         40대 초반: 갱년기 전기 (Perimenopause)
                                     </CardTitle>
                                 </CardHeader>
-                                <CardContent className="space-y-3 text-gray-700">
+                                <CardContent className="space-y-3 text-gray-800 leading-relaxed text-base">
                                     <p>
                                         <strong>특징:</strong> 호르몬 분비가 불규칙해지기 시작하는 시기
                                     </p>
@@ -179,7 +207,7 @@ export default function HormoneBasicsPage() {
                                         50대 이후: 폐경기 (Menopause)
                                     </CardTitle>
                                 </CardHeader>
-                                <CardContent className="space-y-3 text-gray-700">
+                                <CardContent className="space-y-3 text-gray-800 leading-relaxed text-base">
                                     <p>
                                         <strong>특징:</strong> 12개월 이상 생리가 없는 상태, 에스트로겐 급격히 감소
                                     </p>
@@ -200,8 +228,7 @@ export default function HormoneBasicsPage() {
                         </div>
                     </section>
 
-                    {/* Section 3: 호르몬 밸런스 유지 방법 */}
-                    <section className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+                    <section id="balance" className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
                         <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                             <span className="text-4xl">⚖️</span>
                             호르몬 밸런스 유지 방법
@@ -213,7 +240,7 @@ export default function HormoneBasicsPage() {
                                     <span className="text-2xl">🥗</span>
                                     식단 관리
                                 </h3>
-                                <ul className="space-y-2 text-gray-700 text-sm">
+                                <ul className="space-y-2 text-gray-800 text-base leading-relaxed">
                                     <li>• 콩류 (이소플라본 함유)</li>
                                     <li>• 오메가-3 지방산 (연어, 견과류)</li>
                                     <li>• 십자화과 채소 (브로콜리, 양배추)</li>
@@ -227,7 +254,7 @@ export default function HormoneBasicsPage() {
                                     <span className="text-2xl">🏃‍♀️</span>
                                     규칙적인 운동
                                 </h3>
-                                <ul className="space-y-2 text-gray-700 text-sm">
+                                <ul className="space-y-2 text-gray-800 text-base leading-relaxed">
                                     <li>• 유산소 운동 (주 150분)</li>
                                     <li>• 근력 운동 (주 2~3회)</li>
                                     <li>• 요가, 필라테스</li>
@@ -241,7 +268,7 @@ export default function HormoneBasicsPage() {
                                     <span className="text-2xl">😴</span>
                                     충분한 수면
                                 </h3>
-                                <ul className="space-y-2 text-gray-700 text-sm">
+                                <ul className="space-y-2 text-gray-800 text-base leading-relaxed">
                                     <li>• 하루 7~8시간 수면</li>
                                     <li>• 규칙적인 수면 시간</li>
                                     <li>• 어두운 환경 조성</li>
@@ -255,13 +282,51 @@ export default function HormoneBasicsPage() {
                                     <span className="text-2xl">🧘‍♀️</span>
                                     스트레스 관리
                                 </h3>
-                                <ul className="space-y-2 text-gray-700 text-sm">
+                                <ul className="space-y-2 text-gray-800 text-base leading-relaxed">
                                     <li>• 명상, 마음챙김</li>
                                     <li>• 호흡 운동</li>
                                     <li>• 취미 활동</li>
                                     <li>• 사회적 관계 유지</li>
                                     <li>• 전문가 상담</li>
                                 </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="selfcheck" className="bg-white border border-rose-100 rounded-2xl p-6 md:p-8 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-rose-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>생리 주기/양이 3개월 이상 뚜렷이 변했다</li>
+                            <li>홍조·야간 발한·수면 장애가 잦다</li>
+                            <li>골밀도, 지질, 갑상선, 철분 검진을 1년 이상 하지 않았다</li>
+                        </ul>
+                        <p className="text-sm text-rose-700">2점 이상이면 정기 검진, 수면/카페인 컷오프, 근력+비타민 D 루틴을 우선 적용하고 의료 상담을 고려하세요.</p>
+                    </section>
+
+                    <section id="faq" className="bg-rose-50 border border-rose-100 rounded-2xl p-6 md:p-8 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Info className="w-5 h-5 text-rose-600" />
+                            FAQ
+                        </h3>
+                        <div className="space-y-3 text-base text-gray-800 leading-relaxed">
+                            <div>
+                                <p className="font-semibold">Q. 주기가 불규칙해지면 바로 검사를 해야 하나요?</p>
+                                <p>40대 이후 주기 변화가 반복되면 혈액검사(호르몬, 갑상선), 빈혈, 비타민 D를 확인하세요. 갑작스러운 출혈/통증이 있으면 즉시 진료가 필요합니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 호르몬 대체 요법(HRT)은 언제 고려하나요?</p>
+                                <p>일상에 지장을 주는 홍조·수면 장애가 지속되거나 골다공증 위험이 높을 때 의료진과 위험/이득을 평가해 결정합니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 식물성 에스트로겐(이소플라본)은 도움이 되나요?</p>
+                                <p>콩·두부 등 식품 섭취는 일반적으로 안전하나, 보충제는 약물/질환 여부에 따라 다릅니다. 유방 질환 병력이 있다면 의료진과 상의하세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 체중·기분 변화가 큰데 무엇부터 할까요?</p>
+                                <p>수면 7~8시간, 저녁 카페인 컷오프, 주 2~3회 근력운동, 단백질 1.2g/kg 섭취를 우선 적용하고, 증상이 지속되면 진료를 권장합니다.</p>
                             </div>
                         </div>
                     </section>
@@ -282,7 +347,7 @@ export default function HormoneBasicsPage() {
                             </Button>
                         </Link>
                     </section>
-                </div>
+                </ContentWithToc>
 
                 {/* Disclaimer */}
                 <div className="mt-16 p-6 bg-gray-50 rounded-xl border border-gray-200">

@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Apple, Pill, Heart, Bone, Brain, Sun } from "lucide-react";
+import { ContentWithToc } from "@/components/layout/ContentWithToc";
+import { Apple, Pill, Heart, Bone, Brain, Sun, NotebookPen, Info } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "영양 가이드 - 여성 건강을 위한 필수 영양소 | 나이스우먼",
@@ -12,6 +13,14 @@ export const metadata: Metadata = {
 };
 
 export default function NutritionGuidePage() {
+    const tocItems = [
+        { id: "summary", label: "핵심 요약" },
+        { id: "essentials", label: "필수 영양소" },
+        { id: "age", label: "연령별 가이드" },
+        { id: "selfcheck", label: "자가 체크" },
+        { id: "faq", label: "FAQ" },
+    ];
+
     return (
         <div className="bg-gradient-to-b from-amber-50 via-white to-amber-50 min-h-screen">
             <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
@@ -25,16 +34,40 @@ export default function NutritionGuidePage() {
                         영양 가이드
                     </h1>
 
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                        여성 건강에 필수적인 영양소와
-                        <br />
-                        <strong className="text-gray-800">올바른 섭취 방법</strong>을 알아보세요
+                    <p className="text-lg text-gray-800 leading-relaxed">
+                        여성 건강에 필수적인 영양소를 연령·생애주기에 맞춰 요약했습니다.
+                        AEO 요약, 자가 체크, FAQ를 먼저 확인하고 식단·보충 전략을 선택하세요.
                     </p>
                 </header>
 
+                <ContentWithToc items={tocItems}>
+                    <section id="summary" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">핵심 요약</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">철·엽산</p>
+                                    <p>가임기: 철 14~18mg, 엽산 400μg(임신 계획 시 600~800μg), 비타민 C 동시 섭취</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">뼈·근육</p>
+                                    <p>칼슘 1000~1200mg, 비타민 D 600~800IU(폐경 후 800~1000IU), 단백질 1.2g/kg</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">심혈관/뇌</p>
+                                    <p>오메가-3 EPA+DHA 250~500mg, 포화지방·과당 줄이기, 카페인 컷오프 유지</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
+
                 <div className="prose prose-lg max-w-none space-y-12">
                     {/* 여성에게 중요한 영양소 */}
-                    <section className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+                    <section id="essentials" className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
                         <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                             <span className="text-4xl">🥗</span>
                             여성에게 특히 중요한 영양소
@@ -51,14 +84,14 @@ export default function NutritionGuidePage() {
                                 <CardContent className="space-y-4">
                                     <div>
                                         <p className="font-bold text-gray-900 mb-2">왜 중요한가요?</p>
-                                        <p className="text-sm text-gray-700">
+                                        <p className="text-base text-gray-800 leading-relaxed">
                                             여성은 생리로 인해 매달 철분을 손실합니다.
                                             철분 부족은 빈혈, 피로, 집중력 저하를 유발합니다.
                                         </p>
                                     </div>
                                     <div className="bg-rose-50 p-4 rounded-lg">
                                         <p className="font-bold text-sm mb-2">권장 섭취량</p>
-                                        <ul className="space-y-1 text-sm text-gray-700">
+                                        <ul className="space-y-1 text-base text-gray-800 leading-relaxed">
                                             <li>• 가임기 여성: 하루 14~18mg</li>
                                             <li>• 임신부: 하루 27mg</li>
                                             <li>• 폐경 후: 하루 8mg</li>
@@ -66,7 +99,7 @@ export default function NutritionGuidePage() {
                                     </div>
                                     <div className="bg-rose-50 p-4 rounded-lg">
                                         <p className="font-bold text-sm mb-2">풍부한 식품</p>
-                                        <ul className="space-y-1 text-sm text-gray-700">
+                                        <ul className="space-y-1 text-base text-gray-800 leading-relaxed">
                                             <li>• <strong>헴철:</strong> 붉은 고기, 간, 굴 (흡수율 높음)</li>
                                             <li>• <strong>비헴철:</strong> 시금치, 콩류, 두부 (비타민 C와 함께 섭취)</li>
                                         </ul>
@@ -90,7 +123,7 @@ export default function NutritionGuidePage() {
                                 <CardContent className="space-y-4">
                                     <div>
                                         <p className="font-bold text-gray-900 mb-2">왜 중요한가요?</p>
-                                        <p className="text-sm text-gray-700">
+                                        <p className="text-base text-gray-800 leading-relaxed">
                                             여성은 폐경 후 골밀도가 급격히 감소합니다.
                                             칼슘과 비타민 D는 뼈 건강 유지에 필수적입니다.
                                         </p>
@@ -98,8 +131,8 @@ export default function NutritionGuidePage() {
                                     <div className="grid md:grid-cols-2 gap-4">
                                         <div className="bg-blue-50 p-4 rounded-lg">
                                             <p className="font-bold text-sm mb-2">칼슘</p>
-                                            <p className="text-xs text-gray-700 mb-2">권장량: 하루 1,000~1,200mg</p>
-                                            <ul className="space-y-1 text-sm text-gray-700">
+                                            <p className="text-sm text-gray-700 mb-2">권장량: 하루 1,000~1,200mg</p>
+                                            <ul className="space-y-1 text-base text-gray-800 leading-relaxed">
                                                 <li>• 우유, 요구르트, 치즈</li>
                                                 <li>• 멸치, 뱅어포</li>
                                                 <li>• 케일, 브로콜리</li>
@@ -108,8 +141,8 @@ export default function NutritionGuidePage() {
                                         </div>
                                         <div className="bg-blue-50 p-4 rounded-lg">
                                             <p className="font-bold text-sm mb-2">비타민 D</p>
-                                            <p className="text-xs text-gray-700 mb-2">권장량: 하루 600~800IU</p>
-                                            <ul className="space-y-1 text-sm text-gray-700">
+                                            <p className="text-sm text-gray-700 mb-2">권장량: 하루 600~800IU</p>
+                                            <ul className="space-y-1 text-base text-gray-800 leading-relaxed">
                                                 <li>• 연어, 고등어</li>
                                                 <li>• 계란 노른자</li>
                                                 <li>• 강화 우유</li>
@@ -130,7 +163,7 @@ export default function NutritionGuidePage() {
                                 <CardContent className="space-y-4">
                                     <div>
                                         <p className="font-bold text-gray-900 mb-2">왜 중요한가요?</p>
-                                        <p className="text-sm text-gray-700">
+                                        <p className="text-base text-gray-800 leading-relaxed">
                                             심혈관 건강, 뇌 기능, 염증 감소에 필수적입니다.
                                             특히 폐경 후 심혈관 질환 위험이 높아지므로 중요합니다.
                                         </p>
@@ -141,7 +174,7 @@ export default function NutritionGuidePage() {
                                     </div>
                                     <div className="bg-green-50 p-4 rounded-lg">
                                         <p className="font-bold text-sm mb-2">풍부한 식품</p>
-                                        <ul className="space-y-1 text-sm text-gray-700">
+                                        <ul className="space-y-1 text-base text-gray-800 leading-relaxed">
                                             <li>• 연어, 고등어, 정어리</li>
                                             <li>• 호두, 아마씨</li>
                                             <li>• 치아씨드</li>
@@ -161,21 +194,21 @@ export default function NutritionGuidePage() {
                                 <CardContent className="space-y-4">
                                     <div>
                                         <p className="font-bold text-gray-900 mb-2">왜 중요한가요?</p>
-                                        <p className="text-sm text-gray-700">
+                                        <p className="text-base text-gray-800 leading-relaxed">
                                             임신 계획 중이거나 가임기 여성에게 필수적입니다.
                                             태아의 신경관 결손을 예방하고, 세포 분열에 중요합니다.
                                         </p>
                                     </div>
                                     <div className="bg-purple-50 p-4 rounded-lg">
                                         <p className="font-bold text-sm mb-2">권장 섭취량</p>
-                                        <ul className="space-y-1 text-sm text-gray-700">
+                                        <ul className="space-y-1 text-base text-gray-800 leading-relaxed">
                                             <li>• 일반 성인: 하루 400μg</li>
                                             <li>• 임신 계획/임신부: 하루 600~800μg</li>
                                         </ul>
                                     </div>
                                     <div className="bg-purple-50 p-4 rounded-lg">
                                         <p className="font-bold text-sm mb-2">풍부한 식품</p>
-                                        <ul className="space-y-1 text-sm text-gray-700">
+                                        <ul className="space-y-1 text-base text-gray-800 leading-relaxed">
                                             <li>• 시금치, 케일, 브로콜리</li>
                                             <li>• 아보카도, 오렌지</li>
                                             <li>• 콩류, 렌틸콩</li>
@@ -188,7 +221,7 @@ export default function NutritionGuidePage() {
                     </section>
 
                     {/* 연령별 영양 가이드 */}
-                    <section className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 md:p-12">
+                    <section id="age" className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 md:p-12">
                         <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                             <span className="text-4xl">📊</span>
                             연령별 영양 가이드
@@ -354,6 +387,44 @@ export default function NutritionGuidePage() {
                                     <li>• 설탕, 단 음료</li>
                                     <li>• 과도한 카페인, 알코올</li>
                                 </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="selfcheck" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-amber-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>최근 1년간 철·비타민 D·지질·혈당 검사를 하지 않았다</li>
+                            <li>만성 피로·어지럼·탈모·손톱 갈라짐이 있다</li>
+                            <li>저녁 카페인·불규칙 식사로 수면/혈당 변동이 잦다</li>
+                        </ul>
+                        <p className="text-sm text-amber-700">2점 이상이면 혈액검사로 상태 확인 후 식품 우선 → 부족 시 보충제 순으로 적용하세요.</p>
+                    </section>
+
+                    <section id="faq" className="bg-amber-50 border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Info className="w-5 h-5 text-amber-600" />
+                            FAQ
+                        </h3>
+                        <div className="space-y-3 text-base text-gray-800 leading-relaxed">
+                            <div>
+                                <p className="font-semibold">Q. 철분과 칼슘 보충제를 같이 먹어도 되나요?</p>
+                                <p>흡수 저하가 있으므로 시간대를 나누세요. 철분은 공복·비타민 C와, 칼슘은 식후/저녁으로 분리 권장.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 비타민 D는 언제 먹는 게 좋은가요?</p>
+                                <p>지용성이라 지방이 포함된 식사 후가 흡수에 유리합니다. 커피/차와는 간격을 두세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 오메가-3는 어느 정도 먹어야 하나요?</p>
+                                <p>일반적으로 EPA+DHA 250~500mg을 권장합니다. 심혈관 위험이 높다면 의료진과 용량을 상의하세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 보충제보다 식품이 우선인가요?</p>
+                                <p>원칙은 식품 우선입니다. 식품으로 부족하거나 검사상 결핍일 때 보충제를 고려하세요.</p>
                             </div>
                         </div>
                     </section>

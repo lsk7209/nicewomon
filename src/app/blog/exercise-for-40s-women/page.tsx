@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, Clock, ArrowLeft, Share2, Activity, Heart, Dumbbell, Zap } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Share2, Activity, Heart, Dumbbell, Zap, NotebookPen, AlertCircle } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "40대 여성을 위한 운동 루틴 | 나이스우먼 블로그",
@@ -50,12 +50,36 @@ export default function ExerciseFor40sBlogPost() {
                 </header>
 
                 {/* Featured Image Placeholder */}
-                <div className="mb-12 h-96 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-2xl flex items-center justify-center">
-                    <span className="text-9xl">💪</span>
+                <div className="mb-12 h-80 md:h-96 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-2xl flex items-center justify-center">
+                    <span className="text-8xl md:text-9xl">💪</span>
                 </div>
 
                 {/* Content */}
-                <div className="prose prose-lg max-w-none space-y-8">
+                <div className="prose prose-lg max-w-none space-y-10">
+                    <section className="bg-white border border-purple-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">핵심 요약</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-purple-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-purple-700 uppercase">근력</p>
+                                    <p>주 2~3회 하체 중심 복합운동, 점진적 과부하</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-purple-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-purple-700 uppercase">유산소</p>
+                                    <p>인터벌 걷기 주 3~4회, 6천~8천 보 이상</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-purple-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-purple-700 uppercase">회복</p>
+                                    <p>수면 7~8h, 카페인 14시 컷, 스트레칭·호흡으로 부상 예방</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
+
                     <section>
                         <h2 className="text-3xl font-bold text-gray-900 mb-4">
                             40대, 운동의 목적이 달라져야 합니다
@@ -72,7 +96,7 @@ export default function ExerciseFor40sBlogPost() {
                             40대 여성 필수 운동 3가지
                         </h2>
 
-                        <Card className="mb-6 border-l-4 border-purple-500">
+                        <Card className="mb-6 border border-purple-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-purple-100 p-3 rounded-full">
@@ -82,16 +106,16 @@ export default function ExerciseFor40sBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             1. 저강도 근력 운동 (주 2~3회)
                                         </h3>
-                                        <p className="text-gray-700">
-                                            무거운 역기를 들 필요는 없습니다. 스쿼트, 런지, 플랭크 같은 맨몸 운동으로도 충분합니다.
-                                            특히 허벅지와 엉덩이 근육은 우리 몸의 당분을 저장하는 창고 역할을 하므로 반드시 단련해야 합니다.
+                                        <p className="text-gray-800 leading-relaxed">
+                                            맨몸 스쿼트·런지·플랭크부터 시작해 점진적 과부하(횟수/세트/난이도 ↑)를 적용하세요.
+                                            하체 복합운동은 혈당·체지방 관리에 가장 효율적입니다.
                                         </p>
                                     </div>
                                 </div>
                             </CardContent>
                         </Card>
 
-                        <Card className="mb-6 border-l-4 border-rose-500">
+                        <Card className="mb-6 border border-rose-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-rose-100 p-3 rounded-full">
@@ -101,17 +125,15 @@ export default function ExerciseFor40sBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             2. 인터벌 걷기 (주 3~4회)
                                         </h3>
-                                        <p className="text-gray-700">
-                                            단순히 걷기만 해서는 운동 효과가 적습니다.
-                                            '3분 빠르게 걷기 + 3분 천천히 걷기'를 반복해보세요.
-                                            심폐 지구력을 높이고 체지방 연소에 탁월합니다.
+                                        <p className="text-gray-800 leading-relaxed">
+                                            3분 빠르게 + 3분 느리게를 4~6세트 반복(총 20~30분). 6천~8천 보를 최소 목표로 잡으세요.
                                         </p>
                                     </div>
                                 </div>
                             </CardContent>
                         </Card>
 
-                        <Card className="mb-6 border-l-4 border-blue-500">
+                        <Card className="mb-6 border border-blue-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-blue-100 p-3 rounded-full">
@@ -121,9 +143,8 @@ export default function ExerciseFor40sBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             3. 스트레칭과 요가 (매일)
                                         </h3>
-                                        <p className="text-gray-700">
-                                            나이가 들수록 관절과 근육이 뻣뻣해집니다.
-                                            아침 기상 직후와 잠들기 전 스트레칭은 부상을 예방하고 혈액 순환을 돕습니다.
+                                        <p className="text-gray-800 leading-relaxed">
+                                            아침·취침 전 각 5~10분 스트레칭/요가로 가동범위를 유지하면 부상과 뻣뻣함을 줄일 수 있습니다.
                                         </p>
                                     </div>
                                 </div>
@@ -146,7 +167,7 @@ export default function ExerciseFor40sBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             관절 보호가 최우선
                                         </h3>
-                                        <p className="text-gray-700">
+                                        <p className="text-gray-800 leading-relaxed">
                                             무리한 점프 동작이나 잘못된 자세의 스쿼트는 무릎 관절을 망가뜨릴 수 있습니다.
                                             통증이 느껴지면 즉시 중단하고, 올바른 자세를 먼저 익히세요.
                                             쿠션이 좋은 운동화를 신는 것도 중요합니다.
@@ -157,16 +178,29 @@ export default function ExerciseFor40sBlogPost() {
                         </Card>
                     </section>
 
-                    <section className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-lg">
+                    <section className="bg-purple-50 border border-purple-100 p-6 rounded-lg space-y-3">
                         <h3 className="text-xl font-bold text-purple-900 mb-3">
                             🏃‍♀️ 4주 완성 기초 루틴
                         </h3>
-                        <ul className="space-y-2 text-gray-700">
-                            <li>• <strong>1주차:</strong> 매일 30분 걷기 + 스트레칭</li>
-                            <li>• <strong>2주차:</strong> 걷기 30분 + 스쿼트 10회 3세트 (주 2회)</li>
-                            <li>• <strong>3주차:</strong> 인터벌 걷기 30분 + 스쿼트/플랭크 (주 3회)</li>
-                            <li>• <strong>4주차:</strong> 운동 강도 조금씩 높이기</li>
+                        <ul className="space-y-2 text-gray-800 text-base leading-relaxed">
+                            <li>1주차: 매일 30분 걷기 + 스트레칭</li>
+                            <li>2주차: 걷기 30분 + 스쿼트 10회 3세트 (주 2회)</li>
+                            <li>3주차: 인터벌 걷기 30분 + 스쿼트/플랭크 (주 3회)</li>
+                            <li>4주차: 운동 강도 조금씩 높이기</li>
                         </ul>
+                    </section>
+
+                    <section className="bg-white border border-purple-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-purple-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>주 150분 걷기/유산소가 안 된다</li>
+                            <li>하체 근력 운동을 1주 1회 이하로 한다</li>
+                            <li>수면 6시간 이하, 카페인 컷오프 미준수</li>
+                        </ul>
+                        <p className="text-sm text-purple-700">2점 이상이면 4주 루틴부터 재시작하고, 통증이 지속되면 전문 상담을 권장합니다.</p>
                     </section>
                 </div>
 

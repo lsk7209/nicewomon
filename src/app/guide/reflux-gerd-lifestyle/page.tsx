@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, Clock, UtensilsCrossed, Bed, AlertTriangle } from "lucide-react";
+import { Calendar, Clock, UtensilsCrossed, Bed, AlertTriangle, NotebookPen, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContentWithToc } from "@/components/layout/ContentWithToc";
@@ -17,6 +17,15 @@ export default function RefluxGerdLifestyleGuide() {
         "취침 3시간 전 식사 종료, 과식·기름진 음식 피하기",
         "카페인·탄산·알코올·초콜릿을 줄이고, 자극적 양념 최소화",
         "좌측으로 누워 자거나 머리를 15~20cm 올려 수면",
+    ];
+
+    const tocItems = [
+        { id: "summary", label: "핵심 요약" },
+        { id: "tips", label: "핵심 팁" },
+        { id: "meal", label: "식사 관리" },
+        { id: "sleep", label: "수면 자세" },
+        { id: "selfcheck", label: "자가 체크" },
+        { id: "faq", label: "FAQ" },
     ];
 
     return (
@@ -43,16 +52,40 @@ export default function RefluxGerdLifestyleGuide() {
                             <span>4분 읽기</span>
                         </div>
                     </div>
-                    <p className="text-lg text-gray-700">
+                    <p className="text-lg text-gray-800 leading-relaxed">
                         속쓰림과 역류는 식사 시점·구성, 수면 자세, 카페인·알코올 관리로 크게 개선할 수 있습니다.
-                        간단한 생활 팁을 정리했습니다.
+                        AEO 관점의 요약과 체크리스트를 따라 바로 적용해보세요.
                     </p>
                 </header>
 
-                <ContentWithToc>
+                <ContentWithToc items={tocItems}>
+                    <section id="summary" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">핵심 요약</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">식사 시점</p>
+                                    <p>취침 3시간 전 종료, 소량씩 4~5회, 과식·늦은 야식 금지</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">자극 식품</p>
+                                    <p>카페인·탄산·알코올·초콜릿·매운/기름진 음식 최소화</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">수면 자세</p>
+                                    <p>좌측으로 눕기 혹은 머리 15~20cm 올리기, 식후 2~3시간 내 눕지 않기</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
+
                     <section id="tips" className="bg-white border border-amber-100 rounded-2xl p-6">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">핵심 팁</h2>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                        <ul className="list-disc pl-5 text-gray-800 leading-relaxed text-base space-y-1">
                             {tips.map((t) => (
                                 <li key={t}>{t}</li>
                             ))}
@@ -67,7 +100,7 @@ export default function RefluxGerdLifestyleGuide() {
                                     <UtensilsCrossed className="w-5 h-5 text-amber-600" />
                                     시간·양
                                 </h3>
-                                <p className="text-gray-700 text-sm">취침 3시간 전 식사 종료, 소량씩 나누어 먹기, 과식·늦은 야식 피하기.</p>
+                                <p className="text-gray-800 text-base leading-relaxed">취침 3시간 전 식사 종료, 소량씩 나누어 먹기, 과식·늦은 야식 피하기.</p>
                             </CardContent>
                         </Card>
                         <Card className="border border-amber-100">
@@ -75,7 +108,7 @@ export default function RefluxGerdLifestyleGuide() {
                                 <h3 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
                                     자극 식품 최소화
                                 </h3>
-                                <p className="text-gray-700 text-sm">카페인·탄산·알코올·초콜릿·매운 음식·지방 많은 식사를 줄입니다.</p>
+                                <p className="text-gray-800 text-base leading-relaxed">카페인·탄산·알코올·초콜릿·매운 음식·지방 많은 식사를 줄입니다.</p>
                             </CardContent>
                         </Card>
                     </section>
@@ -85,20 +118,48 @@ export default function RefluxGerdLifestyleGuide() {
                             <Bed className="w-5 h-5 text-amber-600" />
                             수면 자세
                         </h3>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                             <li>좌측으로 눕거나, 머리를 15~20cm 높여 수면</li>
                             <li>식사 직후 눕지 않기, 최소 2~3시간 뒤 취침</li>
                         </ul>
                     </section>
 
-                    <section id="alert" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-2">
+                    <section id="selfcheck" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-3">
                         <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                            <AlertTriangle className="w-5 h-5 text-amber-600" />
-                            의료 상담 포인트
+                            <NotebookPen className="w-5 h-5 text-amber-600" />
+                            자가 체크 (0~3점)
                         </h3>
-                        <p className="text-gray-700 text-sm">
-                            체중 감소, 삼킴 곤란, 출혈(흑변), 지속 통증이 있으면 즉시 의료 상담이 필요합니다. 약·보충제 복용은 의료진 지시에 따르세요.
-                        </p>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>취침 3시간 전 식사 종료를 지키지 못한다</li>
+                            <li>카페인·알코올을 저녁 시간에도 자주 섭취한다</li>
+                            <li>식후 바로 눕거나, 베개 높이 조절을 하지 않는다</li>
+                        </ul>
+                        <p className="text-sm text-amber-700">2점 이상이면 1주일 간 식사·취침 시간, 증상(속쓰림/신물)을 기록하고 컷오프·자세 변경을 집중 적용하세요.</p>
+                    </section>
+
+                    <section id="faq" className="bg-amber-50 border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Info className="w-5 h-5 text-amber-600" />
+                            FAQ
+                        </h3>
+                        <div className="space-y-3 text-base text-gray-800 leading-relaxed">
+                            <div>
+                                <p className="font-semibold">Q. 속쓰림이 심한 날, 바로 할 일은?</p>
+                                <p>식사 중단, 물을 조금씩 마시고, 좌측으로 누워 머리를 높이세요. 증상이 반복되면 의료 상담이 필요합니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 커피는 완전히 끊어야 하나요?</p>
+                                <p>아침·점심 소량(에스프레소 1샷)으로 제한하고, 빈속 섭취를 피하세요. 저녁 이후는 컷오프를 권장합니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 체중 관리가 도움이 되나요?</p>
+                                <p>복부 압력을 줄이면 역류가 완화됩니다. 늦은 야식·과식을 줄이고, 가벼운 산책·코어 운동을 병행하세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 어떤 경우에 병원에 가야 하나요?</p>
+                                <p>체중 감소, 삼킴 곤란, 흑변·혈변, 지속 통증이 있으면 즉시 의료 상담이 필요합니다. 약·보충제는 의료진 지시에 따르세요.</p>
+                            </div>
+                        </div>
                     </section>
                 </ContentWithToc>
 

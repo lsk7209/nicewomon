@@ -62,21 +62,21 @@ export default function MenopauseAnxietyCopingPost() {
                     <div className="prose prose-lg max-w-none space-y-8">
                         <section id="summary" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-3">
                             <p className="text-sm font-semibold text-rose-700">핵심 요약</p>
-                            <div className="grid md:grid-cols-3 gap-3 text-sm text-gray-900">
+                            <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
                                 <Card className="border border-rose-100">
-                                    <CardContent className="pt-4 space-y-1">
+                                <CardContent className="pt-4 space-y-1">
                                         <p className="text-xs font-semibold text-rose-700 uppercase">낮</p>
                                         <p>카페인 컷오프 13~14시, 10분 걷기+호흡, 알림 최소화</p>
                                     </CardContent>
                                 </Card>
                                 <Card className="border border-rose-100">
-                                    <CardContent className="pt-4 space-y-1">
+                                <CardContent className="pt-4 space-y-1">
                                         <p className="text-xs font-semibold text-rose-700 uppercase">밤</p>
                                         <p>스크린 60분 차단, 20~22°C/습도 45~55%, 4-7-8 호흡 4세트</p>
                                     </CardContent>
                                 </Card>
                                 <Card className="border border-rose-100">
-                                    <CardContent className="pt-4 space-y-1">
+                                <CardContent className="pt-4 space-y-1">
                                         <p className="text-xs font-semibold text-rose-700 uppercase">경고</p>
                                         <p>일상 기능 저하·공황 양상 시 전문 상담·진료를 우선</p>
                                     </CardContent>
@@ -92,7 +92,7 @@ export default function MenopauseAnxietyCopingPost() {
                         <section id="techniques" className="space-y-3">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">바로 쓸 수 있는 진정법</h2>
                             <Card className="border-l-4 border-rose-400">
-                                <CardContent className="pt-5 text-sm text-gray-700 space-y-2">
+                                <CardContent className="pt-5 text-base text-gray-800 space-y-2 leading-relaxed">
                                     <p>4-7-8 호흡 4세트 또는 박스 호흡 4세트 (앱·알람으로 리마인더)</p>
                                     <p>손발 찬물 세수, 어깨·목 스트레칭 5분, 10분 걷기</p>
                                     <p>카페인 컷오프 13~14시, 알코올 취침 3시간 전 차단</p>
@@ -103,7 +103,7 @@ export default function MenopauseAnxietyCopingPost() {
                         <section id="sleep" className="space-y-3">
                             <h2 className="text-2xl font-bold text-gray-900">밤 불안 줄이기</h2>
                             <Card className="border-l-4 border-rose-300">
-                                <CardContent className="pt-5 text-sm text-gray-700 space-y-1">
+                                <CardContent className="pt-5 text-base text-gray-800 space-y-1 leading-relaxed">
                                     <p>• 취침 1시간 전 스크린 오프, 저조도 조명</p>
                                     <p>• 온도 20~22도, 습도 45~55% 유지</p>
                                     <p>• 가벼운 스트레칭과 코로 길게 내쉬는 호흡 4세트</p>
@@ -117,7 +117,7 @@ export default function MenopauseAnxietyCopingPost() {
                                 <NotebookPen className="w-5 h-5 text-rose-600" />
                                 시간대별 루틴 (샘플)
                             </h3>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <ul className="list-disc pl-5 text-gray-700 text-base space-y-1 leading-relaxed">
                                 <li>아침: 기상 후 햇빛 10분, 단백질 20g 아침, 카페인 첫 컵</li>
                                 <li>점심 전/후: 10분 걷기+호흡 2세트, 알림 배치(집중 블록)</li>
                                 <li>오후: 카페인 컷오프 13~14시, 수분 1~2컵, 스트레칭 5분</li>
@@ -131,7 +131,7 @@ export default function MenopauseAnxietyCopingPost() {
                                 <Activity className="w-5 h-5 text-rose-600" />
                                 자가 체크 (0~3점)
                             </h3>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <ul className="list-disc pl-5 text-gray-700 text-base space-y-1 leading-relaxed">
                                 <li>밤중 각성·입면 지연으로 수면 6h 이하</li>
                                 <li>평소보다 불안/짜증이 잦고, 심박 증가가 느껴짐</li>
                                 <li>카페인·알코올을 줄이지 못해 오후/밤 불안이 심함</li>
@@ -142,7 +142,7 @@ export default function MenopauseAnxietyCopingPost() {
 
                         <section id="checklist" className="bg-rose-50 border border-rose-100 rounded-2xl p-6 space-y-2">
                             <h2 className="text-2xl font-bold text-gray-900">체크리스트</h2>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <ul className="list-disc pl-5 text-gray-700 text-base space-y-1 leading-relaxed">
                                 <li>카페인 13~14시 컷, 알코올 취침 3h 전 차단</li>
                                 <li>스크린 60분 차단, 저조도 조명, 4-7-8/박스 호흡 4세트</li>
                                 <li>수면 7~8h, 규칙적 기상, 침실 20~22°C·습도 45~55%</li>

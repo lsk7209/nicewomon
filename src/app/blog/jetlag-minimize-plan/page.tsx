@@ -60,7 +60,7 @@ export default function JetlagMinimizePlanPost() {
                 <ContentWithToc items={tocItems}>
                     <section id="summary" className="bg-white border border-purple-100 rounded-2xl p-6 space-y-3">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">핵심 요약</h2>
-                        <div className="grid md:grid-cols-3 gap-3 text-sm text-gray-900">
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
                             <Card className="border border-purple-100">
                                 <CardContent className="pt-4 space-y-1">
                                     <p className="text-xs font-semibold text-purple-700 uppercase">출발 전</p>
@@ -102,7 +102,7 @@ export default function JetlagMinimizePlanPost() {
                             <NotebookPen className="w-5 h-5 text-purple-600" />
                             빛·식사·수면 타이밍 (동→서 / 서→동)
                         </h3>
-                        <div className="grid md:grid-cols-2 gap-3 text-sm text-gray-800">
+                        <div className="grid md:grid-cols-2 gap-3 text-base text-gray-800 leading-relaxed">
                             <Card className="border border-purple-100">
                                 <CardContent className="pt-4 space-y-1">
                                     <p className="font-semibold text-gray-900">동 → 서(시간 늘어남)</p>
@@ -118,7 +118,7 @@ export default function JetlagMinimizePlanPost() {
                                 </CardContent>
                             </Card>
                         </div>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1 text-base leading-relaxed">
                             <li>식사: 현지 아침/점심/저녁 시간으로 즉시 조정</li>
                             <li>수면: 첫날 총량이 부족해도 낮잠은 20~30분 1회, 밤 수면을 우선 확보</li>
                             <li>수분·전해질: 비행 내내 물 200ml씩, 알코올은 회피</li>
@@ -127,7 +127,7 @@ export default function JetlagMinimizePlanPost() {
 
                     <section id="checklist" className="bg-white border border-purple-100 rounded-2xl p-6 space-y-2">
                         <h3 className="text-xl font-bold text-gray-900">체크리스트</h3>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1 text-base leading-relaxed">
                             <li>출발 3일 전부터 취침/기상 60~90분씩 이동</li>
                             <li>현지 아침 첫 2시간 안에 햇빛 20분</li>
                             <li>카페인 컷오프: 현지 13~14시</li>

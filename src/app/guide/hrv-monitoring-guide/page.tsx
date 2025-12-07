@@ -68,7 +68,7 @@ export default function HrvMonitoringGuide() {
                 <ContentWithToc items={tocItems}>
                     <section id="summary" className="bg-white border border-indigo-100 rounded-2xl p-6 space-y-3">
                         <p className="text-sm font-semibold text-indigo-700">핵심 요약</p>
-                        <div className="grid md:grid-cols-3 gap-3 text-sm text-gray-900">
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
                             <Card className="border border-indigo-100">
                                 <CardContent className="pt-4 space-y-1">
                                     <p className="text-xs font-semibold text-indigo-700 uppercase">측정</p>
@@ -90,9 +90,9 @@ export default function HrvMonitoringGuide() {
                         </div>
                     </section>
 
-                    <section id="uses" className="bg-white border border-indigo-100 rounded-2xl p-6">
+                        <section id="uses" className="bg-white border border-indigo-100 rounded-2xl p-6">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">HRV 활용 포인트</h2>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                            <ul className="list-disc pl-5 text-gray-700 space-y-1 text-base leading-relaxed">
                             {uses.map((u) => (
                                 <li key={u}>{u}</li>
                             ))}
@@ -103,12 +103,12 @@ export default function HrvMonitoringGuide() {
                         <h2 className="text-3xl font-bold text-gray-900">3단계 운영</h2>
                         {steps.map((s) => (
                             <Card key={s.title} className="border border-indigo-100">
-                                <CardContent className="pt-5 space-y-2">
+                                <CardContent className="pt-5 space-y-2 text-base text-gray-800 leading-relaxed">
                                     <h3 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
                                         <ActivitySquare className="w-5 h-5 text-indigo-600" />
                                         {s.title}
                                     </h3>
-                                    <p className="text-gray-700 text-sm leading-relaxed">{s.detail}</p>
+                                    <p className="text-gray-700 text-base leading-relaxed">{s.detail}</p>
                                 </CardContent>
                             </Card>
                         ))}
@@ -119,7 +119,7 @@ export default function HrvMonitoringGuide() {
                             <NotebookPen className="w-5 h-5 text-indigo-600" />
                             측정 프로토콜 (아침 고정)
                         </h3>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1 text-base leading-relaxed">
                             <li>기상 직후, 같은 자세(누워/앉아) 1~2분 측정</li>
                             <li>동일 기기·동일 시간대, 2주간 베이스라인 평균 확보</li>
                             <li>주기·음주·격한 운동·감염 여부를 간단히 메모</li>
@@ -140,11 +140,11 @@ export default function HrvMonitoringGuide() {
 
                     <section id="ranges" className="bg-white border border-indigo-100 rounded-2xl p-6 space-y-2">
                         <h3 className="text-2xl font-bold text-gray-900">수치 이해</h3>
-                        <p className="text-gray-700 text-sm">
+                        <p className="text-gray-700 text-base leading-relaxed">
                             개인마다 절대값이 다르므로 “내 베이스라인 대비 변화”가 중요합니다. 일반적으로 아침 RMSSD가 평소 대비 10~20% 이상
                             하락하면 회복일을 고려하고, 연속 상승 시 강도를 서서히 올릴 수 있습니다.
                         </p>
-                        <div className="grid md:grid-cols-2 gap-3 text-sm text-gray-800">
+                        <div className="grid md:grid-cols-2 gap-3 text-base text-gray-800 leading-relaxed">
                             <Card className="border border-indigo-100">
                                 <CardContent className="pt-4 space-y-1">
                                     <p className="font-semibold text-gray-900">참고 범위(대략적)</p>
@@ -164,7 +164,7 @@ export default function HrvMonitoringGuide() {
 
                     <section id="faq" className="space-y-4">
                         <h3 className="text-2xl font-bold text-gray-900">FAQ</h3>
-                        <div className="space-y-2 text-sm text-gray-700">
+                        <div className="space-y-2 text-base text-gray-800 leading-relaxed">
                             <p className="font-semibold">Q. 낮 동안 측정값은 어떻게 쓰나요?</p>
                             <p>A. 패턴만 참고하고, 의사결정은 아침 고정 시점 기준으로 합니다. 낮 측정은 급격한 스트레스/과훈련 알림 정도로 활용하세요.</p>
                             <p className="font-semibold">Q. 생리 주기와 HRV?</p>

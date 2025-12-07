@@ -1,14 +1,14 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, Clock, Baby, Moon, Utensils } from "lucide-react";
+import { Calendar, Clock, Baby, Moon, Utensils, Activity, NotebookPen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContentWithToc } from "@/components/layout/ContentWithToc";
 
 export const metadata: Metadata = {
     title: "출산 후 회복기 수면·영양 루틴 | 나이스우먼 블로그",
-    description: "단편 수면을 보완하는 낮잠 전략, 철·단백질·수분을 채우는 식사 팁을 정리했습니다.",
-    keywords: ["출산 후 회복", "산후 수면", "산후 영양", "철분", "단백질"],
+    description: "단편 수면을 보완하는 낮잠 전략, 철·단백질·수분을 채우는 식사 팁, 24시간 블록 스케줄과 자가 체크를 제공합니다.",
+    keywords: ["출산 후 회복", "산후 수면", "산후 영양", "철분", "단백질", "모유수유"],
     alternates: { canonical: "https://nicewomen.kr/blog/postpartum-sleep-nutrition" },
 };
 
@@ -17,6 +17,8 @@ export default function PostpartumSleepNutritionPost() {
         { id: "summary", label: "핵심 요약" },
         { id: "sleep", label: "수면 전략" },
         { id: "nutrition", label: "영양 포인트" },
+        { id: "dayplan", label: "24시간 예시" },
+        { id: "selfcheck", label: "자가 체크" },
         { id: "faq", label: "FAQ" },
     ];
 
@@ -60,13 +62,28 @@ export default function PostpartumSleepNutritionPost() {
                 </header>
 
                 <ContentWithToc items={tocItems}>
-                    <section id="summary" className="bg-white border border-amber-100 rounded-2xl p-6">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-3">핵심 요약</h2>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
-                            <li>90분 코어 수면 블록 + 가족 교대로 3시간 연속 수면 한 번 확보</li>
-                            <li>철·단백질·비타민C 조합, 수분/전해질 소량씩 자주</li>
-                            <li>카페인은 오전/이른 오후까지만, 저녁 이후 스크린·조도 최소화</li>
-                        </ul>
+                    <section id="summary" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900 mb-2">핵심 요약</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">수면</p>
+                                    <p>90분 코어 수면 블록 + 가족 교대로 3h 연속 수면 1회 확보</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">영양/수분</p>
+                                    <p>단백질 20g 아침, 철+비타민C 조합, 식사마다 물/전해질 소량</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-amber-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-amber-700 uppercase">카페인/환경</p>
+                                    <p>카페인 오전~이른 오후, 저녁 조도↓·스크린↓</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </section>
 
                     <section id="sleep" className="space-y-4">
@@ -77,7 +94,7 @@ export default function PostpartumSleepNutritionPost() {
                                     <Moon className="w-5 h-5 text-indigo-600" />
                                     코어 + 보충 수면
                                 </h3>
-                                <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                                     {sleepTips.map((s) => (
                                         <li key={s}>{s}</li>
                                     ))}
@@ -94,14 +111,41 @@ export default function PostpartumSleepNutritionPost() {
                                     <Utensils className="w-5 h-5 text-emerald-600" />
                                     단백질·철·수분
                                 </h3>
-                                <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                                     {nutritionTips.map((n) => (
                                         <li key={n}>{n}</li>
                                     ))}
                                 </ul>
-                                <p className="text-sm text-gray-600">약/보충제는 의료진 지시에 따르고, 빈혈 증상 시 추가 상담이 필요합니다.</p>
+                                <p className="text-sm text-gray-700">약/보충제는 의료진 지시에 따르고, 빈혈 증상 시 추가 상담이 필요합니다.</p>
                             </CardContent>
                         </Card>
+                    </section>
+
+                    <section id="dayplan" className="bg-amber-50 border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-amber-600" />
+                            24시간 예시 (신생아 2~3시간 수유)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>블록 A: 00:00~03:00 수유/수면, 파트너 교대 준비</li>
+                            <li>블록 B: 03:00~06:00 파트너 교대 → 3시간 연속 수면 확보</li>
+                            <li>아침: 단백질 20g+철·비타민C 조합, 물/전해질</li>
+                            <li>오전/점심: 20분 낮잠 1~2회, 카페인은 14시 이전</li>
+                            <li>저녁: 밝은 조명 최소화, 스크린↓, 90분 코어 수면 목표</li>
+                        </ul>
+                    </section>
+
+                    <section id="selfcheck" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Activity className="w-5 h-5 text-amber-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>3시간 연속 수면을 전혀 확보하지 못했다</li>
+                            <li>현기증·두근거림·심한 피로가 지속된다</li>
+                            <li>식사를 자주 거르거나, 단백질/철분 섭취가 부족하다</li>
+                        </ul>
+                        <p className="text-sm text-amber-700">2점 이상이면 교대 수면 계획을 재조정하고, 빈혈·우울 증상이 의심되면 의료 상담을 권장합니다.</p>
                     </section>
 
                     <section id="faq" className="space-y-3">

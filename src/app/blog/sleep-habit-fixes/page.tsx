@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Calendar, Clock, Smartphone, Coffee, AlarmClock, Activity, Utensils } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Smartphone, Coffee, AlarmClock, Activity, Utensils, NotebookPen, AlertCircle } from "lucide-react";
 import { Toc } from "@/components/layout/Toc";
 
 export const metadata: Metadata = {
@@ -28,7 +28,9 @@ export default function SleepHabitFixesPost() {
     ];
 
     const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
         { id: "habits", label: "수면을 망치는 5가지" },
+        { id: "selfcheck", label: "자가 체크" },
         { id: "today", label: "오늘 바로 할 것" },
         { id: "faq", label: "자주 묻는 질문" },
     ];
@@ -60,7 +62,7 @@ export default function SleepHabitFixesPost() {
                     </div>
                     <p className="text-lg text-gray-700">
                         깨어있는 시간을 늘리는 습관이 수면 압력을 낮추고 멜라토닌 분비를 방해합니다.
-                        가장 영향력이 큰 5가지를 골라 실천 가능한 대안을 제안합니다.
+                        가장 영향력이 큰 5가지를 골라 실천 가능한 대안을 제안합니다. 1~2주만 적용해도 잠드는 속도와 숙면 시간이 개선될 수 있습니다.
                     </p>
                 </header>
 
@@ -69,6 +71,29 @@ export default function SleepHabitFixesPost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-10">
+                    <section id="summary" className="bg-white border border-indigo-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">핵심 요약</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-indigo-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-indigo-700 uppercase">카페인</p>
+                                    <p>민감형은 13~14시 컷오프, 디카페인·허브티로 전환</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-indigo-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-indigo-700 uppercase">스크린</p>
+                                    <p>취침 60분 전 디바이스 OFF, 저조도 조명 + 종이책·저널링</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-indigo-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-indigo-700 uppercase">일정</p>
+                                    <p>기상 시간 고정(주말 편차 ±30분), 취침 3h 전 식사 마감</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
                     <section id="habits" className="space-y-4">
                         {habits.map((item, idx) => (
                             <Card key={item.title} className="border-l-4 border-indigo-400">
@@ -81,15 +106,28 @@ export default function SleepHabitFixesPost() {
                                         {idx === 4 && <Activity className="w-5 h-5" />}
                                         <span>{item.title}</span>
                                     </div>
-                                    <p className="text-gray-700 text-sm leading-relaxed">{item.tip}</p>
+                                    <p className="text-gray-800 text-base leading-relaxed">{item.tip}</p>
                                 </CardContent>
                             </Card>
                         ))}
                     </section>
 
+                    <section id="selfcheck" className="bg-white border border-indigo-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-indigo-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>카페인·스크린 컷오프를 지키지 못한다</li>
+                            <li>기상 시간이 주말·평일 크게 달라진다</li>
+                            <li>취침 3h 전 식사/야식을 자주 한다</li>
+                        </ul>
+                        <p className="text-sm text-indigo-700">2점 이상이면 한 번에 3가지 컷오프(카페인, 스크린, 식사)를 1주 적용해 보세요.</p>
+                    </section>
+
                     <section id="today" className="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 space-y-3">
                         <h3 className="text-xl font-bold text-indigo-900">오늘 바로 할 것 3가지</h3>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                             <li>카페인 오후 1~2시 이후 중단</li>
                             <li>취침 60분 전 스마트폰·노트북 치우기, 종이책으로 대체</li>
                             <li>기상 시간을 1주간 동일하게 유지</li>
@@ -103,10 +141,16 @@ export default function SleepHabitFixesPost() {
                                 <Card key={item.q} className="border border-gray-100">
                                     <CardContent className="pt-5">
                                         <p className="font-semibold text-gray-900 mb-1">{item.q}</p>
-                                        <p className="text-gray-700 text-sm">{item.a}</p>
+                                        <p className="text-gray-800 text-base leading-relaxed">{item.a}</p>
                                     </CardContent>
                                 </Card>
                             ))}
+                            <Card className="border border-gray-100">
+                                <CardContent className="pt-5 space-y-1">
+                                    <p className="font-semibold text-gray-900 mb-1">야근이 잦아 루틴이 무너질 때?</p>
+                                    <p className="text-gray-800 text-base leading-relaxed">기상 시간을 우선 고정하고, 카페인·스크린 컷오프만은 지키세요. 짧은 낮잠(20분)과 10분 걷기로 하루 수면 압력을 다시 쌓습니다.</p>
+                                </CardContent>
+                            </Card>
                         </div>
                     </section>
                     </div>

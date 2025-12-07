@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, Clock, ArrowLeft, Share2, Utensils, Fish, Apple, Ban } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Share2, Utensils, Fish, Apple, Ban, NotebookPen, Activity, AlertCircle } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "호르몬 밸런스를 위한 식단 가이드 | 나이스우먼 블로그",
@@ -50,12 +50,36 @@ export default function HormoneDietBlogPost() {
                 </header>
 
                 {/* Featured Image Placeholder */}
-                <div className="mb-12 h-96 bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl flex items-center justify-center">
-                    <span className="text-9xl">🥗</span>
+                <div className="mb-12 h-80 md:h-96 bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl flex items-center justify-center">
+                    <span className="text-8xl md:text-9xl">🥗</span>
                 </div>
 
                 {/* Content */}
-                <div className="prose prose-lg max-w-none space-y-8">
+                <div className="prose prose-lg max-w-none space-y-10">
+                    <section className="bg-white border border-pink-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">핵심 요약</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-pink-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-pink-700 uppercase">먹을 것</p>
+                                    <p>오메가3(주 2회 등푸른 생선), 십자화과, 발효식품을 매끼 소량</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-pink-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-pink-700 uppercase">줄일 것</p>
+                                    <p>설탕/정제탄수, 가공육, 과음. 카페인·알코올은 저녁 전에 중단</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-pink-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-pink-700 uppercase">패턴</p>
+                                    <p>단백질 20g+채소 2컵/식, 혈당 스파이크 억제, 물 30~35ml/kg</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
+
                     <section>
                         <h2 className="text-3xl font-bold text-gray-900 mb-4">
                             호르몬 친화적 식단이란?
@@ -73,7 +97,7 @@ export default function HormoneDietBlogPost() {
                             호르몬 균형을 돕는 슈퍼푸드 3가지
                         </h2>
 
-                        <Card className="mb-6 border-l-4 border-pink-500">
+                        <Card className="mb-6 border border-pink-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-pink-100 p-3 rounded-full">
@@ -83,17 +107,16 @@ export default function HormoneDietBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             1. 오메가-3 지방산 (연어, 고등어, 아마씨)
                                         </h3>
-                                        <p className="text-gray-700">
+                                        <p className="text-gray-800 leading-relaxed">
                                             세포막을 건강하게 만들어 호르몬이 세포 내로 잘 전달되도록 돕습니다.
-                                            생리통 완화와 염증 감소에도 탁월한 효과가 있습니다.
-                                            주 2회 이상 등푸른 생선을 섭취하세요.
+                                            생리통 완화와 염증 감소에도 탁월합니다. 주 2회 이상 등푸른 생선을 섭취하세요.
                                         </p>
                                     </div>
                                 </div>
                             </CardContent>
                         </Card>
 
-                        <Card className="mb-6 border-l-4 border-green-500">
+                        <Card className="mb-6 border border-green-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-green-100 p-3 rounded-full">
@@ -103,16 +126,15 @@ export default function HormoneDietBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             2. 십자화과 채소 (브로콜리, 양배추, 케일)
                                         </h3>
-                                        <p className="text-gray-700">
-                                            '인돌-3-카비놀' 성분이 과도한 에스트로겐을 배출시켜 호르몬 균형을 맞춥니다.
-                                            에스트로겐 우세증(생리 전 증후군, 자궁근종 등)이 있는 분들에게 특히 좋습니다.
+                                        <p className="text-gray-800 leading-relaxed">
+                                            인돌-3-카비놀 성분이 과도한 에스트로겐 대사를 돕습니다. 에스트로겐 우세 증상(PMS, 근종 등)에 특히 유용합니다.
                                         </p>
                                     </div>
                                 </div>
                             </CardContent>
                         </Card>
 
-                        <Card className="mb-6 border-l-4 border-yellow-500">
+                        <Card className="mb-6 border border-yellow-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-yellow-100 p-3 rounded-full">
@@ -122,10 +144,8 @@ export default function HormoneDietBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             3. 발효 식품 (김치, 된장, 요거트)
                                         </h3>
-                                        <p className="text-gray-700">
-                                            장 건강은 호르몬 대사의 핵심입니다.
-                                            장내 유익균은 사용하고 남은 호르몬을 체외로 배출하는 역할을 합니다.
-                                            매일 한 끼는 발효 식품을 곁들이세요.
+                                        <p className="text-gray-800 leading-relaxed">
+                                            장 건강은 호르몬 대사의 핵심입니다. 장내 유익균은 남은 호르몬을 배출하는 데 도움을 줍니다. 매일 한 끼 발효 식품을 곁들이세요.
                                         </p>
                                     </div>
                                 </div>
@@ -138,7 +158,7 @@ export default function HormoneDietBlogPost() {
                             호르몬을 교란시키는 최악의 음식
                         </h2>
 
-                        <Card className="mb-6 border-l-4 border-red-500 bg-red-50">
+                        <Card className="mb-6 border border-red-100 bg-red-50">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-white p-3 rounded-full shadow-sm">
@@ -148,7 +168,7 @@ export default function HormoneDietBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             피해야 할 3가지
                                         </h3>
-                                        <ul className="list-disc list-inside text-gray-700 space-y-2">
+                                        <ul className="list-disc list-inside text-gray-800 leading-relaxed space-y-2">
                                             <li><strong>설탕과 정제 탄수화물:</strong> 인슐린 저항성을 높여 다낭성 난소 증후군(PCOS)을 악화시킵니다.</li>
                                             <li><strong>가공육:</strong> 보존제와 항생제가 호르몬 시스템을 방해할 수 있습니다.</li>
                                             <li><strong>과도한 알코올:</strong> 간의 해독 기능을 떨어뜨려 에스트로겐 수치를 비정상적으로 높입니다.</li>
@@ -159,16 +179,46 @@ export default function HormoneDietBlogPost() {
                         </Card>
                     </section>
 
-                    <section className="bg-pink-50 border-l-4 border-pink-500 p-6 rounded-lg">
+                    <section className="bg-pink-50 border border-pink-100 p-6 rounded-lg space-y-3">
                         <h3 className="text-xl font-bold text-pink-900 mb-3">
                             🍽️ 호르몬 밸런스 식단 예시 (하루)
                         </h3>
-                        <ul className="space-y-2 text-gray-700">
-                            <li>• <strong>아침:</strong> 그릭 요거트 + 견과류 + 베리류</li>
-                            <li>• <strong>점심:</strong> 연어 샐러드 + 현미밥 + 아보카도</li>
-                            <li>• <strong>간식:</strong> 삶은 달걀 1개 또는 아몬드 한 줌</li>
-                            <li>• <strong>저녁:</strong> 닭가슴살 야채 볶음 (브로콜리 듬뿍)</li>
+                        <ul className="space-y-2 text-gray-800 text-base leading-relaxed">
+                            <li>아침: 그릭 요거트 + 견과류 + 베리류</li>
+                            <li>점심: 연어 샐러드 + 현미밥 + 아보카도</li>
+                            <li>간식: 삶은 달걀 1개 또는 아몬드 한 줌</li>
+                            <li>저녁: 닭가슴살 야채 볶음(브로콜리 듬뿍)</li>
                         </ul>
+                        <p className="text-sm text-pink-700">탄수는 정제보다 통곡/채소 위주, 카페인·알코올은 저녁 전에 끊어 수면을 보호하세요.</p>
+                    </section>
+
+                    <section className="bg-white border border-pink-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-pink-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>하루 채소/과일/통곡 3회 미만</li>
+                            <li>설탕/정제탄수 섭취가 잦거나 야식이 있다</li>
+                            <li>카페인·알코올을 저녁에도 섭취한다</li>
+                        </ul>
+                        <p className="text-sm text-pink-700">2점 이상이면 “슈퍼푸드 3 + 피해야 할 3”을 우선 적용하고, 1주 기록 후 조정하세요.</p>
+                    </section>
+
+                    <section className="space-y-4">
+                        <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                        <Card className="border border-pink-100">
+                            <CardContent className="pt-5 space-y-1">
+                                <p className="font-semibold text-gray-900 mb-1">이소플라본(콩) 섭취가 걱정될 때?</p>
+                                <p className="text-gray-800 text-base leading-relaxed">1~2회/일 식품 형태 섭취는 대체로 안전하나, 호르몬 민감 질환이 있으면 의료진과 상의하세요.</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border border-pink-100">
+                            <CardContent className="pt-5 space-y-1">
+                                <p className="font-semibold text-gray-900 mb-1">보충제는 꼭 필요할까?</p>
+                                <p className="text-gray-800 text-base leading-relaxed">식품이 우선입니다. 오메가3·마그네슘은 식사로 충분하지 않을 때 고려하되, 복용 전 의료진 상담을 권장합니다.</p>
+                            </CardContent>
+                        </Card>
                     </section>
                 </div>
 

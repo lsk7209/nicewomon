@@ -67,7 +67,7 @@ export default function HeartHealthWomenSignsPost() {
                 <ContentWithToc items={tocItems}>
                     <section id="summary" className="bg-white border border-red-100 rounded-2xl p-6 space-y-3">
                         <p className="text-sm font-semibold text-red-700">핵심 요약</p>
-                        <div className="grid md:grid-cols-3 gap-3 text-sm text-gray-900">
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
                             <Card className="border border-red-100">
                                 <CardContent className="pt-4 space-y-1">
                                     <p className="text-xs font-semibold text-red-700 uppercase">경고 신호</p>
@@ -91,7 +91,7 @@ export default function HeartHealthWomenSignsPost() {
 
                     <section id="warning" className="bg-white border border-red-100 rounded-2xl p-6">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">경고 신호</h2>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1 text-base leading-relaxed">
                             {signs.map((s) => (
                                 <li key={s}>{s}</li>
                             ))}
@@ -108,7 +108,7 @@ export default function HeartHealthWomenSignsPost() {
                                         <Shield className="w-5 h-5 text-red-600" />
                                         예방 포인트
                                     </h3>
-                                    <p className="text-gray-700 text-sm leading-relaxed">{p}</p>
+                                    <p className="text-gray-700 text-base leading-relaxed">{p}</p>
                                 </CardContent>
                             </Card>
                         ))}
@@ -119,7 +119,7 @@ export default function HeartHealthWomenSignsPost() {
                             <NotebookPen className="w-5 h-5 text-red-600" />
                             자가 체크
                         </h3>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1 text-base leading-relaxed">
                             <li>혈압·혈당·지질 최근 측정 기록이 1년 이상 비어 있는가?</li>
                             <li>허리둘레/신장 비율 0.5 이상인가? (WHtR 0.5 미만 목표)</li>
                             <li>LDL 100 이상 또는 공복혈당 100 이상이 지속되는가?</li>
@@ -130,7 +130,7 @@ export default function HeartHealthWomenSignsPost() {
 
                     <section id="faq" className="space-y-4">
                         <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
-                        <div className="space-y-2 text-sm text-gray-700">
+                        <div className="space-y-2 text-base text-gray-800 leading-relaxed">
                             <p className="font-semibold">Q. 가슴 통증이 없는데도 심장 문제가 있을 수 있나요?</p>
                             <p>A. 여성은 소화불량·피로·호흡곤란 등 비전형 증상이 흔합니다. 의심되면 지체 없이 진료를 받으세요.</p>
                             <p className="font-semibold">Q. 운동 강도는 어떻게 시작할까?</p>

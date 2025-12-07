@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Calendar, Clock, Activity, Heart } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Activity, Heart, NotebookPen } from "lucide-react";
 import { Toc } from "@/components/layout/Toc";
 
 export const metadata: Metadata = {
@@ -58,12 +58,28 @@ export default function MenstrualCycleTrainingPost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
-                        <section id="summary" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-2">
+                        <section id="summary" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-3">
                             <p className="text-sm font-semibold text-rose-700">핵심 요약</p>
-                            <p className="text-gray-800">
-                                난포기: 강도↑(근력/인터벌), 배란기: 수분·전해질 보충하며 중강도, 황체기: 저강도·회복 위주.
-                                수면 7~8h, 철분·단백질·마그네슘을 확보하면 피로/부상 리스크가 줄어듭니다.
-                            </p>
+                            <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                                <Card className="border border-rose-100">
+                                    <CardContent className="pt-4 space-y-1">
+                                        <p className="text-xs font-semibold text-rose-700 uppercase">난포기</p>
+                                        <p>강도↑ (근력/인터벌), 회복도 양호</p>
+                                    </CardContent>
+                                </Card>
+                                <Card className="border border-rose-100">
+                                    <CardContent className="pt-4 space-y-1">
+                                        <p className="text-xs font-semibold text-rose-700 uppercase">배란기</p>
+                                        <p>중강도, 수분·전해질 보충, 코어 안정화</p>
+                                    </CardContent>
+                                </Card>
+                                <Card className="border border-rose-100">
+                                    <CardContent className="pt-4 space-y-1">
+                                        <p className="text-xs font-semibold text-rose-700 uppercase">황체기</p>
+                                        <p>저강도·회복, 걷기/필라테스, 수면·영양 우선</p>
+                                    </CardContent>
+                                </Card>
+                            </div>
                         </section>
 
                         <section id="why">
@@ -74,8 +90,8 @@ export default function MenstrualCycleTrainingPost() {
                         <section id="plan" className="space-y-3">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">주기별 운동 가이드</h2>
                             <Card className="border-l-4 border-rose-400">
-                                <CardContent className="pt-5 text-sm text-gray-700 space-y-2">
-                                    <p>난포기(월경 직후~배란 전): 근력/인터벌 강도↑</p>
+                                <CardContent className="pt-5 text-base text-gray-800 leading-relaxed space-y-2">
+                                    <p>난포기(월경 직후~배란 전): 근력/인터벌 강도↑, PR 시도하기 좋은 시기</p>
                                     <p>배란기: 회복성 유산소·중강도 근력, 수분·전해질 보충</p>
                                     <p>황체기: 저강도 근력, 걷기/필라테스, 수면·영양에 집중</p>
                                 </CardContent>
@@ -84,7 +100,7 @@ export default function MenstrualCycleTrainingPost() {
 
                         <section id="warmup" className="bg-rose-50 border border-rose-100 rounded-2xl p-6 space-y-2">
                             <h2 className="text-2xl font-bold text-gray-900">체크리스트 & 준비</h2>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                                 <li>철분/단백질: 체중(kg)×1.2g 단백질, 월경 많은 날 철분 식품 보강</li>
                                 <li>수분/전해질: 배란기·고강도 날 전해질 소량, 평일 물 30~35ml/kg</li>
                                 <li>수면: 7~8h, 카페인 컷오프 13~14시</li>
@@ -94,7 +110,7 @@ export default function MenstrualCycleTrainingPost() {
 
                         <section id="sample" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-2">
                             <h2 className="text-2xl font-bold text-gray-900">샘플 주간 루틴 (4일)</h2>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                                 <li>Day1 난포기: 스쿼트/히프힌지 3×8~10, 인터벌 바이크 10분</li>
                                 <li>Day2 휴식 또는 걷기 30분</li>
                                 <li>Day3 배란기: 상체/코어 중강도 + 유산소 20분</li>
@@ -105,12 +121,25 @@ export default function MenstrualCycleTrainingPost() {
                         <section id="tips" className="space-y-3">
                             <h2 className="text-2xl font-bold text-gray-900">부상·피로 관리 팁</h2>
                             <Card className="border-l-4 border-rose-300">
-                                <CardContent className="pt-5 text-sm text-gray-700 space-y-1">
+                                <CardContent className="pt-5 text-base text-gray-800 leading-relaxed space-y-1">
                                     <p>• 황체기에는 스트레칭·코어 안정화로 보강</p>
                                     <p>• 철분·단백질·마그네슘 섭취 확인</p>
                                     <p>• 카페인 컷오프, 수면 7~8h 확보</p>
                                 </CardContent>
                             </Card>
+                        </section>
+
+                        <section className="bg-white border border-rose-100 rounded-2xl p-6 space-y-3">
+                            <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                                <NotebookPen className="w-5 h-5 text-rose-600" />
+                                자가 체크 (0~3점)
+                            </h3>
+                            <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                                <li>황체기에 피로·통증으로 루틴을 자주 건너뛴다</li>
+                                <li>수면·수분·전해질 관리 없이 강도만 유지한다</li>
+                                <li>철분/단백질 섭취가 부족해 어지러움·무력감이 있다</li>
+                            </ul>
+                            <p className="text-sm text-rose-700">2점 이상이면 황체기는 강도를 낮추고, 수면·영양·수분을 먼저 회복하세요.</p>
                         </section>
 
                         <section id="faq" className="space-y-4">

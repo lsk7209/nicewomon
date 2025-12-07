@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, Clock, ArrowLeft, Share2, Brain, Coffee, Heart, Smile } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Share2, Brain, Coffee, Heart, Smile, NotebookPen, AlertCircle } from "lucide-react";
 import { Toc } from "@/components/layout/Toc";
 
 export const metadata: Metadata = {
@@ -14,9 +14,11 @@ export const metadata: Metadata = {
 
 export default function StressManagementBlogPost() {
     const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
         { id: "why", label: "스트레스, 참는 게 답일까?" },
         { id: "tips", label: "사무실에서 쓰는 처방전" },
         { id: "burnout", label: "번아웃 체크리스트" },
+        { id: "selfcheck", label: "자가 체크" },
     ];
 
     return (
@@ -65,7 +67,30 @@ export default function StressManagementBlogPost() {
                     <div className="md:sticky md:top-24 h-fit">
                         <Toc items={tocItems} />
                     </div>
-                    <div className="prose prose-lg max-w-none space-y-8">
+                <div className="prose prose-lg max-w-none space-y-10">
+                    <section id="summary" className="bg-white border border-green-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">핵심 요약</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-green-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-green-700 uppercase">즉각 진정</p>
+                                    <p>박스 호흡 4세트, 3분 멍 때리기, 스트레칭 5분</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-green-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-green-700 uppercase">경계</p>
+                                    <p>알림 요약 모드, 회신 시점 선언, “퇴근 의식” 만들기</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-green-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-green-700 uppercase">회복</p>
+                                    <p>수면 7~8h, 카페인 13~14시 컷, 가벼운 걷기/요가로 회복일 확보</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
                     <section id="why">
                         <h2 className="text-3xl font-bold text-gray-900 mb-4">
                             스트레스, 무조건 참는 게 답일까요?
@@ -82,7 +107,7 @@ export default function StressManagementBlogPost() {
                             사무실에서 바로 쓰는 스트레스 처방전
                         </h2>
 
-                        <Card className="mb-6 border-l-4 border-green-500">
+                        <Card className="mb-6 border border-green-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-green-100 p-3 rounded-full">
@@ -92,7 +117,7 @@ export default function StressManagementBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             1. 3분 '멍 때리기' (마이크로 브레이크)
                                         </h3>
-                                        <p className="text-gray-700">
+                                        <p className="text-gray-800 leading-relaxed">
                                             뇌도 휴식이 필요합니다. 1시간 집중했다면 3분은 창밖을 보거나 눈을 감고 아무 생각도 하지 마세요.
                                             이 짧은 휴식이 뇌의 과부하를 막고 다시 집중할 힘을 줍니다.
                                         </p>
@@ -101,7 +126,7 @@ export default function StressManagementBlogPost() {
                             </CardContent>
                         </Card>
 
-                        <Card className="mb-6 border-l-4 border-teal-500">
+                        <Card className="mb-6 border border-teal-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-teal-100 p-3 rounded-full">
@@ -111,7 +136,7 @@ export default function StressManagementBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             2. 박스 호흡법 (Box Breathing)
                                         </h3>
-                                        <p className="text-gray-700">
+                                        <p className="text-gray-800 leading-relaxed">
                                             화가 나거나 긴장될 때 즉효약입니다.
                                             4초간 숨을 들이마시고, 4초간 참고, 4초간 내뱉고, 4초간 참습니다.
                                             이 과정을 4번 반복하면 부교감 신경이 활성화되어 즉시 안정을 찾을 수 있습니다.
@@ -121,7 +146,7 @@ export default function StressManagementBlogPost() {
                             </CardContent>
                         </Card>
 
-                        <Card className="mb-6 border-l-4 border-amber-500">
+                        <Card className="mb-6 border border-amber-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-amber-100 p-3 rounded-full">
@@ -131,7 +156,7 @@ export default function StressManagementBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             3. '퇴근 의식' 만들기
                                         </h3>
-                                        <p className="text-gray-700">
+                                        <p className="text-gray-800 leading-relaxed">
                                             회사 문을 나서는 순간 업무 모드를 끄는 스위치가 필요합니다.
                                             이어폰 꽂기, 특정 향수 뿌리기, 신발 갈아신기 등 나만의 의식을 만들어보세요.
                                             "오늘 업무는 끝났다"라고 뇌에게 신호를 주는 것입니다.
@@ -142,23 +167,23 @@ export default function StressManagementBlogPost() {
                         </Card>
 
                         <div className="grid md:grid-cols-2 gap-6">
-                            <Card className="border-l-4 border-blue-500">
+                            <Card className="border border-blue-100">
                                 <CardContent className="pt-6">
                                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                                         4. 거절의 기술 연습하기
                                     </h3>
-                                    <p className="text-sm text-gray-700">
+                                    <p className="text-base text-gray-800 leading-relaxed">
                                         모든 부탁을 들어줄 수는 없습니다. 정중하지만 단호하게 "지금은 어렵습니다"라고 말하는 연습이 필요합니다.
                                     </p>
                                 </CardContent>
                             </Card>
 
-                            <Card className="border-l-4 border-purple-500">
+                            <Card className="border border-purple-100">
                                 <CardContent className="pt-6">
                                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                                         5. 감정 일기 쓰기
                                     </h3>
-                                    <p className="text-sm text-gray-700">
+                                    <p className="text-base text-gray-800 leading-relaxed">
                                         퇴근 후 오늘 느낀 감정을 짧게라도 적어보세요. 감정을 객관화하면 스트레스가 해소됩니다.
                                     </p>
                                 </CardContent>
@@ -166,11 +191,11 @@ export default function StressManagementBlogPost() {
                         </div>
                     </section>
 
-                    <section id="burnout" className="bg-green-50 border-l-4 border-green-500 p-6 rounded-lg">
+                    <section id="burnout" className="bg-green-50 border border-green-100 p-6 rounded-lg">
                         <h3 className="text-xl font-bold text-green-900 mb-3">
                             🌱 번아웃 증후군 체크리스트
                         </h3>
-                        <ul className="space-y-2 text-gray-700">
+                        <ul className="space-y-2 text-gray-800 text-base leading-relaxed">
                             <li>• 아침에 일어나면 출근할 생각에 끔찍하다.</li>
                             <li>• 업무에 대한 성취감이 전혀 없다.</li>
                             <li>• 동료나 고객에게 자꾸 짜증을 내게 된다.</li>
@@ -179,6 +204,19 @@ export default function StressManagementBlogPost() {
                         <p className="mt-4 text-sm text-gray-600">
                             * 위 항목 중 3개 이상 해당된다면 전문가의 도움이 필요할 수 있습니다.
                         </p>
+                    </section>
+
+                    <section id="selfcheck" className="bg-white border border-green-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-green-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>카페인·알림 컷오프를 지키지 못한다</li>
+                            <li>회신 시점을 알리지 않아 업무·메시지에 끌려다닌다</li>
+                            <li>회복일/휴식 블록이 없다</li>
+                        </ul>
+                        <p className="text-sm text-green-700">2점 이상이면 알림 요약 모드, 회신 시점 선언, 주 1회 회복일을 먼저 적용하세요.</p>
                     </section>
                     </div>
                 </div>

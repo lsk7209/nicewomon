@@ -2,13 +2,13 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Calendar, Clock, Wind, Droplets, Moon } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Wind, Droplets, Moon, AlertTriangle, NotebookPen } from "lucide-react";
 import { Toc } from "@/components/layout/Toc";
 
 export const metadata: Metadata = {
     title: "미세먼지 많은 날 호흡기·수면 관리 체크리스트 | 나이스우먼 블로그",
-    description: "공기질 관리, 취침 전 세정, 가습·온도 설정까지 하루 체크리스트를 제공합니다.",
-    keywords: ["미세먼지", "수면", "호흡기", "가습", "공기질"],
+    description: "공기질 관리, 취침 전 세정, 가습·온도 설정, 환기 타이밍까지 하루 체크리스트와 자가 점검을 제공합니다.",
+    keywords: ["미세먼지", "수면", "호흡기", "가습", "공기질", "환기"],
     alternates: { canonical: "https://nicewomen.kr/blog/fine-dust-sleep-care" },
 };
 
@@ -26,6 +26,7 @@ export default function FineDustSleepCarePost() {
         { id: "checklist", label: "하루 체크리스트" },
         { id: "humid", label: "가습·온도 설정" },
         { id: "routine", label: "취침 전 루틴" },
+        { id: "selfcheck", label: "자가 점검" },
         { id: "faq", label: "FAQ" },
     ];
 
@@ -64,12 +65,28 @@ export default function FineDustSleepCarePost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
-                    <section id="summary" className="bg-white rounded-2xl shadow-sm border border-blue-100 p-6 space-y-2">
+                    <section id="summary" className="bg-white rounded-2xl shadow-sm border border-blue-100 p-6 space-y-3">
                         <p className="text-sm font-semibold text-blue-700">핵심 요약</p>
-                        <p className="text-gray-800">
-                            귀가 후 세정, 취침 1시간 전 공기청정·가습 45~55%, 온도 20~22도, 취침 2~3시간 전 온수 샤워,
-                            미세먼지 낮은 시간대 5분 환기가 기본입니다.
-                        </p>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-blue-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-blue-700 uppercase">환경</p>
+                                    <p>HEPA 공기청정 취침 1h 전 가동, 습도 45~55%, 온도 20~22°C</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-blue-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-blue-700 uppercase">세정</p>
+                                    <p>귀가 후 세안·코세척, 침구·커튼 주기 세탁, 낮은 PM 시간대 5분 환기</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-blue-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-blue-700 uppercase">취침 전</p>
+                                    <p>온수 샤워 2~3h 전, 저조도 조명, 코 호흡 5세트</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </section>
 
                     <section id="checklist" className="bg-white rounded-2xl shadow-sm border border-blue-100 p-6 space-y-3">
@@ -77,7 +94,7 @@ export default function FineDustSleepCarePost() {
                             <Wind className="w-6 h-6 text-blue-600" />
                             하루 체크리스트
                         </h2>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-2">
+                        <ul className="list-disc pl-5 text-gray-700 space-y-2 text-base leading-relaxed">
                             {checklist.map((item) => (
                                 <li key={item}>{item}</li>
                             ))}
@@ -90,21 +107,36 @@ export default function FineDustSleepCarePost() {
                             가습·온도 설정
                         </h2>
                         <Card className="border-l-4 border-blue-500">
-                            <CardContent className="pt-5 text-gray-700 text-sm space-y-2">
+                            <CardContent className="pt-5 text-gray-800 text-base leading-relaxed space-y-2">
                                 <p>습도 45~55%가 가장 편안합니다. 너무 높으면 곰팡이, 너무 낮으면 코막힘과 각성이 늘어납니다.</p>
                                 <p>온도는 20~22도로 설정하고, 공기청정기 필터 상태를 확인하세요.</p>
                             </CardContent>
                         </Card>
                     </section>
 
-                    <section id="routine" className="bg-blue-50 border border-blue-100 rounded-2xl p-6 space-y-2">
+                    <section id="routine" className="bg-blue-50 border border-blue-100 rounded-2xl p-6 space-y-3">
                         <h3 className="text-xl font-bold text-blue-900 flex items-center gap-2">
                             <Moon className="w-5 h-5" />
                             취침 전 루틴
                         </h3>
-                        <p className="text-gray-700 text-sm">
-                            따뜻한 샤워로 코막힘을 완화하고, 침실 문을 닫아 외부 공기 유입을 줄입니다. 가볍게 스트레칭 후 바로 누워 깊은 호흡을 5세트 반복하세요.
-                        </p>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>온수 샤워 2~3h 전, 코세척 가능하면 샤워 후 시행</li>
+                            <li>취침 1h 전 공기청정·가습 가동, 문·창 닫고 조도 낮추기</li>
+                            <li>가벼운 스트레칭 후 코 호흡 5세트(4-4-6 호흡)</li>
+                        </ul>
+                    </section>
+
+                    <section id="selfcheck" className="bg-white border border-blue-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <AlertTriangle className="w-5 h-5 text-amber-600" />
+                            자가 점검 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-700 text-base leading-relaxed space-y-1">
+                            <li>밤중 코막힘/기침으로 2회 이상 깨는가?</li>
+                            <li>아침에 목 건조·두통이 잦은가?</li>
+                            <li>실내 CO₂/미세먼지 수치를 확인하지 못했는가?</li>
+                        </ul>
+                        <p className="text-sm text-blue-700">2점 이상이면 습도·온도·환기·세정 루틴을 강화하고, 증상 지속 시 의료 상담을 권장합니다.</p>
                     </section>
 
                     <section id="faq" className="space-y-4">

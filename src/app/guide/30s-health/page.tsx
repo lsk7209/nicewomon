@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Activity, Heart, Brain, Utensils, Moon, AlertTriangle } from "lucide-react";
+import { Activity, Heart, Brain, Utensils, Moon, AlertTriangle, NotebookPen, Info, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "30대 여성 건강 가이드 - 건강한 30대를 위한 완벽 가이드 | 나이스우먼",
@@ -32,6 +32,30 @@ export default function ThirtiesHealthPage() {
                         <strong className="text-gray-800">평생 건강의 기초를 다지는 방법</strong>을 알아보세요
                     </p>
                 </header>
+
+                <section className="bg-white border border-green-100 rounded-2xl p-6 md:p-8 space-y-3">
+                    <h2 className="text-2xl font-bold text-gray-900">핵심 요약</h2>
+                    <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                        <Card className="border border-green-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-green-700 uppercase">호르몬/주기</p>
+                                <p>주기 대체로 안정적이나 후반부 미묘한 변화 시작 → 규칙 수면·카페인 컷오프 병행</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border border-green-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-green-700 uppercase">대사/근육</p>
+                                <p>기초대사 서서히 감소, 근육량 유지가 체중 관리 핵심 → 근력 2~3회+단백질 1.2g/kg</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border border-green-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-green-700 uppercase">검진/영양</p>
+                                <p>연 1회 부인과·기초검진, 철·엽산·칼슘/비타민D·오메가-3 식품 우선</p>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </section>
 
                 {/* Main Content */}
                 <div className="prose prose-lg max-w-none space-y-12">
@@ -332,6 +356,40 @@ export default function ThirtiesHealthPage() {
                                     <p><strong>식품:</strong> 연어, 고등어, 호두, 아마씨</p>
                                 </CardContent>
                             </Card>
+                        </div>
+                    </section>
+
+                    <section className="bg-white border border-green-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-green-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>생리 주기/양이 최근 3개월간 뚜렷이 변했다</li>
+                            <li>체중이 2~3kg 이상 늘었는데 식사·활동 변화가 적다</li>
+                            <li>만성 피로/수면 부족이 2주 이상 지속된다</li>
+                        </ul>
+                        <p className="text-sm text-green-700">2점 이상이면 수면 7~8시간, 저녁 카페인 컷오프, 근력+단백질 루틴을 우선 적용하고 필요시 검진을 권장합니다.</p>
+                    </section>
+
+                    <section className="bg-green-50 border border-green-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Info className="w-5 h-5 text-green-600" />
+                            FAQ
+                        </h3>
+                        <div className="space-y-3 text-base text-gray-800 leading-relaxed">
+                            <div>
+                                <p className="font-semibold">Q. 30대 후반, 주기가 들쭉날쭉해요. 바로 병원 가야 하나요?</p>
+                                <p>주기 변화가 3개월 이상 이어지거나 출혈/통증이 심해지면 산부인과 진료가 필요합니다. 갑상선/빈혈 검사를 함께 확인하면 좋습니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 임신 계획이 없을 때도 엽산이 필요할까요?</p>
+                                <p>가임기 여성은 기본 400μg이 권장됩니다. 임신 계획 시 600μg로 상향하고, 철분·비타민 D도 함께 확인하세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 체중 관리가 안 될 때 우선순위는?</p>
+                                <p>수면 7~8시간, 단백질 1.2g/kg, 근력 2~3회, 저녁 정제탄수 줄이기부터 적용하세요. 변동이 없으면 스트레스·수면·호르몬 검진을 점검합니다.</p>
+                            </div>
                         </div>
                     </section>
 

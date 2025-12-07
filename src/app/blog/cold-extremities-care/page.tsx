@@ -1,14 +1,14 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, Clock, Droplets, Flame } from "lucide-react";
+import { Calendar, Clock, Droplets, Flame, Activity, NotebookPen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContentWithToc } from "@/components/layout/ContentWithToc";
 
 export const metadata: Metadata = {
     title: "손발 냉증 줄이는 생활 루틴 | 나이스우먼 블로그",
-    description: "보온, 수분·전해질, 저강도 순환 운동으로 손발 냉증을 완화하는 4단계 루틴.",
-    keywords: ["손발 냉증", "순환", "보온", "전해질", "저강도 운동"],
+    description: "보온, 수분·전해질, 저강도 순환 운동으로 손발 냉증을 완화하는 4단계 루틴과 자가 체크, 하루 시간표 예시를 제공합니다.",
+    keywords: ["손발 냉증", "순환", "보온", "전해질", "저강도 운동", "자가 체크"],
     alternates: { canonical: "https://nicewomen.kr/blog/cold-extremities-care" },
 };
 
@@ -18,6 +18,8 @@ export default function ColdExtremitiesCarePost() {
         { id: "warm", label: "보온/환경" },
         { id: "hydrate", label: "수분·전해질" },
         { id: "move", label: "저강도 순환 운동" },
+        { id: "selfcheck", label: "자가 체크" },
+        { id: "dayplan", label: "하루 예시" },
     ];
 
     const warmTips = [
@@ -67,13 +69,28 @@ export default function ColdExtremitiesCarePost() {
                 </header>
 
                 <ContentWithToc items={tocItems}>
-                    <section id="summary" className="bg-white border border-sky-100 rounded-2xl p-6">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-3">한눈에 보기</h2>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
-                            <li>레이어링 + 온수 세척/족욕 후 완전 건조</li>
-                            <li>수분·전해질 균형, 짠 음식 줄이고 칼륨·마그네슘 보충</li>
-                            <li>발목·손목 순환 운동과 짧은 걷기</li>
-                        </ul>
+                    <section id="summary" className="bg-white border border-sky-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900 mb-2">한눈에 보기</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-sky-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-sky-700 uppercase">보온</p>
+                                    <p>레이어링, 손목·발목 커버, 온수 세척/족욕 후 완전 건조</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-sky-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-sky-700 uppercase">수분·전해질</p>
+                                    <p>짠 음식 줄이고 물·티 분할 섭취, 칼륨·마그네슘 식품 보충</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-sky-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-sky-700 uppercase">순환</p>
+                                    <p>발목·손목 루틴 + 1시간마다 2분 걷기, 5~10분 걷기 2~3회</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </section>
 
                     <section id="warm" className="space-y-4">
@@ -84,7 +101,7 @@ export default function ColdExtremitiesCarePost() {
                                     <Flame className="w-5 h-5 text-orange-600" />
                                     따뜻하게 유지하기
                                 </h3>
-                                <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <ul className="list-disc pl-5 text-gray-700 text-base leading-relaxed space-y-1">
                                     {warmTips.map((t) => (
                                         <li key={t}>{t}</li>
                                     ))}
@@ -101,7 +118,7 @@ export default function ColdExtremitiesCarePost() {
                                     <Droplets className="w-5 h-5 text-emerald-600" />
                                     균형 맞추기
                                 </h3>
-                                <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <ul className="list-disc pl-5 text-gray-700 text-base leading-relaxed space-y-1">
                                     {hydrateTips.map((h) => (
                                         <li key={h}>{h}</li>
                                     ))}
@@ -114,14 +131,40 @@ export default function ColdExtremitiesCarePost() {
                         <h2 className="text-3xl font-bold text-gray-900">저강도 순환 운동</h2>
                         <Card className="border border-sky-100">
                             <CardContent className="pt-5 space-y-2">
-                                <p className="text-gray-700 text-sm">하루 여러 번 짧게, 통증 없는 범위에서 시행하세요.</p>
-                                <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <p className="text-gray-800 text-base leading-relaxed">하루 여러 번 짧게, 통증 없는 범위에서 시행하세요.</p>
+                                <ul className="list-disc pl-5 text-gray-700 text-base leading-relaxed space-y-1">
                                     {moves.map((m) => (
                                         <li key={m}>{m}</li>
                                     ))}
                                 </ul>
                             </CardContent>
                         </Card>
+                    </section>
+
+                    <section id="selfcheck" className="bg-white border border-sky-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Activity className="w-5 h-5 text-sky-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-700 text-base leading-relaxed space-y-1">
+                            <li>손발이 하루에 2회 이상 시리고, 색이 창백해짐</li>
+                            <li>실내에서도 21~23도에서 불편, 두꺼운 양말·장갑을 상시 착용</li>
+                            <li>카페인·흡연 후 냉증이 심해짐</li>
+                        </ul>
+                        <p className="text-sm text-sky-700">2점 이상이면 카페인 줄이기, 보온·순환 루틴 강화, 증상 지속 시 의료 상담을 권장합니다.</p>
+                    </section>
+
+                    <section id="dayplan" className="bg-sky-50 border border-sky-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-sky-600" />
+                            하루 예시 (직장/재택)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-700 text-base leading-relaxed space-y-1">
+                            <li>아침: 온수 세척/족욕 5분, 보온 레이어링, 따뜻한 차</li>
+                            <li>근무 중: 1시간마다 2분 걷기+발목/손목 풀기, 물·티 분할</li>
+                            <li>점심 후: 5~10분 걷기, 카페인 컷오프 14시</li>
+                            <li>저녁: 가벼운 걷기 10분, 온수 족욕 후 완전 건조, 보습</li>
+                        </ul>
                     </section>
                 </ContentWithToc>
 

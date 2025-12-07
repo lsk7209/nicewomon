@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, Clock, Moon, Brain, ListChecks } from "lucide-react";
+import { Calendar, Clock, Moon, Brain, ListChecks, NotebookPen, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContentWithToc } from "@/components/layout/ContentWithToc";
@@ -13,6 +13,13 @@ export const metadata: Metadata = {
 };
 
 export default function CbtiBasicsGuide() {
+    const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
+        { id: "plan", label: "핵심 모듈" },
+        { id: "faq", label: "FAQ" },
+        { id: "selfcheck", label: "자가 체크" },
+    ];
+
     const steps = [
         { title: "자극조절", detail: "잠자리는 수면/성생활만, 누워 깨어있기 15분 넘으면 일어나기." },
         { title: "수면 제한", detail: "실제 수면 시간 기반으로 취침·기상 시간을 제한해 수면 압력을 높임." },
@@ -55,14 +62,14 @@ export default function CbtiBasicsGuide() {
                     </p>
                 </header>
 
-                <ContentWithToc>
-                    <section id="summary" className="bg-white border border-blue-100 rounded-2xl p-6">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-3">한눈에 보기</h2>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
-                            <li>자극조절: 침대=수면, 깨어 있으면 일어나기</li>
-                            <li>수면 제한: 실제 수면 기준 취침·기상 시간 제한</li>
-                            <li>인지 재구성: “못 자면 망한다” → “피곤해도 버틸 수 있다”</li>
-                            <li>수면 위생: 컷오프, 조도, 온도, 스크린 관리</li>
+                <ContentWithToc items={tocItems}>
+                    <section id="summary" className="bg-white border border-blue-100 rounded-2xl p-6 space-y-2">
+                        <h2 className="text-2xl font-bold text-gray-900 mb-1">한눈에 보기</h2>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>자극조절: 침대=수면, 15분 이상 깨어 있으면 일어나기</li>
+                            <li>수면 제한: 실제 수면 기준 취침·기상 시간 설정(졸림 회복 시 점진 완화)</li>
+                            <li>인지 재구성: “또 못 자면?” → “피곤해도 견디고, 졸리면 잔다”</li>
+                            <li>수면 위생: 오후 카페인 컷오프, 낮은 조도, 시원·어두운 침실</li>
                         </ul>
                     </section>
 
@@ -75,22 +82,47 @@ export default function CbtiBasicsGuide() {
                                         <ListChecks className="w-5 h-5 text-blue-600" />
                                         {step.title}
                                     </h3>
-                                    <p className="text-gray-700 text-sm leading-relaxed">{step.detail}</p>
+                                    <p className="text-gray-800 text-base leading-relaxed">{step.detail}</p>
                                 </CardContent>
                             </Card>
                         ))}
+                    </section>
+
+                    <section id="selfcheck" className="bg-white border border-blue-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-blue-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>누워 깨어 있는 시간이 15분 이상 자주 이어진다</li>
+                            <li>취침·기상 시간이 매일 크게 달라진다</li>
+                            <li>오후 늦게까지 카페인을 마시거나, 잠자리에서 휴대폰을 오래 본다</li>
+                        </ul>
+                        <p className="text-sm text-blue-700">2점 이상이면 자극조절+수면 제한을 우선 적용하고, 컷오프·조도·온도·스크린 제한을 함께 묶어 2주간 실험하세요.</p>
                     </section>
 
                     <section id="faq" className="space-y-3">
                         <h2 className="text-2xl font-bold text-gray-900 mb-2">FAQ</h2>
                         {faq.map((item) => (
                             <Card key={item.q} className="border border-blue-100">
-                                <CardContent className="pt-5">
+                                <CardContent className="pt-5 space-y-1">
                                     <p className="font-semibold text-gray-900 mb-1">{item.q}</p>
-                                    <p className="text-gray-700 text-sm">{item.a}</p>
+                                    <p className="text-gray-800 text-base leading-relaxed">{item.a}</p>
                                 </CardContent>
                             </Card>
                         ))}
+                        <Card className="border border-blue-100">
+                            <CardContent className="pt-5 space-y-1">
+                                <p className="font-semibold text-gray-900 mb-1">Q. 수면 제한을 언제 완화하나요?</p>
+                                <p className="text-gray-800 text-base leading-relaxed">일주일 평균 수면 효율(침대에 있는 시간 대비 실제 수면)이 85~90% 이상이면 15~30분씩 취침 시간을 앞당기며 완화합니다.</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border border-blue-100">
+                            <CardContent className="pt-5 space-y-1">
+                                <p className="font-semibold text-gray-900 mb-1">Q. 낮잠은 어느 정도 괜찮나요?</p>
+                                <p className="text-gray-800 text-base leading-relaxed">가능하면 피하고, 필요 시 20분 이내·오후 3시 이전으로 제한하세요. 밤 수면 제한 단계에서는 낮잠을 중단하는 것이 효과적입니다.</p>
+                            </CardContent>
+                        </Card>
                     </section>
                 </ContentWithToc>
 

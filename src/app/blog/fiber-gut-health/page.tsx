@@ -2,13 +2,13 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Calendar, Clock, Salad, Apple } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Salad, Apple, NotebookPen, Activity } from "lucide-react";
 import { Toc } from "@/components/layout/Toc";
 
 export const metadata: Metadata = {
     title: "식이섬유로 장 건강 챙기기: 프리·프로바이오틱스 | 나이스우먼 블로그",
-    description: "프리바이오틱스와 프로바이오틱스 식품, 하루 섬유질 목표, 가스/복부팽만 줄이는 팁을 정리했습니다.",
-    keywords: ["식이섬유", "프리바이오틱스", "프로바이오틱스", "장 건강", "가스"],
+    description: "프리바이오틱스와 프로바이오틱스 식품, 하루 섬유질 목표, 가스/복부팽만 줄이는 팁, 저자극 샘플 식단과 자가 체크를 제공합니다.",
+    keywords: ["식이섬유", "프리바이오틱스", "프로바이오틱스", "장 건강", "가스", "FODMAP"],
     alternates: { canonical: "https://nicewomen.kr/blog/fiber-gut-health" },
 };
 
@@ -20,6 +20,7 @@ export default function FiberGutHealthPost() {
         { id: "targets", label: "하루 섬유질 목표" },
         { id: "tips", label: "복부팽만 줄이는 팁" },
         { id: "sample", label: "샘플 식단·간식" },
+        { id: "selfcheck", label: "자가 체크" },
         { id: "faq", label: "FAQ" },
     ];
 
@@ -58,12 +59,28 @@ export default function FiberGutHealthPost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
-                        <section id="summary" className="bg-white border border-emerald-100 rounded-2xl p-6 space-y-2">
+                        <section id="summary" className="bg-white border border-emerald-100 rounded-2xl p-6 space-y-3">
                             <p className="text-sm font-semibold text-emerald-700">핵심 요약</p>
-                            <p className="text-gray-800">
-                                하루 섬유질 25g 이상, 물 30~35ml/kg, 프리+프로 식품을 매끼 포함하면 장내 미생물과 배변 리듬이 안정됩니다.
-                                속불편 시에는 섬유질을 천천히 올리고 FODMAP이 높은 식품(양파·마늘·우유)을 조절하세요.
-                            </p>
+                            <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                                <Card className="border border-emerald-100">
+                                    <CardContent className="pt-4 space-y-1">
+                                        <p className="text-xs font-semibold text-emerald-700 uppercase">양</p>
+                                        <p>섬유질 25g+, 물 30~35ml/kg</p>
+                                    </CardContent>
+                                </Card>
+                                <Card className="border border-emerald-100">
+                                    <CardContent className="pt-4 space-y-1">
+                                        <p className="text-xs font-semibold text-emerald-700 uppercase">식품</p>
+                                        <p>프리(귀리·바나나·양파·마늘) + 프로(요거트·김치·케피어)를 매끼 소량</p>
+                                    </CardContent>
+                                </Card>
+                                <Card className="border border-emerald-100">
+                                    <CardContent className="pt-4 space-y-1">
+                                        <p className="text-xs font-semibold text-emerald-700 uppercase">증상 관리</p>
+                                        <p>가스/팽만 시 양 천천히↑, 고FODMAP 식품 조절, 걷기·복식호흡 병행</p>
+                                    </CardContent>
+                                </Card>
+                            </div>
                         </section>
 
                         <section id="why">
@@ -74,8 +91,8 @@ export default function FiberGutHealthPost() {
                         <section id="foods" className="space-y-3">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">프리·프로바이오틱스 식품</h2>
                             <Card className="border-l-4 border-emerald-500">
-                                <CardContent className="pt-5 text-sm text-gray-700 space-y-1">
-                                    <p>프리: 귀리, 바나나, 양파, 마늘, 치커리 뿌리</p>
+                                <CardContent className="pt-5 text-base text-gray-800 leading-relaxed space-y-1">
+                                    <p>프리: 귀리, 바나나, 양파·마늘(민감 시 소량), 치커리 뿌리</p>
                                     <p>프로: 요거트, 김치, 된장, 케피어</p>
                                     <p>물은 섬유질과 함께 충분히 섭취</p>
                                 </CardContent>
@@ -84,7 +101,7 @@ export default function FiberGutHealthPost() {
 
                         <section id="targets" className="bg-emerald-50 border border-emerald-100 rounded-2xl p-6 space-y-2">
                             <h2 className="text-2xl font-bold text-gray-900">하루 섬유질 목표</h2>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                                 <li>총량: 25g 이상(채소·과일·통곡·콩류 분산)</li>
                                 <li>분산: 매끼 8~10g, 간식 3~5g 수준으로 나눠 섭취</li>
                                 <li>물: 체중(kg)×30~35ml, 섬유질 증량 시 물도 같이 증가</li>
@@ -94,9 +111,9 @@ export default function FiberGutHealthPost() {
                         <section id="tips" className="space-y-3">
                             <h2 className="text-2xl font-bold text-gray-900">복부팽만 줄이는 팁</h2>
                             <Card className="border-l-4 border-emerald-400">
-                                <CardContent className="pt-5 text-sm text-gray-700 space-y-1">
-                                    <p>• 섬유질은 천천히 늘리기, 수분을 함께</p>
-                                    <p>• FODMAP 민감하면 양파/마늘·유제품 양 조절</p>
+                                <CardContent className="pt-5 text-base text-gray-800 leading-relaxed space-y-1">
+                                    <p>• 섬유질은 3~5일 단위로 천천히 증량, 수분 동반</p>
+                                    <p>• FODMAP 민감하면 양파/마늘·유제품 양 조절, 저FODMAP 채소부터</p>
                                     <p>• 하루 10~15분 걷기와 복식호흡으로 장 운동 돕기</p>
                                 </CardContent>
                             </Card>
@@ -104,12 +121,25 @@ export default function FiberGutHealthPost() {
 
                         <section id="sample" className="bg-white border border-emerald-100 rounded-2xl p-6 space-y-2">
                             <h2 className="text-2xl font-bold text-gray-900">샘플 식단·간식 (저자극)</h2>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                                 <li>아침: 오트+블루베리+아몬드, 요거트 소량</li>
                                 <li>점심: 현미/퀴노아 + 닭가슴살 + 데친 채소</li>
                                 <li>간식: 바나나 1개 또는 삶은 고구마 소량</li>
                                 <li>저녁: 연어/두부 + 잎채소 샐러드, 올리브오일 드레싱</li>
                             </ul>
+                        </section>
+
+                        <section id="selfcheck" className="bg-white border border-emerald-100 rounded-2xl p-6 space-y-3">
+                            <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                                <Activity className="w-5 h-5 text-emerald-600" />
+                                자가 체크 (0~3점)
+                            </h3>
+                            <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                                <li>하루 채소/과일/통곡 섭취가 2회 이하</li>
+                                <li>가스·팽만으로 섬유질 섭취를 자주 중단한다</li>
+                                <li>물 섭취가 체중×30ml 이하</li>
+                            </ul>
+                            <p className="text-sm text-emerald-700">2점 이상이면 양을 천천히 늘리고, 고FODMAP을 줄이면서 물·걷기를 병행하세요.</p>
                         </section>
 
                         <section id="faq" className="space-y-4">

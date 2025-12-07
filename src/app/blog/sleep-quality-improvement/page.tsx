@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, Clock, ArrowLeft, Share2, Moon, Coffee, Smartphone, Wind } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Share2, Moon, Coffee, Smartphone, Wind, NotebookPen, AlertCircle, Activity } from "lucide-react";
 import { Toc } from "@/components/layout/Toc";
 
 export const metadata: Metadata = {
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 export default function SleepQualityBlogPost() {
     const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
         { id: "why", label: "잠을 잘 못 자는 이유" },
         { id: "tips", label: "숙면 팁 7가지" },
         { id: "advice", label: "전문가 조언" },
@@ -67,7 +68,30 @@ export default function SleepQualityBlogPost() {
                     <div className="md:sticky md:top-24 h-fit">
                         <Toc items={tocItems} />
                     </div>
-                    <div className="prose prose-lg max-w-none space-y-8">
+                <div className="prose prose-lg max-w-none space-y-10">
+                    <section id="summary" className="bg-white border border-indigo-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">한눈에 보기</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-indigo-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-indigo-700 uppercase">스케줄</p>
+                                    <p>기상 고정, 주말 편차 ±30분</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-indigo-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-indigo-700 uppercase">컷오프</p>
+                                    <p>카페인 13~14시, 스크린 60분 전, 식사 3시간 전</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-indigo-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-indigo-700 uppercase">환경/이완</p>
+                                    <p>온도 18~22도, 암막, 4-7-8 호흡·짧은 낮잠 20분</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
                     <section id="why">
                         <h2 className="text-3xl font-bold text-gray-900 mb-4">
                             왜 우리는 잠을 잘 못 잘까요?
@@ -85,7 +109,7 @@ export default function SleepQualityBlogPost() {
                             과학적으로 입증된 숙면 팁 7가지
                         </h2>
 
-                        <Card className="mb-6 border-l-4 border-indigo-500">
+                        <Card className="mb-6 border border-indigo-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-indigo-100 p-3 rounded-full">
@@ -95,7 +119,7 @@ export default function SleepQualityBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             1. 규칙적인 수면 스케줄 유지하기
                                         </h3>
-                                        <p className="text-gray-700">
+                                        <p className="text-gray-800 leading-relaxed">
                                             우리 몸의 생체 시계(Circadian Rhythm)를 일정하게 유지하는 것이 가장 중요합니다.
                                             주말에도 평일과 비슷한 시간에 일어나 햇빛을 쬐는 것이 좋습니다.
                                             기상 시간을 고정하면 취침 시간도 자연스럽게 맞춰집니다.
@@ -105,7 +129,7 @@ export default function SleepQualityBlogPost() {
                             </CardContent>
                         </Card>
 
-                        <Card className="mb-6 border-l-4 border-amber-500">
+                        <Card className="mb-6 border border-amber-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-amber-100 p-3 rounded-full">
@@ -115,7 +139,7 @@ export default function SleepQualityBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             2. 카페인 섭취 제한하기 (오후 2시 이후 금지)
                                         </h3>
-                                        <p className="text-gray-700">
+                                        <p className="text-gray-800 leading-relaxed">
                                             카페인의 반감기는 사람에 따라 3~7시간입니다.
                                             오후 늦게 마신 커피는 밤늦게까지 혈중 농도가 남아 수면을 방해할 수 있습니다.
                                             점심 식사 이후에는 디카페인 커피나 허브차를 권장합니다.
@@ -125,7 +149,7 @@ export default function SleepQualityBlogPost() {
                             </CardContent>
                         </Card>
 
-                        <Card className="mb-6 border-l-4 border-blue-500">
+                        <Card className="mb-6 border border-blue-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-blue-100 p-3 rounded-full">
@@ -135,7 +159,7 @@ export default function SleepQualityBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             3. 잠들기 1시간 전 블루라이트 차단
                                         </h3>
-                                        <p className="text-gray-700">
+                                        <p className="text-gray-800 leading-relaxed">
                                             스마트폰, 태블릿, PC에서 나오는 블루라이트는 수면 호르몬인 멜라토닌 분비를 억제합니다.
                                             잠들기 1시간 전부터는 전자기기 사용을 멈추고 독서나 명상 등 아날로그 활동을 하세요.
                                         </p>
@@ -144,7 +168,7 @@ export default function SleepQualityBlogPost() {
                             </CardContent>
                         </Card>
 
-                        <Card className="mb-6 border-l-4 border-green-500">
+                        <Card className="mb-6 border border-green-100">
                             <CardContent className="pt-6">
                                 <div className="flex items-start gap-4">
                                     <div className="bg-green-100 p-3 rounded-full">
@@ -154,7 +178,7 @@ export default function SleepQualityBlogPost() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                                             4. 침실 환경 최적화 (온도, 습도, 조도)
                                         </h3>
-                                        <p className="text-gray-700">
+                                        <p className="text-gray-800 leading-relaxed">
                                             이상적인 침실 온도는 18~22도입니다. 약간 서늘한 환경이 심부 체온을 낮춰 입면을 돕습니다.
                                             암막 커튼으로 빛을 완전히 차단하고, 습도는 50% 내외로 유지하세요.
                                         </p>
@@ -164,34 +188,34 @@ export default function SleepQualityBlogPost() {
                         </Card>
 
                         <div className="grid md:grid-cols-3 gap-6">
-                            <Card className="border-l-4 border-purple-500">
+                            <Card className="border border-purple-100">
                                 <CardContent className="pt-6">
                                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                                         5. 낮잠은 20분만
                                     </h3>
-                                    <p className="text-sm text-gray-700">
+                                    <p className="text-base text-gray-800 leading-relaxed">
                                         오후 3시 이전, 20분 이내의 짧은 낮잠은 활력을 주지만, 긴 낮잠은 밤잠을 방해합니다.
                                     </p>
                                 </CardContent>
                             </Card>
 
-                            <Card className="border-l-4 border-rose-500">
+                            <Card className="border border-rose-100">
                                 <CardContent className="pt-6">
                                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                                         6. 4-7-8 호흡법
                                     </h3>
-                                    <p className="text-sm text-gray-700">
+                                    <p className="text-base text-gray-800 leading-relaxed">
                                         4초간 들이마시고, 7초간 멈추고, 8초간 내뱉는 호흡법은 부교감 신경을 활성화합니다.
                                     </p>
                                 </CardContent>
                             </Card>
 
-                            <Card className="border-l-4 border-teal-500">
+                            <Card className="border border-teal-100">
                                 <CardContent className="pt-6">
                                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                                         7. 규칙적인 운동
                                     </h3>
-                                    <p className="text-sm text-gray-700">
+                                    <p className="text-base text-gray-800 leading-relaxed">
                                         낮 동안의 신체 활동은 수면 압력을 높여줍니다. 단, 잠들기 3시간 전 격한 운동은 피하세요.
                                     </p>
                                 </CardContent>
@@ -199,15 +223,26 @@ export default function SleepQualityBlogPost() {
                         </div>
                     </section>
 
-                    <section id="advice" className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-lg">
+                    <section id="advice" className="bg-indigo-50 border border-indigo-100 p-6 rounded-lg space-y-3">
                         <h3 className="text-xl font-bold text-indigo-900 mb-3">
                             💡 수면 전문가의 조언
                         </h3>
-                        <p className="text-gray-700">
+                        <p className="text-gray-800 leading-relaxed">
                             "잠이 오지 않는데 억지로 누워있는 것은 오히려 불면증을 악화시킵니다.
                             20분 이상 잠들지 못한다면 침실을 나와 조용한 음악을 듣거나 책을 읽다가,
                             졸음이 올 때 다시 침대로 가세요. 침대는 '잠자는 곳'이라는 인식을 뇌에 심어주는 것이 중요합니다."
                         </p>
+                        <div className="bg-white/60 border border-indigo-100 rounded-xl p-4 space-y-2">
+                            <p className="text-sm font-semibold text-indigo-800 flex items-center gap-2">
+                                <NotebookPen className="w-4 h-4" /> 자가 체크 (0~3점)
+                            </p>
+                            <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                                <li>카페인/스크린/식사 컷오프를 지키지 못한다</li>
+                                <li>기상 시간이 주말·평일 크게 달라진다</li>
+                                <li>밤중 2회 이상 각성하거나, 누워서 20분 이상 잠들지 못한다</li>
+                            </ul>
+                            <p className="text-sm text-indigo-700">2점 이상이면 컷오프 3종(카페인·스크린·식사)과 기상 고정을 1주 우선 적용하세요.</p>
+                        </div>
                     </section>
                     </div>
                 </div>

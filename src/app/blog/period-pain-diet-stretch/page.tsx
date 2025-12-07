@@ -1,14 +1,14 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, Clock, Leaf, StretchHorizontal } from "lucide-react";
+import { Calendar, Clock, Leaf, StretchHorizontal, Activity, NotebookPen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContentWithToc } from "@/components/layout/ContentWithToc";
 
 export const metadata: Metadata = {
     title: "생리통 완화 식단 + 10분 스트레칭 | 나이스우먼 블로그",
-    description: "항염 식단과 10분 스트레칭으로 생리통을 완화하는 실천 가이드.",
-    keywords: ["생리통", "식단", "스트레칭", "항염 식품", "PMS"],
+    description: "항염 식단과 10분 스트레칭으로 생리통을 완화하는 실천 가이드. 자가 체크, 하루 예시, 카페인·염분 관리 팁 포함.",
+    keywords: ["생리통", "식단", "스트레칭", "항염 식품", "PMS", "자가 체크"],
     alternates: { canonical: "https://nicewomen.kr/blog/period-pain-diet-stretch" },
 };
 
@@ -17,6 +17,8 @@ export default function PeriodPainDietStretchPost() {
         { id: "summary", label: "핵심 요약" },
         { id: "diet", label: "완화 식단" },
         { id: "stretch", label: "10분 스트레칭" },
+        { id: "dayplan", label: "하루 예시" },
+        { id: "selfcheck", label: "자가 체크" },
         { id: "faq", label: "FAQ" },
     ];
 
@@ -62,13 +64,28 @@ export default function PeriodPainDietStretchPost() {
                 </header>
 
             <ContentWithToc items={tocItems}>
-                <section id="summary" className="bg-white border border-rose-100 rounded-2xl p-6">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-3">핵심 요약</h2>
-                    <ul className="list-disc pl-5 text-gray-700 space-y-1">
-                        <li>오메가3·마그네슘·B군 식품을 늘리고, 염분·과당·트랜스지방을 줄입니다.</li>
-                        <li>카페인은 오후 초반 이전, 알코올은 생리통 악화 시 피합니다.</li>
-                        <li>10분 스트레칭(무릎 끌어안기, 골반 기울이기, 햄스트링/둔근 풀기)으로 긴장을 낮춥니다.</li>
-                    </ul>
+                <section id="summary" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-3">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">핵심 요약</h2>
+                    <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                        <Card className="border border-rose-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-rose-700 uppercase">영양</p>
+                                <p>오메가3·마그네슘·B군 ↑, 염분·과당·트랜스지방 ↓, 카페인 오후 초반 컷</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border border-rose-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-rose-700 uppercase">스트레칭</p>
+                                <p>10분 루틴(무릎 끌어안기, 골반 기울이기, 햄스트링/둔근 풀기)</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border border-rose-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-rose-700 uppercase">자극 관리</p>
+                                <p>가공식품·과염분·과당 줄이고 물/전해질 균형</p>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </section>
 
                 <section id="diet" className="space-y-4">
@@ -79,12 +96,12 @@ export default function PeriodPainDietStretchPost() {
                                 <Leaf className="w-5 h-5 text-emerald-600" />
                                 추천 식품
                             </h3>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                                 {foods.map((f) => (
                                     <li key={f}>{f}</li>
                                 ))}
                             </ul>
-                            <p className="text-sm text-gray-600">국물·가공식품, 당 함량이 높은 간식은 줄이고 물·전해질을 균형 있게 보충하세요.</p>
+                                <p className="text-sm text-gray-700">국물·가공식품, 당 함량이 높은 간식은 줄이고 물·전해질을 균형 있게 보충하세요.</p>
                         </CardContent>
                     </Card>
                 </section>
@@ -97,15 +114,42 @@ export default function PeriodPainDietStretchPost() {
                                 <StretchHorizontal className="w-5 h-5 text-rose-600" />
                                 루틴
                             </h3>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                                 {stretches.map((s) => (
                                     <li key={s}>{s}</li>
                                 ))}
                             </ul>
-                            <p className="text-sm text-gray-600">호흡을 길게 내쉬며 통증이 심한 동작은 강도를 낮추세요.</p>
+                                <p className="text-sm text-gray-700">호흡을 길게 내쉬며 통증이 심한 동작은 강도를 낮추세요.</p>
                         </CardContent>
                     </Card>
                 </section>
+
+                    <section id="dayplan" className="bg-rose-50 border border-rose-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-rose-600" />
+                            하루 예시
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>아침: 오트+견과+베리, 물 300ml, 카페인 1회</li>
+                            <li>점심: 현미/퀴노아+생선/두부+잎채소, 짠 국물 최소화</li>
+                            <li>오후: 카페인 컷, 따뜻한 물/전해질 소량, 스트레칭 5분</li>
+                            <li>저녁: 소화 잘 되는 단백질+채소, 취침 3h 전 마감</li>
+                            <li>취침 전: 10분 스트레칭+호흡, 온수 샤워/찜질팩(복부/허리)</li>
+                        </ul>
+                    </section>
+
+                    <section id="selfcheck" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Activity className="w-5 h-5 text-rose-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>통증이 7/10 이상이거나 일상 기능 저하</li>
+                            <li>카페인·염분·당 조절을 지키지 못한다</li>
+                            <li>수면 6h 이하, 스트레스가 높다</li>
+                        </ul>
+                        <p className="text-sm text-rose-700">2점 이상이면 식단/스트레칭을 강화하고, 진통제 의존이 늘면 의료 상담을 권장합니다.</p>
+                    </section>
 
                 <section id="faq" className="space-y-3">
                     <h2 className="text-2xl font-bold text-gray-900 mb-2">FAQ</h2>

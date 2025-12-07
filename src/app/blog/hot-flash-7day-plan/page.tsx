@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Calendar, Clock, ThermometerSun, Utensils, Wind, Droplets } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, ThermometerSun, Utensils, Wind, Droplets, NotebookPen, Activity, AlertCircle } from "lucide-react";
 import { Toc } from "@/components/layout/Toc";
 
 export const metadata: Metadata = {
@@ -30,6 +30,7 @@ export default function HotFlashPlanPost() {
     const tocItems = [
         { id: "summary", label: "한눈에 보기" },
         { id: "plan", label: "7일 실행 계획" },
+        { id: "selfcheck", label: "자가 체크" },
         { id: "today", label: "오늘 바로 할 것" },
         { id: "faq", label: "자주 묻는 질문" },
     ];
@@ -71,40 +72,40 @@ export default function HotFlashPlanPost() {
                     </div>
                     <div className="prose prose-lg max-w-none space-y-10">
                     <section id="summary" className="grid md:grid-cols-2 gap-4">
-                        <Card className="border-l-4 border-rose-400">
+                        <Card className="border border-rose-100">
                             <CardContent className="pt-6 space-y-2">
                                 <div className="flex items-center gap-2 text-rose-600 font-semibold">
                                     <ThermometerSun className="w-5 h-5" />
                                     <span>환경</span>
                                 </div>
-                                <p className="text-gray-700 text-sm">침실 20~22도, 습도 45~55%. 차가운 물수건/아이스팩을 침대 옆에 준비.</p>
+                                <p className="text-gray-800 text-base leading-relaxed">침실 20~22도, 습도 45~55%. 차가운 물수건/아이스팩을 침대 옆에 준비.</p>
                             </CardContent>
                         </Card>
-                        <Card className="border-l-4 border-amber-400">
+                        <Card className="border border-amber-100">
                             <CardContent className="pt-6 space-y-2">
                                 <div className="flex items-center gap-2 text-amber-600 font-semibold">
                                     <Utensils className="w-5 h-5" />
                                     <span>식단</span>
                                 </div>
-                                <p className="text-gray-700 text-sm">매운 음식·알코올·늦은 커피를 줄이고, 이소플라본/오메가3 식품을 추가합니다.</p>
+                                <p className="text-gray-800 text-base leading-relaxed">매운 음식·알코올·늦은 커피를 줄이고, 이소플라본/오메가3 식품을 추가합니다.</p>
                             </CardContent>
                         </Card>
-                        <Card className="border-l-4 border-indigo-400">
+                        <Card className="border border-indigo-100">
                             <CardContent className="pt-6 space-y-2">
                                 <div className="flex items-center gap-2 text-indigo-600 font-semibold">
                                     <Wind className="w-5 h-5" />
                                     <span>호흡·이완</span>
                                 </div>
-                                <p className="text-gray-700 text-sm">취침 전 4-7-8 호흡 5세트, 목·어깨 스트레칭 10분으로 교감신경을 낮춥니다.</p>
+                                <p className="text-gray-800 text-base leading-relaxed">취침 전 4-7-8 호흡 5세트, 목·어깨 스트레칭 10분으로 교감신경을 낮춥니다.</p>
                             </CardContent>
                         </Card>
-                        <Card className="border-l-4 border-teal-400">
+                        <Card className="border border-teal-100">
                             <CardContent className="pt-6 space-y-2">
                                 <div className="flex items-center gap-2 text-teal-600 font-semibold">
                                     <Droplets className="w-5 h-5" />
                                     <span>수분·염분</span>
                                 </div>
-                                <p className="text-gray-700 text-sm">저염 식단, 취침 2시간 전 수분은 미지근한 물로 소량 유지해 야간뇨를 줄입니다.</p>
+                                <p className="text-gray-800 text-base leading-relaxed">저염 식단, 취침 2시간 전 수분은 미지근한 물로 소량 유지해 야간뇨를 줄입니다.</p>
                             </CardContent>
                         </Card>
                     </section>
@@ -116,16 +117,29 @@ export default function HotFlashPlanPost() {
                                 <Card key={step.title} className="border border-rose-100">
                                     <CardContent className="pt-5 space-y-2">
                                         <h3 className="text-xl font-semibold text-gray-900">{step.title}</h3>
-                                        <p className="text-gray-700 text-sm leading-relaxed">{step.detail}</p>
+                                        <p className="text-gray-800 text-base leading-relaxed">{step.detail}</p>
                                     </CardContent>
                                 </Card>
                             ))}
                         </div>
                     </section>
 
+                    <section id="selfcheck" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Activity className="w-5 h-5 text-rose-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>밤에 2회 이상 각성하며 땀/열감이 난다</li>
+                            <li>침실 온습도(20~22도, 45~55%)를 지키지 못한다</li>
+                            <li>저녁에 매운 음식·알코올·카페인을 자주 섭취한다</li>
+                        </ul>
+                        <p className="text-sm text-rose-700">2점 이상이면 환경(온습도)→카페인·알코올 컷→호흡·이완 순으로 1주 적용하세요.</p>
+                    </section>
+
                     <section id="today" className="bg-rose-50 border border-rose-100 rounded-2xl p-6 space-y-3">
                         <h3 className="text-xl font-bold text-rose-900">오늘 바로 할 것 3가지</h3>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                             <li>침실 온도 20~22도 설정, 면 침구로 교체</li>
                             <li>오후 2시 이후 카페인 중단, 저녁 매운 음식/알코올 피하기</li>
                             <li>취침 전 4-7-8 호흡 5세트 + 목·어깨 스트레칭 10분</li>
@@ -139,10 +153,16 @@ export default function HotFlashPlanPost() {
                                 <Card key={item.q} className="border border-gray-100">
                                     <CardContent className="pt-5">
                                         <p className="font-semibold text-gray-900 mb-1">{item.q}</p>
-                                        <p className="text-gray-700 text-sm">{item.a}</p>
+                                        <p className="text-gray-800 text-base leading-relaxed">{item.a}</p>
                                     </CardContent>
                                 </Card>
                             ))}
+                            <Card className="border border-gray-100">
+                                <CardContent className="pt-5 space-y-1">
+                                    <p className="font-semibold text-gray-900 mb-1">밤중 땀으로 깰 때 바로 할 일?</p>
+                                    <p className="text-gray-800 text-base leading-relaxed">이불을 벗고 시원한 물수건/아이스팩을 목·손목에 1~2분 대고, 4-7-8 호흡 3세트를 합니다. 방 온도·습도를 다시 확인하세요.</p>
+                                </CardContent>
+                            </Card>
                         </div>
                     </section>
                     </div>

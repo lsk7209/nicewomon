@@ -61,7 +61,7 @@ export default function IronSupplementTimingPost() {
                     <div className="prose prose-lg max-w-none space-y-8">
                         <section id="summary" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-3">
                             <p className="text-sm font-semibold text-amber-700">핵심 요약</p>
-                            <div className="grid md:grid-cols-3 gap-3 text-sm text-gray-900">
+                            <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
                                 <Card className="border border-amber-100">
                                     <CardContent className="pt-4 space-y-1">
                                         <p className="text-xs font-semibold text-amber-700 uppercase">타이밍</p>
@@ -93,7 +93,7 @@ export default function IronSupplementTimingPost() {
                         <section id="timing" className="space-y-3">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">언제, 어떻게 먹을까?</h2>
                             <Card className="border border-amber-200">
-                                <CardContent className="pt-5 text-sm text-gray-800 space-y-2">
+                                <CardContent className="pt-5 text-base text-gray-800 space-y-2 leading-relaxed">
                                     <p className="font-semibold text-amber-700 flex items-center gap-2"><SunMedium className="w-4 h-4" /> 아침</p>
                                     <p>기상 직후 물 300ml + 비타민 C 50~100mg, 철분 공복 복용</p>
                                     <p className="font-semibold text-amber-700 flex items-center gap-2"><Moon className="w-4 h-4" /> 취침 전 대안</p>
@@ -120,7 +120,7 @@ export default function IronSupplementTimingPost() {
                                 <NotebookPen className="w-5 h-5 text-amber-600" />
                                 시간대별 예시 (1일 1~2회)
                             </h3>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <ul className="list-disc pl-5 text-gray-700 text-base space-y-1 leading-relaxed">
                                 <li>옵션 A: 07:00 공복 복용 → 커피/유제품은 09:00 이후</li>
                                 <li>옵션 B: 22:00 취침 2~3h 전 복용 → 저녁 식사는 19:00 이전</li>
                                 <li>1일 2회: 07:00 / 19:00, 각 복용 전후 칼슘·커피 2h 이상 간격</li>
@@ -130,7 +130,7 @@ export default function IronSupplementTimingPost() {
 
                         <section id="checklist" className="bg-amber-50 border border-amber-100 rounded-2xl p-6 space-y-2">
                             <h2 className="text-2xl font-bold text-gray-900">체크리스트</h2>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <ul className="list-disc pl-5 text-gray-700 text-base space-y-1 leading-relaxed">
                                 <li>복용 시간: 1순위 공복 아침, 2순위 취침 2~3h 전</li>
                                 <li>간격: 커피/차/칼슘/유제품/멀티미네랄과 2h 이상</li>
                                 <li>비타민 C 50~100mg 동시 섭취, 1일 2회면 8~12h 간격</li>

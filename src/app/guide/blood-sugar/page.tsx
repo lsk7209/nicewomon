@@ -31,10 +31,26 @@ export default function BloodSugarGuidePage() {
                 <div className="prose prose-lg max-w-none space-y-10">
                     <section className="bg-white rounded-2xl shadow-lg p-8 border border-teal-100 space-y-3">
                         <p className="text-sm font-semibold text-teal-700">핵심 요약</p>
-                        <p className="text-gray-800">
-                            식사 순서(채소·단백질 → 탄수), 식후 10~15분 걷기, 카페인·단 음식은 오전에 제한, 간식은 단백질+섬유 조합이
-                            혈당 스파이크를 줄이는 핵심입니다.
-                        </p>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-teal-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-teal-700 uppercase">식사 리듬</p>
+                                    <p>채소·단백질 → 탄수 순서, 간격 3~4시간, 밥은 반공기·국물 최소</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-teal-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-teal-700 uppercase">움직임</p>
+                                    <p>식후 10~15분 걷기, 1시간마다 3분 움직임, 저녁 고강도는 취침 3시간 전 종료</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-teal-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-teal-700 uppercase">간식·컷오프</p>
+                                    <p>단백질+섬유 간식, 카페인/단 음식은 오전·점심에 제한, 저녁 카페인 컷오프</p>
+                                </CardContent>
+                            </Card>
+                        </div>
                         <p className="text-xs text-teal-700">* 임신성 당뇨·약물 복용 중이면 의료진과 상담 후 조정하세요.</p>
                     </section>
 
@@ -89,14 +105,14 @@ export default function BloodSugarGuidePage() {
                             <AlertCircle className="w-5 h-5" />
                             주의해야 할 때
                         </h3>
-                        <p className="text-gray-700 text-sm">
+                        <p className="text-gray-800 text-base leading-relaxed">
                             임신성 당뇨, 당뇨 약물 복용, 만성 질환이 있다면 식단 변경 전에 의료진 상담이 필요합니다.
                         </p>
                     </section>
 
                     <section className="bg-white rounded-2xl shadow p-8 border border-teal-100 space-y-3">
                         <h2 className="text-2xl font-bold text-gray-900">하루 루틴 예시</h2>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
                             <li>아침: 단백질+섬유 중심(계란+채소), 카페인 오전에 제한</li>
                             <li>점심: 채소/단백질 → 탄수 순서, 식후 10~15분 걷기</li>
                             <li>간식: 그릭요거트+견과, 삶은 달걀+채소 스틱</li>
@@ -105,22 +121,35 @@ export default function BloodSugarGuidePage() {
                     </section>
 
                     <section className="bg-teal-50 border border-teal-100 rounded-2xl p-8 space-y-3">
-                        <h2 className="text-2xl font-bold text-gray-900">자가 체크리스트</h2>
-                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
-                            <li>주 5일 이상 식사 순서 실천, 식사 간격 3~4시간 유지</li>
+                        <h2 className="text-2xl font-bold text-gray-900">자가 체크리스트 (0~3점)</h2>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>주 5일 이상 식사 순서·간격(3~4시간)을 지킨다</li>
                             <li>카페인 14시 이전, 단 음료·디저트 주 2회 이하</li>
-                            <li>식후 10~15분 걷기 주 5회 이상</li>
-                            <li>주 3회 이상 근력/유산소 포함한 20~30분 운동</li>
+                            <li>식후 10~15분 걷기 주 5회 이상, 1시간마다 3분 움직임</li>
+                            <li>주 3회 이상 근력/유산소 20~30분</li>
                         </ul>
+                        <p className="text-sm text-teal-700">2점 미만이면 식사 순서·컷오프·식후 걷기 세 가지부터 2주간 우선 적용하세요.</p>
                     </section>
 
                     <section className="bg-white rounded-2xl shadow p-8 border border-teal-100 space-y-3">
                         <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
-                        <div className="space-y-2 text-sm text-gray-700">
-                            <p className="font-semibold">Q. 단 음료를 완전히 끊기 어렵다면?</p>
-                            <p>A. 주 2회로 횟수부터 제한하고, 식사 직후 소량 섭취로 혈당 변동을 줄입니다. 탄산수·무가당 차로 대체하세요.</p>
-                            <p className="font-semibold">Q. 운동은 언제가 좋을까?</p>
-                            <p>A. 식후 10~15분 걷기가 가장 간단하며, 저녁 고강도 운동은 수면을 방해할 수 있어 취침 3시간 이전에 마칩니다.</p>
+                        <div className="space-y-3 text-base text-gray-800 leading-relaxed">
+                            <div>
+                                <p className="font-semibold">Q. 단 음료를 완전히 끊기 어렵다면?</p>
+                                <p>주 2회로 횟수부터 제한하고, 식사 직후 소량 섭취로 혈당 변동을 줄입니다. 탄산수·무가당 차로 대체하세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 운동은 언제가 좋을까?</p>
+                                <p>식후 10~15분 걷기가 가장 간단하며, 저녁 고강도 운동은 수면을 방해할 수 있어 취침 3시간 이전에 마칩니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 공복 저혈당이 걱정될 때는?</p>
+                                <p>기상 직후 물+단백질 소량, 식사 간격 3~4시간을 유지하고, 장시간 공복은 단백질+섬유 간식으로 보완하세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 카페인은 어떻게 관리하나요?</p>
+                                <p>오전~점심까지만 일정량을 유지하고, 오후 2시 이후는 컷오프합니다. 카페인 증감 폭이 크지 않도록 일정하게 섭취하세요.</p>
+                            </div>
                         </div>
                     </section>
                 </div>

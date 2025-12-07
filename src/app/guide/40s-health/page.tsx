@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TrendingDown, Heart, Flame, Moon, Brain, AlertCircle } from "lucide-react";
+import { TrendingDown, Heart, Flame, Moon, Brain, AlertCircle, NotebookPen, Info, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "40대 여성 건강 가이드 - 갱년기 전기 완벽 대비 | 나이스우먼",
@@ -32,6 +32,30 @@ export default function FortiesHealthPage() {
                         <strong className="text-gray-800">건강하고 활기찬 40대</strong>를 만드는 방법
                     </p>
                 </header>
+
+                <section className="bg-white border border-orange-100 rounded-2xl p-6 md:p-8 space-y-3">
+                    <h2 className="text-2xl font-bold text-gray-900">핵심 요약</h2>
+                    <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                        <Card className="border border-orange-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-orange-700 uppercase">호르몬 전환</p>
+                                <p>갱년기 전기 시작: 주기 불규칙·홍조·수면 장애 → 카페인/알코올 컷, 수면 위생 강화</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border border-orange-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-orange-700 uppercase">기초 관리</p>
+                                <p>근력 2~3회+단백질 1.2g/kg, 체지방·혈압·지질 모니터, 비타민 D/칼슘 보강</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border border-orange-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-orange-700 uppercase">검진/상담</p>
+                                <p>주기 변화·출혈 시 진료, 골밀도/지질/갑상선 검사, HRT 여부는 증상·위험도 기반 상담</p>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </section>
 
                 {/* Main Content */}
                 <div className="prose prose-lg max-w-none space-y-12">
@@ -406,6 +430,44 @@ export default function FortiesHealthPage() {
                                     </ul>
                                 </CardContent>
                             </Card>
+                        </div>
+                    </section>
+
+                    <section className="bg-white border border-orange-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-orange-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>생리 주기/출혈 패턴이 3개월 이상 크게 변했다</li>
+                            <li>홍조·수면 장애·기분 기복이 일상에 지장을 준다</li>
+                            <li>골밀도/지질/갑상선/비타민 D 검사를 1년 이상 하지 않았다</li>
+                        </ul>
+                        <p className="text-sm text-orange-700">2점 이상이면 수면/카페인 컷오프, 근력+단백질 루틴을 적용하고 산부인과·내과 검진 및 HRT 상담 가능 여부를 확인하세요.</p>
+                    </section>
+
+                    <section className="bg-orange-50 border border-orange-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Info className="w-5 h-5 text-orange-600" />
+                            FAQ
+                        </h3>
+                        <div className="space-y-3 text-base text-gray-800 leading-relaxed">
+                            <div>
+                                <p className="font-semibold">Q. 주기 불규칙이 시작됐는데 바로 HRT를 해야 하나요?</p>
+                                <p>증상(홍조·수면 장애·기분 변화) 강도와 생활 영향도를 먼저 평가하고, 검사 후 의료진과 위험/이득을 논의해 결정합니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 골밀도 검사는 언제부터 필요한가요?</p>
+                                <p>45세 전후 또는 가족력·체중 감소·스테로이드 복용 등 위험 요인이 있으면 조기 검사를 권장합니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 체지방이 늘고 수면이 깨질 때 우선순위는?</p>
+                                <p>저녁 카페인·알코올 컷오프, 수면 7~8시간, 근력 2~3회+유산소 150분, 단백질 1.2g/kg, 포화지방·정제탄수 줄이기를 우선 적용하세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 안면 홍조가 심한데 비약물 대안이 있을까요?</p>
+                                <p>실내 온도 낮추기, 겹겹이 옷 입기, 매운 음식·카페인·알코올 줄이기, 심호흡/명상, 필요 시 비호르몬 약제(의료 상담) 등을 고려할 수 있습니다.</p>
+                            </div>
                         </div>
                     </section>
 

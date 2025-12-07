@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Calendar, Clock, Activity, Heart } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Activity, Heart, NotebookPen, AlertCircle } from "lucide-react";
 import { Toc } from "@/components/layout/Toc";
 
 export const metadata: Metadata = {
@@ -14,9 +14,11 @@ export const metadata: Metadata = {
 
 export default function LowImpactHiitMenopausePost() {
     const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
         { id: "why", label: "왜 저충격 HIIT인가?" },
         { id: "routine", label: "10분 루틴" },
         { id: "tips", label: "안전·효과 팁" },
+        { id: "selfcheck", label: "자가 체크" },
     ];
 
     const moves = [
@@ -66,33 +68,70 @@ export default function LowImpactHiitMenopausePost() {
                     <div className="md:sticky md:top-24 h-fit">
                         <Toc items={tocItems} />
                     </div>
-                    <div className="prose prose-lg max-w-none space-y-8">
-                        <section id="why">
+                <div className="prose prose-lg max-w-none space-y-10">
+                    <section id="summary" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">한눈에 보기</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-rose-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-rose-700 uppercase">루틴</p>
+                                    <p>저충격 10분 인터벌, 점프 없이 심박 상승</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-rose-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-rose-700 uppercase">빈도</p>
+                                    <p>주 3회 비연속, 수면/호르몬 상태 따라 강도 조절</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-rose-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-rose-700 uppercase">안전</p>
+                                    <p>통증 시 즉시 하향, 수분·전해질, 충분한 워밍업/쿨다운</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
+
+                    <section id="why">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">왜 저충격 HIIT인가?</h2>
-                            <p className="text-gray-700">점프 없이도 인터벌 효과를 낼 수 있어 관절 부담을 줄이면서 심박 상승과 대사 개선에 도움을 줍니다.</p>
+                        <p className="text-gray-800 leading-relaxed">점프 없이도 인터벌 효과를 낼 수 있어 관절 부담을 줄이면서 심박 상승과 대사 개선에 도움을 줍니다.</p>
                         </section>
 
                         <section id="routine" className="space-y-3">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">10분 루틴</h2>
-                            <Card className="border-l-4 border-rose-400">
-                                <CardContent className="pt-5 text-sm text-gray-700 space-y-1">
-                                    {moves.map((m) => (
-                                        <p key={m}>• {m}</p>
-                                    ))}
-                                </CardContent>
-                            </Card>
+                        <Card className="border border-rose-100">
+                            <CardContent className="pt-5 text-base text-gray-800 leading-relaxed space-y-1">
+                                {moves.map((m) => (
+                                    <p key={m}>• {m}</p>
+                                ))}
+                            </CardContent>
+                        </Card>
                         </section>
 
                         <section id="tips" className="space-y-3">
                             <h2 className="text-2xl font-bold text-gray-900">안전·효과 팁</h2>
-                            <Card className="border-l-4 border-rose-300">
-                                <CardContent className="pt-5 text-sm text-gray-700 space-y-1">
-                                    <p>• 호흡은 규칙적으로, 통증 시 즉시 강도 하향</p>
-                                    <p>• 수분·전해질 보충, 카페인 컷오프 준수</p>
-                                    <p>• 주 3회, 비연속적으로 수행</p>
+                        <Card className="border border-rose-100">
+                            <CardContent className="pt-5 text-base text-gray-800 leading-relaxed space-y-1">
+                                <p>• 호흡 규칙 유지, 통증 시 즉시 강도 하향</p>
+                                <p>• 수분·전해질 보충, 카페인 컷오프 준수</p>
+                                <p>• 주 3회 비연속 수행, 전후 3~5분 워밍업/쿨다운</p>
                                 </CardContent>
                             </Card>
                         </section>
+
+                    <section id="selfcheck" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-rose-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>무릎/발목 통증이 자주 있다</li>
+                            <li>수면 6h 이하 또는 피로도가 높다</li>
+                            <li>주 3회 이상 고강도 운동으로 과부하 중이다</li>
+                        </ul>
+                        <p className="text-sm text-rose-700">2점 이상이면 강도를 더 낮추거나 회복일을 늘리고, 통증 지속 시 의료 상담을 권장합니다.</p>
+                    </section>
                     </div>
                 </div>
 

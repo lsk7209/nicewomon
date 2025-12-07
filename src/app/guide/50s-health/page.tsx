@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Heart, Activity, Brain, Shield, Bone, AlertCircle } from "lucide-react";
+import { Heart, Activity, Brain, Shield, Bone, AlertCircle, NotebookPen, Info } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "50대 여성 건강 가이드 - 폐경기 건강 관리의 모든 것 | 나이스우먼",
@@ -25,14 +25,36 @@ export default function FiftiesHealthPage() {
                         50대 여성 건강 가이드
                     </h1>
 
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                        폐경기를 건강하게 보내고
-                        <br />
-                        <strong className="text-gray-800">활기찬 제2의 인생</strong>을 준비하는 방법
+                    <p className="text-lg text-gray-800 leading-relaxed">
+                        폐경기 이후 급감하는 호르몬 변화에 맞춰 뼈·심혈관·인지·근육을 집중 관리해야 합니다.
+                        AEO 요약, 자가 체크(0~3점), FAQ를 먼저 확인하고 적용하세요.
                     </p>
                 </header>
 
                 <div className="prose prose-lg max-w-none space-y-12">
+                    <section className="bg-white border border-purple-100 rounded-2xl p-6 md:p-8 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">핵심 요약</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-purple-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-purple-700 uppercase">뼈/근육</p>
+                                    <p>골밀도 급감 구간(폐경 후 5~10년): 칼슘 1200mg, 비타민 D 800~1000IU, 근력 3회</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-purple-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-purple-700 uppercase">심혈관</p>
+                                    <p>혈압 120/80, LDL 100↓ 목표. 유산소 150분, 포화지방 컷, 금연·절주 필수</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-purple-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-purple-700 uppercase">수면/인지</p>
+                                    <p>수면 7~8시간, 저녁 카페인·알코올 컷오프, 인지 활동·사회적 교류로 뇌 건강 유지</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
                     {/* 폐경기 이해 */}
                     <section className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
                         <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
@@ -87,13 +109,13 @@ export default function FiftiesHealthPage() {
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
-                                    <p className="text-sm text-gray-700">
+                                    <p className="text-base text-gray-800 leading-relaxed">
                                         폐경 후 5~10년 동안 골밀도가 가장 빠르게 감소합니다.
                                         골다공증은 골절 위험을 크게 높이므로 적극적인 예방이 필요합니다.
                                     </p>
                                     <div className="bg-purple-50 p-4 rounded-lg">
                                         <p className="font-bold text-sm mb-2">예방 및 관리</p>
-                                        <ul className="space-y-1 text-sm text-gray-700">
+                                        <ul className="space-y-1 text-base text-gray-800 leading-relaxed">
                                             <li>• <strong>칼슘:</strong> 하루 1,200mg 섭취</li>
                                             <li>• <strong>비타민 D:</strong> 하루 800~1,000IU</li>
                                             <li>• <strong>근력 운동:</strong> 주 3회 이상</li>
@@ -112,13 +134,13 @@ export default function FiftiesHealthPage() {
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
-                                    <p className="text-sm text-gray-700">
+                                    <p className="text-base text-gray-800 leading-relaxed">
                                         에스트로겐 감소로 심혈관 질환 위험이 급증합니다.
                                         50대 여성의 사망 원인 1위가 심혈관 질환입니다.
                                     </p>
                                     <div className="bg-red-50 p-4 rounded-lg">
                                         <p className="font-bold text-sm mb-2">예방 전략</p>
-                                        <ul className="space-y-1 text-sm text-gray-700">
+                                        <ul className="space-y-1 text-base text-gray-800 leading-relaxed">
                                             <li>• <strong>혈압 관리:</strong> 목표 120/80 이하</li>
                                             <li>• <strong>콜레스테롤:</strong> LDL 100 이하 유지</li>
                                             <li>• <strong>혈당 관리:</strong> 당뇨병 예방</li>
@@ -137,13 +159,13 @@ export default function FiftiesHealthPage() {
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
-                                    <p className="text-sm text-gray-700">
+                                    <p className="text-base text-gray-800 leading-relaxed">
                                         에스트로겐은 뇌 건강에도 중요한 역할을 합니다.
                                         폐경 후 기억력 저하, 집중력 감소가 나타날 수 있습니다.
                                     </p>
                                     <div className="bg-blue-50 p-4 rounded-lg">
                                         <p className="font-bold text-sm mb-2">뇌 건강 유지</p>
-                                        <ul className="space-y-1 text-sm text-gray-700">
+                                        <ul className="space-y-1 text-base text-gray-800 leading-relaxed">
                                             <li>• <strong>인지 활동:</strong> 독서, 퍼즐, 새로운 학습</li>
                                             <li>• <strong>사회 활동:</strong> 친구 만남, 동호회 활동</li>
                                             <li>• <strong>운동:</strong> 유산소 운동이 뇌 건강에 효과적</li>
@@ -162,13 +184,13 @@ export default function FiftiesHealthPage() {
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
-                                    <p className="text-sm text-gray-700">
+                                    <p className="text-base text-gray-800 leading-relaxed">
                                         50대부터 근육량이 급격히 감소합니다.
                                         근육 감소는 낙상, 골절, 대사 질환 위험을 높입니다.
                                     </p>
                                     <div className="bg-green-50 p-4 rounded-lg">
                                         <p className="font-bold text-sm mb-2">근육량 유지</p>
-                                        <ul className="space-y-1 text-sm text-gray-700">
+                                        <ul className="space-y-1 text-base text-gray-800 leading-relaxed">
                                             <li>• <strong>근력 운동:</strong> 주 3회 이상 필수</li>
                                             <li>• <strong>단백질:</strong> 체중 1kg당 1.2~1.5g</li>
                                             <li>• <strong>비타민 D:</strong> 근육 기능 유지</li>
@@ -279,6 +301,44 @@ export default function FiftiesHealthPage() {
                                     <li>• 뇌 MRI (가족력 있을 시)</li>
                                     <li>• 인지 기능 검사</li>
                                 </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="bg-white border border-purple-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-purple-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>골밀도/지질/혈압 검사를 1년 이상 하지 않았다</li>
+                            <li>홍조·수면 장애·질 건조·요실금이 생활을 불편하게 한다</li>
+                            <li>최근 6개월 내 체중·허리둘레가 빠르게 늘었다</li>
+                        </ul>
+                        <p className="text-sm text-purple-700">2점 이상이면 골밀도·지질·혈압 검진, 수면/카페인 컷오프, 근력 3회+단백질 1.2~1.5g/kg를 우선 적용하고 필요 시 HRT·비호르몬 치료를 상담하세요.</p>
+                    </section>
+
+                    <section className="bg-purple-50 border border-purple-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Info className="w-5 h-5 text-purple-600" />
+                            FAQ
+                        </h3>
+                        <div className="space-y-3 text-base text-gray-800 leading-relaxed">
+                            <div>
+                                <p className="font-semibold">Q. HRT는 언제, 어떻게 결정하나요?</p>
+                                <p>홍조·수면·삶의 질 저하가 크면 혈전·유방암·심혈관 위험을 의료진과 평가해 결정합니다. 시작 시기는 폐경 초기일수록 효과가 높습니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 칼슘/비타민 D는 얼마나 먹어야 하나요?</p>
+                                <p>칼슘 1200mg, 비타민 D 800~1000IU를 권장하며, 식품 우선 후 부족분을 보충제로 채웁니다. 신장 결석 병력이 있다면 의료진과 상의하세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 체중·허리둘레가 빠르게 늘 때 무엇을 우선할까요?</p>
+                                <p>수면 7~8시간, 저녁 카페인·알코올 컷오프, 근력 3회+유산소 150분, 단백질 1.2~1.5g/kg, 포화지방·정제탄수 줄이기를 먼저 적용하세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 질 건조나 요실금이 심할 때는?</p>
+                                <p>국소 에스트로겐, 골반저 근육 운동, 질 보습제 등 비호르몬 옵션을 먼저 고려하고, 필요 시 의료진과 약물·장치 치료를 상담하세요.</p>
                             </div>
                         </div>
                     </section>
