@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, Heart, Moon, Brain, Pill, Activity } from "lucide-react";
+import { BookOpen, Heart, Moon, Brain, Pill, Activity, Sparkles, NotebookPen, Info } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "건강 가이드 | 나이스우먼",
@@ -192,6 +192,27 @@ export default function GuidePage() {
                         <br />
                         <strong className="text-gray-800">과학적 근거 기반 건강 정보</strong>를 제공합니다
                     </p>
+
+                    <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900">
+                        <Card className="border border-rose-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-rose-700 uppercase">호르몬/연령</p>
+                                <p>20~50대 전환기별 호르몬 변화, 검진·영양·운동 루틴 요약</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border border-rose-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-rose-700 uppercase">수면/스트레스</p>
+                                <p>컷오프·조도·호흡·CBT-I 핵심, 번아웃·편두통·역류 등 생활관리 링크</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border border-rose-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-rose-700 uppercase">영양/혈당</p>
+                                <p>철·엽산·칼슘·오메가-3, 혈당/라벨/TRF 유의사항, 도구/테스트 바로가기</p>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </div>
 
                 <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -264,6 +285,46 @@ export default function GuidePage() {
                                 </p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-rose-50 py-16 border-t border-rose-100">
+                <div className="container mx-auto px-4 max-w-5xl space-y-8">
+                    <div className="flex items-center gap-2 text-rose-700">
+                        <Sparkles className="w-5 h-5" />
+                        <p className="text-sm font-semibold">자가 체크 & FAQ</p>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <Card className="border border-rose-100">
+                            <CardHeader className="space-y-1">
+                                <p className="text-xs uppercase text-rose-700 font-semibold">자가 체크 (0~3점)</p>
+                                <CardTitle className="text-lg text-gray-900">지금 필요한 가이드는?</CardTitle>
+                                <CardDescription className="text-base leading-relaxed text-gray-700">
+                                    수면/스트레스/영양·혈당/호르몬·연령별 가이드에서 2개 이상 궁금하거나, 최근 1년 검진을 놓쳤다면 해당 섹션을 먼저 확인하세요.
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <ul className="list-disc pl-4 text-gray-800 text-base leading-relaxed space-y-1">
+                                    <li>수면/카페인/컷오프가 불규칙하다</li>
+                                    <li>PMS·번아웃·두통·역류 등 생활 증상이 잦다</li>
+                                    <li>철·비타민 D·지질·혈당 검진을 1년 이상 하지 않았다</li>
+                                </ul>
+                            </CardContent>
+                        </Card>
+
+                        <Card className="border border-rose-100">
+                            <CardHeader className="space-y-1">
+                                <p className="text-xs uppercase text-rose-700 font-semibold">FAQ</p>
+                                <CardTitle className="text-lg text-gray-900">자주 찾는 페이지</CardTitle>
+                            </CardHeader>
+                            <CardContent className="space-y-2 text-base text-gray-800 leading-relaxed">
+                                <p>- 수면/불면 → `수면`, `CBT-I`, `공기질 수면`, `아침·저녁 루틴`</p>
+                                <p>- 스트레스/번아웃 → `스트레스`, `번아웃 회복`, `편두통`, `HRV`</p>
+                                <p>- 혈당/체중/라벨 → `혈당`, `TRF`, `식품 라벨`, `영양`</p>
+                                <p>- 호르몬/연령 → `호르몬 기초`, `30/40/50대`, `PMS`, `갑상선`</p>
+                            </CardContent>
+                        </Card>
                     </div>
                 </div>
             </section>

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain, Heart, Activity, Wind, Smile, AlertTriangle } from "lucide-react";
+import { Brain, Heart, Activity, Wind, Smile, AlertTriangle, NotebookPen, Info } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "스트레스 관리 가이드 - 번아웃 예방과 회복 | 나이스우먼",
@@ -25,12 +25,35 @@ export default function StressGuidePage() {
                         스트레스 관리 가이드
                     </h1>
 
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                        과학적 근거 기반의 스트레스 관리법으로
-                        <br />
-                        <strong className="text-gray-800">마음의 평화와 회복탄력성</strong>을 키우세요
+                    <p className="text-lg text-gray-800 leading-relaxed">
+                        과학적 근거 기반의 스트레스 관리법으로 회복탄력성을 높이고 번아웃을 예방하세요.
+                        AEO 요약, 자가 체크, FAQ를 먼저 확인해 빠르게 적용해보세요.
                     </p>
                 </header>
+
+                <section className="bg-white border border-indigo-100 rounded-2xl p-6 md:p-8 space-y-3">
+                    <h2 className="text-2xl font-bold text-gray-900">한눈에 보기</h2>
+                    <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                        <Card className="border border-indigo-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-indigo-700 uppercase">루틴</p>
+                                <p>기상·식사·취침 시간을 고정, 1시간마다 3분 움직임, 저녁 카페인 컷오프</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border border-indigo-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-indigo-700 uppercase">진정</p>
+                                <p>5분 박스호흡/복식호흡, 10분 걷기·스트레칭, 일과 중 미니 브레이크</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border border-indigo-100">
+                            <CardContent className="pt-4 space-y-1">
+                                <p className="text-xs font-semibold text-indigo-700 uppercase">지원</p>
+                                <p>주 1회 감정 기록, 사회적 연결 유지, 증상 지속 시 전문가 상담</p>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </section>
 
                 <div className="prose prose-lg max-w-none space-y-12">
                     {/* 스트레스 이해 */}
@@ -51,7 +74,7 @@ export default function StressGuidePage() {
                                     <CardHeader>
                                         <CardTitle className="text-lg">급성 스트레스</CardTitle>
                                     </CardHeader>
-                                    <CardContent className="space-y-2 text-sm text-gray-700">
+                                    <CardContent className="space-y-2 text-base text-gray-800 leading-relaxed">
                                         <p><strong>특징:</strong> 단기간, 특정 상황</p>
                                         <p><strong>예시:</strong> 발표, 시험, 면접</p>
                                         <p><strong>반응:</strong> 심박수 증가, 집중력 향상</p>
@@ -63,7 +86,7 @@ export default function StressGuidePage() {
                                     <CardHeader>
                                         <CardTitle className="text-lg">만성 스트레스</CardTitle>
                                     </CardHeader>
-                                    <CardContent className="space-y-2 text-sm text-gray-700">
+                                    <CardContent className="space-y-2 text-base text-gray-800 leading-relaxed">
                                         <p><strong>특징:</strong> 장기간, 지속적</p>
                                         <p><strong>예시:</strong> 업무 과부하, 관계 갈등</p>
                                         <p><strong>반응:</strong> 코르티솔 과다 분비</p>
@@ -74,7 +97,7 @@ export default function StressGuidePage() {
 
                             <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-lg">
                                 <p className="font-bold text-amber-900 mb-3">만성 스트레스의 신체적 영향</p>
-                                <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                                <div className="grid md:grid-cols-2 gap-4 text-base text-gray-800 leading-relaxed">
                                     <ul className="space-y-1">
                                         <li>• 심혈관 질환 위험 증가</li>
                                         <li>• 면역력 저하</li>
@@ -391,6 +414,40 @@ export default function StressGuidePage() {
                                     일의 의미, 가치관, 우선순위를 재평가합니다.
                                     필요하다면 커리어 전환도 고려합니다.
                                 </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="bg-white border border-indigo-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-indigo-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>주 3일 이상 수면·식사·기상이 불규칙하다</li>
+                            <li>자주 가슴이 두근거리거나 긴장이 오래 지속된다</li>
+                            <li>집중력 저하/짜증/무기력이 2주 이상 이어진다</li>
+                        </ul>
+                        <p className="text-sm text-indigo-700">2점 이상이면 수면·카페인 컷오프, 1시간 3분 움직임, 하루 5분 호흡/명상을 2주간 우선 적용하고 개선 없으면 상담을 권장합니다.</p>
+                    </section>
+
+                    <section className="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Info className="w-5 h-5 text-indigo-600" />
+                            FAQ
+                        </h3>
+                        <div className="space-y-3 text-base text-gray-800 leading-relaxed">
+                            <div>
+                                <p className="font-semibold">Q. 시간이 없을 때 최소 무엇부터 하나요?</p>
+                                <p>1) 수면·기상 시간 고정 2) 오후 카페인 컷오프 3) 하루 두 번 5분 호흡/스트레칭을 우선 적용하세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 번아웃이 의심되는데 휴가가 어렵습니다.</p>
+                                <p>업무·가사량을 1~2주만 20~30% 줄이고, 야근/주말 업무를 끊는 것만으로도 회복 속도가 크게 다릅니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 불안/두근거림이 심하면?</p>
+                                <p>호흡·명상으로 진정 루틴을 먼저 적용하고, 증상이 지속되면 심장·갑상선·빈혈 검사를 포함한 진료를 권장합니다.</p>
                             </div>
                         </div>
                     </section>

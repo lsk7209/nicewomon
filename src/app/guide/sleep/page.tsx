@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Moon, Sun, Clock, Brain, Heart, AlertCircle } from "lucide-react";
+import { ContentWithToc } from "@/components/layout/ContentWithToc";
+import { Moon, Sun, Clock, Brain, Heart, AlertCircle, NotebookPen, Info } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "수면 가이드 - 숙면을 위한 과학적 방법 | 나이스우먼",
@@ -12,6 +13,16 @@ export const metadata: Metadata = {
 };
 
 export default function SleepGuidePage() {
+    const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
+        { id: "importance", label: "왜 수면이 중요한가" },
+        { id: "cycle", label: "수면 주기" },
+        { id: "hygiene", label: "수면 위생" },
+        { id: "insomnia", label: "불면증 대처" },
+        { id: "selfcheck", label: "자가 체크" },
+        { id: "faq", label: "FAQ" },
+    ];
+
     return (
         <div className="bg-gradient-to-b from-blue-50 via-white to-blue-50 min-h-screen">
             <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
@@ -25,12 +36,35 @@ export default function SleepGuidePage() {
                         수면 가이드
                     </h1>
 
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                        과학적 근거 기반의 수면 개선 방법으로
-                        <br />
-                        <strong className="text-gray-800">깊고 편안한 숙면</strong>을 경험하세요
+                    <p className="text-lg text-gray-800 leading-relaxed">
+                        과학적 근거 기반의 수면 개선 방법을 요약했습니다. AEO 한눈에 보기, 자가 체크, FAQ를 먼저 확인하고 바로 적용해보세요.
                     </p>
                 </header>
+
+                <ContentWithToc items={tocItems}>
+                    <section id="summary" className="bg-white border border-blue-100 rounded-2xl p-6 space-y-3">
+                        <h2 className="text-2xl font-bold text-gray-900">한눈에 보기</h2>
+                        <div className="grid md:grid-cols-3 gap-3 text-base text-gray-900 leading-relaxed">
+                            <Card className="border border-blue-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-blue-700 uppercase">루틴</p>
+                                    <p>기상·취침 시간 고정, 아침 햇빛 30분, 오후 2시 이후 카페인 컷오프</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-blue-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-blue-700 uppercase">환경</p>
+                                    <p>18~20도, 어둡고 조용한 침실, 블루라이트·LED 가리기, 편안한 매트리스</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border border-blue-100">
+                                <CardContent className="pt-4 space-y-1">
+                                    <p className="text-xs font-semibold text-blue-700 uppercase">대처</p>
+                                    <p>15분 이상 깨어 있으면 일어나기, 낮잠 20분/15시 이전, 수면일지+수면 제한/자극조절 활용</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
 
                 <div className="prose prose-lg max-w-none space-y-12">
                     {/* 수면의 중요성 */}
@@ -80,7 +114,7 @@ export default function SleepGuidePage() {
 
                             <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-lg">
                                 <p className="font-bold text-amber-900 mb-2">수면 부족의 위험</p>
-                                <ul className="space-y-1 text-sm text-gray-700">
+                                <ul className="space-y-1 text-base text-gray-800 leading-relaxed">
                                     <li>• 만성 피로, 집중력 저하</li>
                                     <li>• 우울증, 불안 장애 위험 증가</li>
                                     <li>• 비만, 당뇨병 위험 증가</li>
@@ -105,23 +139,23 @@ export default function SleepGuidePage() {
                             </p>
 
                             <div className="space-y-4">
-                                <div className="bg-white p-6 rounded-xl shadow-sm">
-                                    <h3 className="font-bold text-indigo-800 mb-3">1단계: 얕은 수면</h3>
-                                    <p className="text-sm text-gray-700">
-                                        잠들기 시작하는 단계. 쉽게 깰 수 있으며, 근육이 이완되기 시작합니다.
-                                    </p>
-                                </div>
+                            <div className="bg-white p-6 rounded-xl shadow-sm">
+                                <h3 className="font-bold text-indigo-800 mb-3">1단계: 얕은 수면</h3>
+                                <p className="text-base text-gray-800 leading-relaxed">
+                                    잠들기 시작하는 단계. 쉽게 깰 수 있으며, 근육이 이완되기 시작합니다.
+                                </p>
+                            </div>
 
                                 <div className="bg-white p-6 rounded-xl shadow-sm">
                                     <h3 className="font-bold text-blue-800 mb-3">2단계: 가벼운 수면</h3>
-                                    <p className="text-sm text-gray-700">
+                                    <p className="text-base text-gray-800 leading-relaxed">
                                         체온이 떨어지고 심박수가 느려집니다. 전체 수면의 약 50%를 차지합니다.
                                     </p>
                                 </div>
 
                                 <div className="bg-white p-6 rounded-xl shadow-sm">
                                     <h3 className="font-bold text-purple-800 mb-3">3~4단계: 깊은 수면 (서파 수면)</h3>
-                                    <p className="text-sm text-gray-700">
+                                    <p className="text-base text-gray-800 leading-relaxed">
                                         가장 깊은 수면 단계. 신체 회복, 면역력 강화, 성장 호르몬 분비가 일어납니다.
                                         이 단계에서 깨면 매우 피곤함을 느낍니다.
                                     </p>
@@ -129,7 +163,7 @@ export default function SleepGuidePage() {
 
                                 <div className="bg-white p-6 rounded-xl shadow-sm">
                                     <h3 className="font-bold text-rose-800 mb-3">렘(REM) 수면</h3>
-                                    <p className="text-sm text-gray-700">
+                                    <p className="text-base text-gray-800 leading-relaxed">
                                         꿈을 꾸는 단계. 뇌가 활발히 활동하며 기억을 정리하고 학습을 강화합니다.
                                         눈이 빠르게 움직이고 근육은 이완됩니다.
                                     </p>
@@ -153,25 +187,25 @@ export default function SleepGuidePage() {
                                 <div className="grid md:grid-cols-2 gap-4">
                                     <div className="bg-blue-50 p-4 rounded-lg">
                                         <p className="font-bold mb-2">🌡️ 온도</p>
-                                        <p className="text-sm text-gray-700">
+                                        <p className="text-base text-gray-800 leading-relaxed">
                                             18~20도가 이상적입니다. 너무 덥거나 추우면 수면을 방해합니다.
                                         </p>
                                     </div>
                                     <div className="bg-blue-50 p-4 rounded-lg">
                                         <p className="font-bold mb-2">🌑 어둠</p>
-                                        <p className="text-sm text-gray-700">
+                                        <p className="text-base text-gray-800 leading-relaxed">
                                             암막 커튼 사용, 전자기기 LED 가리기. 빛은 멜라토닌 분비를 억제합니다.
                                         </p>
                                     </div>
                                     <div className="bg-blue-50 p-4 rounded-lg">
                                         <p className="font-bold mb-2">🔇 조용함</p>
-                                        <p className="text-sm text-gray-700">
+                                        <p className="text-base text-gray-800 leading-relaxed">
                                             귀마개 사용 또는 백색 소음 활용. 갑작스러운 소음을 차단합니다.
                                         </p>
                                     </div>
                                     <div className="bg-blue-50 p-4 rounded-lg">
                                         <p className="font-bold mb-2">🛏️ 편안함</p>
-                                        <p className="text-sm text-gray-700">
+                                        <p className="text-base text-gray-800 leading-relaxed">
                                             편안한 매트리스와 베개. 침구는 청결하게 유지합니다.
                                         </p>
                                     </div>
@@ -183,7 +217,7 @@ export default function SleepGuidePage() {
                                     수면 루틴
                                 </h3>
                                 <div className="bg-purple-50 p-6 rounded-lg">
-                                    <ul className="space-y-3 text-gray-700">
+                                    <ul className="space-y-3 text-gray-800 text-base leading-relaxed">
                                         <li className="flex items-start gap-2">
                                             <Clock className="w-5 h-5 text-purple-600 flex-shrink-0 mt-1" />
                                             <span><strong>규칙적인 시간:</strong> 주말에도 같은 시간에 자고 일어나기</span>
@@ -205,7 +239,7 @@ export default function SleepGuidePage() {
                                     피해야 할 것들
                                 </h3>
                                 <div className="bg-rose-50 p-6 rounded-lg">
-                                    <ul className="space-y-3 text-gray-700">
+                                    <ul className="space-y-3 text-gray-800 text-base leading-relaxed">
                                         <li className="flex items-start gap-2">
                                             <AlertCircle className="w-5 h-5 text-rose-600 flex-shrink-0 mt-1" />
                                             <span><strong>카페인:</strong> 오후 2시 이후 섭취 금지 (반감기 5~6시간)</span>
@@ -357,6 +391,40 @@ export default function SleepGuidePage() {
                                 <strong>주의:</strong> 수면제는 단기적 해결책일 뿐입니다.
                                 근본적인 수면 위생 개선이 우선이며, 약물 복용 전 반드시 전문의와 상담하세요.
                             </p>
+                        </div>
+                    </section>
+
+                    <section id="selfcheck" className="bg-white border border-blue-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <NotebookPen className="w-5 h-5 text-blue-600" />
+                            자가 체크 (0~3점)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-800 text-base leading-relaxed space-y-1">
+                            <li>취침 후 20분 이상 자주 뒤척이거나, 새벽 각성이 잦다</li>
+                            <li>주말과 평일 취침·기상 시간이 2시간 이상 차이난다</li>
+                            <li>오후 늦게까지 카페인/스크린 사용을 줄이지 못한다</li>
+                        </ul>
+                        <p className="text-sm text-blue-700">2점 이상이면 2주간 고정 기상·카페인 컷오프·침상 분리(15분 규칙)를 우선 적용하고, 필요 시 수면일지·수면 제한을 병행하세요.</p>
+                    </section>
+
+                    <section id="faq" className="bg-blue-50 border border-blue-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <Info className="w-5 h-5 text-blue-600" />
+                            FAQ
+                        </h3>
+                        <div className="space-y-3 text-base text-gray-800 leading-relaxed">
+                            <div>
+                                <p className="font-semibold">Q. 누워서 20분 넘게 못 자면 어떻게 하나요?</p>
+                                <p>15~20분 이상 깨어 있으면 일어나 조용한 공간에서 독서/호흡 후 졸릴 때 다시 누우세요. 침대=잠의 연합을 강화합니다.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 낮잠은 어느 정도까지 괜찮을까요?</p>
+                                <p>필요 시 20분 이내, 오후 3시 이전으로 제한합니다. 불면이 지속될 때는 낮잠을 일시 중단하세요.</p>
+                            </div>
+                            <div>
+                                <p className="font-semibold">Q. 카페인 컷오프는 몇 시가 적당한가요?</p>
+                                <p>일반적으로 오후 2시를 권장합니다. 민감하면 더 이른 시간(12~13시)에 컷오프하세요.</p>
+                            </div>
                         </div>
                     </section>
 
