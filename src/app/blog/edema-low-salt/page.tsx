@@ -21,9 +21,11 @@ export default function EdemaLowSaltPost() {
     ];
 
     const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
         { id: "actions", label: "핵심 행동" },
         { id: "foods", label: "칼륨 식품" },
         { id: "routine", label: "순환 루틴" },
+        { id: "faq", label: "FAQ" },
     ];
 
     return (
@@ -61,6 +63,14 @@ export default function EdemaLowSaltPost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
+                    <section id="summary" className="bg-emerald-50 border border-emerald-100 rounded-2xl p-6 space-y-2">
+                        <p className="text-sm font-semibold text-emerald-700">핵심 요약</p>
+                        <p className="text-gray-800">
+                            하루 나트륨 2000mg 이하(소금 약 5g), 국물은 건더기 위주, 칼륨 식품을 곁들이고 걷기·종아리 펌핑으로
+                            순환을 돕는 것이 부종 완화의 핵심입니다.
+                        </p>
+                    </section>
+
                     <section id="actions" className="bg-white rounded-2xl shadow-sm border border-emerald-100 p-6 space-y-3">
                         <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                             <Droplets className="w-6 h-6 text-emerald-600" />
@@ -88,12 +98,22 @@ export default function EdemaLowSaltPost() {
 
                     <section id="routine" className="bg-emerald-50 border border-emerald-100 rounded-2xl p-6 space-y-2">
                         <h3 className="text-xl font-bold text-emerald-900 flex items-center gap-2">
-                            <Activity className="w-5 h-5" />
+                            <Activity className="w-5 h-5 text-emerald-700" />
                             순환을 돕는 루틴
                         </h3>
                         <p className="text-gray-700 text-sm">
                             식후 10분 걷기, 취침 전 종아리·발목 펌핑 스트레칭 5분. 장시간 앉아있다면 1시간마다 일어나 2~3분 걷기.
                         </p>
+                    </section>
+
+                    <section id="faq" className="space-y-4">
+                        <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. 저염 간을 어떻게 맞출까?</p>
+                            <p>A. 소금 대신 허브·후추·레몬·식초를 활용하고, 국물 대신 건더기 위주로 먹으며 간장은 찍어 먹는 형태로 줄입니다.</p>
+                            <p className="font-semibold">Q. 물은 줄여야 하나?</p>
+                            <p>A. 대부분은 충분한 수분 섭취가 필요합니다. 물을 과도하게 제한하기보다 나트륨을 줄이고 움직임을 늘리는 편이 안전합니다.</p>
+                        </div>
                     </section>
                     </div>
                 </div>

@@ -17,6 +17,15 @@ export default function PmsGuidePage() {
         { title: "황체기 (배란 후~월경 전)", tips: ["정제탄수·당류 줄이고 단백질/섬유 늘리기", "마그네슘·비타민B6 고려", "수면 7~8시간 확보"] },
     ];
 
+    const tocItems = [
+        { id: "summary", label: "핵심 요약" },
+        { id: "phases", label: "주기별 루틴" },
+        { id: "food", label: "식단 팁" },
+        { id: "mood", label: "기분 관리" },
+        { id: "check", label: "자가 체크리스트" },
+        { id: "faq", label: "FAQ" },
+    ];
+
     return (
         <div className="bg-gradient-to-b from-indigo-50 via-white to-indigo-50 min-h-screen">
             <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
@@ -34,7 +43,15 @@ export default function PmsGuidePage() {
                 </header>
 
                 <div className="prose prose-lg max-w-none space-y-10">
-                    <section className="grid md:grid-cols-2 gap-6">
+                    <section id="summary" className="bg-white rounded-2xl shadow-lg p-8 border border-indigo-100 space-y-3">
+                        <p className="text-sm font-semibold text-indigo-700">핵심 요약</p>
+                        <p className="text-gray-800">
+                            PMS/PMDD 완화의 핵심은 혈당 안정(식사 순서·간격), 카페인·알코올 컷오프, 수면 7~8h,
+                            마그네슘·비타민B6 보충 고려, 그리고 스트레스 감속 루틴입니다.
+                        </p>
+                    </section>
+
+                    <section id="phases" className="grid md:grid-cols-2 gap-6">
                         {phases.map((phase) => (
                             <Card key={phase.title} className="border-l-4 border-indigo-500 h-full">
                                 <CardHeader>
@@ -49,7 +66,7 @@ export default function PmsGuidePage() {
                         ))}
                     </section>
 
-                    <section className="bg-white rounded-2xl shadow-lg p-8 border border-indigo-100 space-y-4">
+                    <section id="food" className="bg-white rounded-2xl shadow-lg p-8 border border-indigo-100 space-y-4">
                         <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                             <Utensils className="w-6 h-6 text-indigo-600" />
                             식단 팁
@@ -61,7 +78,7 @@ export default function PmsGuidePage() {
                         </ul>
                     </section>
 
-                    <section className="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 space-y-2">
+                    <section id="mood" className="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 space-y-2">
                         <h3 className="text-xl font-bold text-indigo-900 flex items-center gap-2">
                             <Brain className="w-5 h-5" />
                             기분 관리 루틴
@@ -69,6 +86,16 @@ export default function PmsGuidePage() {
                         <p className="text-gray-700 text-sm">
                             10분 호흡·명상, 20분 걷기/스트레칭을 매일 반복하세요. 증상이 심한 날에는 일정·미팅을 최소화하고 휴식을 우선합니다.
                         </p>
+                    </section>
+
+                    <section id="check" className="bg-white rounded-2xl shadow p-6 border border-indigo-100 space-y-2">
+                        <h3 className="text-xl font-bold text-indigo-900">자가 체크리스트</h3>
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
+                            <li>카페인 14시 컷오프, 알코올 주 2회 이하</li>
+                            <li>식사 간격 3~4시간, 식후 10분 걷기</li>
+                            <li>주 5일 20분 이상 운동, 수면 7~8h 확보</li>
+                            <li>증상·식단·수면을 2~3주 기록해 패턴 파악</li>
+                        </ul>
                     </section>
 
                     <section className="bg-white rounded-2xl shadow p-6 border border-indigo-100 space-y-2">
@@ -79,6 +106,16 @@ export default function PmsGuidePage() {
                         <p className="text-gray-700 text-sm">
                             일상 기능이 떨어질 정도의 우울·분노, 심한 통증, 불면이 2주 이상 지속된다면 산부인과/정신건강의학과 상담이 필요합니다.
                         </p>
+                    </section>
+
+                    <section id="faq" className="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-indigo-900">FAQ</h3>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. 카페인을 줄이면 두통이 올 때?</p>
+                            <p>A. 1~2주에 걸쳐 점진적으로 감량하고, 물 섭취를 늘리며 디카페인·허브티로 대체하면 금단 두통을 줄일 수 있습니다.</p>
+                            <p className="font-semibold">Q. 보충제는 무엇을 고려할까?</p>
+                            <p>A. 마그네슘, 비타민B6가 일부 연구에서 도움을 보였으나, 복용 전 복약·질환 여부를 의료진과 상의하세요.</p>
+                        </div>
                     </section>
                 </div>
 

@@ -19,6 +19,14 @@ export default function JetlagMinimizePlanPost() {
         { title: "도착 후 1~2일", detail: "현지 아침 햇빛 20분, 첫날 낮잠은 20~30분 이내로 제한, 저녁 카페인·알코올 회피." },
     ];
 
+    const tocItems = [
+        { id: "summary", label: "핵심 요약" },
+        { id: "plan", label: "3단계 플랜" },
+        { id: "timing", label: "빛·식사·수면 타이밍" },
+        { id: "checklist", label: "체크리스트" },
+        { id: "faq", label: "FAQ" },
+    ];
+
     return (
         <div className="bg-gradient-to-b from-purple-50 via-white to-purple-50 min-h-screen">
             <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
@@ -49,13 +57,14 @@ export default function JetlagMinimizePlanPost() {
                     </p>
                 </header>
 
-                <ContentWithToc>
+                <ContentWithToc items={tocItems}>
                     <section id="summary" className="bg-white border border-purple-100 rounded-2xl p-6">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">핵심 요약</h2>
                         <ul className="list-disc pl-5 text-gray-700 space-y-1">
                             <li>출발 전 2~3일: 취침/기상 60~90분씩 이동</li>
                             <li>현지 아침 빛 20분, 저녁엔 밝은 조명·스크린 최소화</li>
                             <li>첫날 낮잠 20~30분, 카페인·알코올은 저녁에 피하기</li>
+                            <li>비행 중 물 충분히, 카페인은 목적지 오전/점심 시간대만</li>
                         </ul>
                     </section>
 
@@ -81,6 +90,27 @@ export default function JetlagMinimizePlanPost() {
                             <li>식사: 현지 아침/점심/저녁 시간에 맞춰 즉시 조정</li>
                             <li>수면: 첫날 총량이 부족해도 20~30분 낮잠만, 밤 수면을 먼저 확보</li>
                         </ul>
+                    </section>
+
+                    <section id="checklist" className="bg-white border border-purple-100 rounded-2xl p-6 space-y-2">
+                        <h3 className="text-xl font-bold text-gray-900">체크리스트</h3>
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
+                            <li>출발 3일 전부터 취침/기상 60~90분씩 이동</li>
+                            <li>현지 아침 첫 2시간 안에 햇빛 20분</li>
+                            <li>카페인 컷오프: 현지 13~14시</li>
+                            <li>첫날 낮잠 20~30분 1회 이하, 알코올 회피</li>
+                            <li>저녁 식사: 취침 3시간 전 마감</li>
+                        </ul>
+                    </section>
+
+                    <section id="faq" className="space-y-4">
+                        <h3 className="text-2xl font-bold text-gray-900">FAQ</h3>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. 동→서/서→동 어디에 더 힘든가?</p>
+                            <p>A. 동→서가 상대적으로 쉬우며, 서→동은 아침 빛 노출과 취침 3시간 전 식사 마감이 특히 중요합니다.</p>
+                            <p className="font-semibold">Q. 수면제나 멜라토닌은?</p>
+                            <p>A. 필요 시 단기 사용을 의료진과 상의하세요. 타이밍은 현지 취침 1~2시간 전에 맞추는 것이 일반적입니다.</p>
+                        </div>
                     </section>
                 </ContentWithToc>
 

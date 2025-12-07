@@ -14,9 +14,12 @@ export const metadata: Metadata = {
 
 export default function LowFodmapIntroPost() {
     const tocItems = [
+        { id: "summary", label: "핵심 요약" },
         { id: "what", label: "저 FODMAP이란?" },
         { id: "foods", label: "먹어도 되는 것/피할 것" },
         { id: "reintro", label: "재도입 단계" },
+        { id: "sample", label: "샘플 3일 식단" },
+        { id: "faq", label: "FAQ" },
     ];
 
     const allow = ["쌀, 감자, 오트", "바나나, 블루베리, 딸기", "당근, 오이, 시금치", "라이스 누들, 글루텐 프리 빵"];
@@ -57,6 +60,14 @@ export default function LowFodmapIntroPost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
+                        <section id="summary" className="bg-lime-50 border border-lime-100 rounded-2xl p-6 space-y-2">
+                            <p className="text-sm font-semibold text-lime-700">핵심 요약</p>
+                            <p className="text-gray-800">
+                                2~6주 저 FODMAP으로 증상을 가라앉힌 뒤, 식품군별로 3일씩 소량 재도입하며 개인 허용치를 찾습니다.
+                                양파·마늘·밀·우유가 흔한 트리거이며, 레이블에서 이들을 우선 확인하세요.
+                            </p>
+                        </section>
+
                         <section id="what">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">저 FODMAP이란?</h2>
                             <p className="text-gray-700">발효성 당을 줄여 장내 가스 생성을 낮추는 식사법입니다. 2~6주 제한 후 식품군별로 재도입합니다.</p>
@@ -87,6 +98,25 @@ export default function LowFodmapIntroPost() {
                                     <p>• 식단·증상을 기록해 개인 허용 범위를 찾기</p>
                                 </CardContent>
                             </Card>
+                        </section>
+
+                        <section id="sample" className="bg-white border border-lime-100 rounded-2xl p-6 space-y-2">
+                            <h2 className="text-2xl font-bold text-gray-900">샘플 3일 식단 (저 FODMAP)</h2>
+                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <li>Day1: 아침 오트+블루베리, 점심 쌀국수+닭가슴살, 저녁 연어+감자+시금치</li>
+                                <li>Day2: 아침 스크램블에그+토마토, 점심 현미+닭가슴살+오이, 저녁 두부스테이크+당근</li>
+                                <li>Day3: 아침 라이스케이크+땅콩버터, 점심 김 없는 주먹밥+채소, 저녁 흰살생선+주키니</li>
+                            </ul>
+                        </section>
+
+                        <section id="faq" className="space-y-4">
+                            <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                            <div className="space-y-2 text-sm text-gray-700">
+                                <p className="font-semibold">Q. 양파·마늘을 완전히 빼야 할까?</p>
+                                <p>A. 제거 단계에서는 가급적 제외하고, 재도입 시 1작은술 → 1큰술처럼 양을 단계적으로 늘리며 증상을 기록하세요.</p>
+                                <p className="font-semibold">Q. 프로바이오틱스는 도움이 될까?</p>
+                                <p>A. 일부에게 도움이 될 수 있으나, 증상이 변하면 중단 후 의료진 상담이 안전합니다.</p>
+                            </div>
                         </section>
                     </div>
                 </div>

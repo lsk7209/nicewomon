@@ -19,6 +19,15 @@ export default function PelvicFloorCareGuide() {
         { title: "호흡과 자세", detail: "들이쉴 때 이완, 내쉴 때 수축. 복부 힘 과도 사용, 엉덩이·허벅지 긴장 주의." },
     ];
 
+    const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
+        { id: "steps", label: "10분 루틴" },
+        { id: "progress", label: "난이도 올리기" },
+        { id: "caution", label: "주의사항" },
+        { id: "reminder", label: "알림 팁" },
+        { id: "faq", label: "FAQ" },
+    ];
+
     return (
         <div className="bg-gradient-to-b from-rose-50 via-white to-rose-50 min-h-screen">
             <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
@@ -49,7 +58,15 @@ export default function PelvicFloorCareGuide() {
                     </p>
                 </header>
 
-                <ContentWithToc>
+                <ContentWithToc items={tocItems}>
+                    <section id="summary" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-2">
+                        <p className="text-sm font-semibold text-rose-700">핵심 요약</p>
+                        <p className="text-gray-800">
+                            올바른 수축 감각(질·항문 동시 수축 3초/이완 3초), 하루 10분 루틴, 호흡 동기화(내쉴 때 수축),
+                            알림 3회 설정이 꾸준함을 좌우합니다. 통증·출혈 시 중단하고 진료를 권장합니다.
+                        </p>
+                    </section>
+
                     <section id="steps" className="bg-white border border-rose-100 rounded-2xl p-6">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">10분 루틴</h2>
                         <ul className="space-y-2 text-gray-700">
@@ -59,6 +76,18 @@ export default function PelvicFloorCareGuide() {
                                     <span className="text-sm">{s.detail}</span>
                                 </li>
                             ))}
+                        </ul>
+                    </section>
+
+                    <section id="progress" className="bg-rose-50 border border-rose-100 rounded-2xl p-6 space-y-2">
+                        <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <ShieldCheck className="w-5 h-5 text-rose-600" />
+                            난이도 올리기 (2~4주 후)
+                        </h3>
+                        <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <li>수축 5초/이완 5초로 증가, 10회 × 3세트</li>
+                            <li>자세 다양화: 서서 한쪽 다리 살짝 들기, 브리지 자세</li>
+                            <li>코어·둔근 약화 시, 플랭크·힙힌지 2~3세트 추가</li>
                         </ul>
                     </section>
 
@@ -83,6 +112,16 @@ export default function PelvicFloorCareGuide() {
                             <li>책상/침실에 짧은 메모 부착</li>
                             <li>앉기 전/후 1세트, 샤워 전 1세트 습관화</li>
                         </ul>
+                    </section>
+
+                    <section id="faq" className="space-y-4">
+                        <h3 className="text-2xl font-bold text-gray-900">FAQ</h3>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. 임신 중에도 할 수 있나요?</p>
+                            <p>A. 일반적으로 안전하나, 고위험 임신/합병증이 있다면 반드시 의료진과 상의 후 진행하세요.</p>
+                            <p className="font-semibold">Q. 효과는 언제 느껴질까?</p>
+                            <p>A. 4~8주 꾸준히 하면 기침·재채기 시 요실금 개선을 느끼는 경우가 많습니다. 루틴과 알림을 유지하세요.</p>
+                        </div>
                     </section>
                 </ContentWithToc>
 
