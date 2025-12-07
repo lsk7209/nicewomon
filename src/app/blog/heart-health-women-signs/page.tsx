@@ -25,6 +25,14 @@ export default function HeartHealthWomenSignsPost() {
         "염분 1일 5g 미만, 포화지방·트랜스지방 줄이고 식이섬유 늘리기",
     ];
 
+    const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
+        { id: "warning", label: "경고 신호" },
+        { id: "prevention", label: "생활 관리" },
+        { id: "checks", label: "자가 체크" },
+        { id: "faq", label: "FAQ" },
+    ];
+
     return (
         <div className="bg-gradient-to-b from-red-50 via-white to-red-50 min-h-screen">
             <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
@@ -55,7 +63,15 @@ export default function HeartHealthWomenSignsPost() {
                     </p>
                 </header>
 
-                <ContentWithToc>
+                <ContentWithToc items={tocItems}>
+                    <section id="summary" className="bg-white border border-red-100 rounded-2xl p-6 space-y-2">
+                        <p className="text-sm font-semibold text-red-700">핵심 요약</p>
+                        <p className="text-gray-800">
+                            여성 심혈관은 비전형 증상이 흔합니다. 턱/등/소화불량형 통증, 설명 안 되는 숨참·피로가 경고 신호입니다.
+                            연 1회 혈압·혈당·지질, WHtR 0.5 미만, 염분 5g 미만, 주 150분 유산소+근력 2회를 기본으로 관리하세요.
+                        </p>
+                    </section>
+
                     <section id="warning" className="bg-white border border-red-100 rounded-2xl p-6">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">경고 신호</h2>
                         <ul className="list-disc pl-5 text-gray-700 space-y-1">
@@ -88,6 +104,16 @@ export default function HeartHealthWomenSignsPost() {
                             <li>허리둘레/신장 비율 0.5 이상인가?</li>
                             <li>주 150분 유산소·주 2회 근력이 유지되고 있는가?</li>
                         </ul>
+                    </section>
+
+                    <section id="faq" className="space-y-4">
+                        <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. 가슴 통증이 없는데도 심장 문제가 있을 수 있나요?</p>
+                            <p>A. 여성은 소화불량·피로·호흡곤란 등 비전형 증상이 흔합니다. 의심되면 지체 없이 진료를 받으세요.</p>
+                            <p className="font-semibold">Q. 운동 강도는 어떻게 시작할까?</p>
+                            <p>A. 주 150분 중강도(빠른 걷기)부터 시작해, 증상 없으면 인터벌/근력을 추가하세요.</p>
+                        </div>
                     </section>
                 </ContentWithToc>
 

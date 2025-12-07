@@ -14,9 +14,12 @@ export const metadata: Metadata = {
 
 export default function IronSupplementTimingPost() {
     const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
         { id: "why", label: "타이밍이 중요한 이유" },
         { id: "timing", label: "복용 시간·방법" },
         { id: "avoid", label: "함께 피해야 할 것" },
+        { id: "checklist", label: "체크리스트" },
+        { id: "faq", label: "FAQ" },
     ];
 
     return (
@@ -54,6 +57,14 @@ export default function IronSupplementTimingPost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
+                        <section id="summary" className="bg-white border border-amber-100 rounded-2xl p-6 space-y-2">
+                            <p className="text-sm font-semibold text-amber-700">핵심 요약</p>
+                            <p className="text-gray-800">
+                                아침 공복 또는 취침 2~3시간 전, 비타민C와 함께, 카페인·유제품·멀티미네랄과는 2시간 이상 간격을 둡니다.
+                                하루 2회라면 8~12시간 간격으로 나눠 복용하세요.
+                            </p>
+                        </section>
+
                         <section id="why">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">타이밍이 중요한 이유</h2>
                             <p className="text-gray-700">철분은 위산이 충분할 때, 경쟁하는 미네랄 없이 섭취해야 흡수가 잘 됩니다.</p>
@@ -79,6 +90,26 @@ export default function IronSupplementTimingPost() {
                                     <p>• 멀티미네랄(칼슘·아연 포함)과 동시 복용</p>
                                 </CardContent>
                             </Card>
+                        </section>
+
+                        <section id="checklist" className="bg-amber-50 border border-amber-100 rounded-2xl p-6 space-y-2">
+                            <h2 className="text-2xl font-bold text-gray-900">체크리스트</h2>
+                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <li>복용 시간: 공복 아침 또는 취침 2~3시간 전</li>
+                                <li>동시 복용 피하기: 커피/차, 유제품, 멀티미네랄</li>
+                                <li>비타민C와 함께, 필요 시 8~12시간 간격 2회 분할</li>
+                                <li>복부 불편 시 소량 식사와 복용 후, 커피/유제품은 2시간 뒤</li>
+                            </ul>
+                        </section>
+
+                        <section id="faq" className="space-y-4">
+                            <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                            <div className="space-y-2 text-sm text-gray-700">
+                                <p className="font-semibold">Q. 위장 불편이 심하면?</p>
+                                <p>A. 식후 30분에 복용하거나, 용량을 반으로 나눠 하루 2회로 분할해 보세요. 지속되면 의료진과 상의가 필요합니다.</p>
+                                <p className="font-semibold">Q. 다른 영양제와 함께 먹어도 될까?</p>
+                                <p>A. 칼슘·아연이 있는 멀티미네랄, 커피/차, 유제품과는 2시간 이상 간격을 두는 것이 안전합니다.</p>
+                            </div>
                         </section>
                     </div>
                 </div>

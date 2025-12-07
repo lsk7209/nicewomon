@@ -25,6 +25,15 @@ export default function HrvMonitoringGuide() {
         { title: "조정", detail: "HRV 하락 시 수면 우선·카페인 컷·저강도 운동으로 회복일을 만듭니다." },
     ];
 
+    const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
+        { id: "uses", label: "HRV 활용 포인트" },
+        { id: "steps", label: "3단계 운영" },
+        { id: "ranges", label: "수치 이해" },
+        { id: "caution", label: "해석 시 유의" },
+        { id: "faq", label: "FAQ" },
+    ];
+
     return (
         <div className="bg-gradient-to-b from-indigo-50 via-white to-indigo-50 min-h-screen">
             <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
@@ -55,7 +64,15 @@ export default function HrvMonitoringGuide() {
                     </p>
                 </header>
 
-                <ContentWithToc>
+                <ContentWithToc items={tocItems}>
+                    <section id="summary" className="bg-white border border-indigo-100 rounded-2xl p-6 space-y-2">
+                        <p className="text-sm font-semibold text-indigo-700">핵심 요약</p>
+                        <p className="text-gray-800">
+                            HRV는 개인 베이스라인 대비 상승/하락을 보는 지표입니다. 아침 고정 시간·동일 기기 측정, 하락 시 수면·카페인·운동 강도를
+                            조정해 회복일을 만들고, 급격한 하락이 반복되면 휴식과 의료 상담을 고려하세요.
+                        </p>
+                    </section>
+
                     <section id="uses" className="bg-white border border-indigo-100 rounded-2xl p-6">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">HRV 활용 포인트</h2>
                         <ul className="list-disc pl-5 text-gray-700 space-y-1">
@@ -90,6 +107,24 @@ export default function HrvMonitoringGuide() {
                             <li>수면 시간·품질이 낮으면 HRV가 왜곡될 수 있습니다.</li>
                             <li>감염·질병, 음주 후 일시적 하락은 회복일로 전환하세요.</li>
                         </ul>
+                    </section>
+
+                    <section id="ranges" className="bg-white border border-indigo-100 rounded-2xl p-6 space-y-2">
+                        <h3 className="text-2xl font-bold text-gray-900">수치 이해</h3>
+                        <p className="text-gray-700 text-sm">
+                            개인마다 절대값이 다르므로 “내 베이스라인 대비 변화”가 중요합니다. 일반적으로 아침 RMSSD가 평소 대비 10~20% 이상
+                            하락하면 회복일을 고려하고, 연속 상승 시 강도를 서서히 올릴 수 있습니다.
+                        </p>
+                    </section>
+
+                    <section id="faq" className="space-y-4">
+                        <h3 className="text-2xl font-bold text-gray-900">FAQ</h3>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. 낮 동안 측정값은 어떻게 쓰나요?</p>
+                            <p>A. 패턴만 참고하고, 의사결정은 아침 고정 시점 기준으로 합니다. 낮 측정은 급격한 스트레스/과훈련 알림 정도로 활용하세요.</p>
+                            <p className="font-semibold">Q. 생리 주기와 HRV?</p>
+                            <p>A. 황체기에 HRV가 일시 하락할 수 있습니다. 주기 정보를 기록해 변화를 구분하면 해석이 쉬워집니다.</p>
+                        </div>
                     </section>
                 </ContentWithToc>
 

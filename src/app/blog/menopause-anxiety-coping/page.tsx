@@ -14,9 +14,12 @@ export const metadata: Metadata = {
 
 export default function MenopauseAnxietyCopingPost() {
     const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
         { id: "why", label: "불안이 커지는 이유" },
         { id: "techniques", label: "즉각 진정법" },
         { id: "sleep", label: "밤 불안 줄이기" },
+        { id: "checklist", label: "체크리스트" },
+        { id: "faq", label: "FAQ" },
     ];
 
     return (
@@ -54,6 +57,14 @@ export default function MenopauseAnxietyCopingPost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
+                        <section id="summary" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-2">
+                            <p className="text-sm font-semibold text-rose-700">핵심 요약</p>
+                            <p className="text-gray-800">
+                                낮: 카페인 13~14시 컷, 10분 호흡/걷기, 알림 최소화. 밤: 스크린 60분 차단, 온도 20~22도, 습도 45~55%, 코로 길게
+                                내쉬는 호흡. 불안이 일상 기능을 떨어뜨리면 전문 상담이 필요합니다.
+                            </p>
+                        </section>
+
                         <section id="why">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">왜 불안이 심해질까?</h2>
                             <p className="text-gray-700">호르몬 변동, 수면 부족, 카페인·알코올, 외부 스트레스가 겹칠 때 불안이 증폭됩니다.</p>
@@ -79,6 +90,26 @@ export default function MenopauseAnxietyCopingPost() {
                                     <p>• 가벼운 스트레칭과 코로 길게 내쉬는 호흡</p>
                                 </CardContent>
                             </Card>
+                        </section>
+
+                        <section id="checklist" className="bg-rose-50 border border-rose-100 rounded-2xl p-6 space-y-2">
+                            <h2 className="text-2xl font-bold text-gray-900">체크리스트</h2>
+                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <li>카페인 13~14시 컷, 알코올 취침 3시간 전 이후 금지</li>
+                                <li>스크린 60분 차단, 저조도 조명, 4-7-8/박스 호흡</li>
+                                <li>수면 7~8h, 규칙적 기상, 침실 20~22도</li>
+                                <li>불안·수면·카페인 기록을 1~2주 작성해 패턴 파악</li>
+                            </ul>
+                        </section>
+
+                        <section id="faq" className="space-y-4">
+                            <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                            <div className="space-y-2 text-sm text-gray-700">
+                                <p className="font-semibold">Q. 약 없이도 가능할까?</p>
+                                <p>A. 생활 조정과 인지행동적 전략으로 개선되는 경우가 많지만, 일상 기능 저하 시 전문 진료를 권장합니다.</p>
+                                <p className="font-semibold">Q. 밤에 깨어났을 때는?</p>
+                                <p>A. 핸드폰을 보지 말고, 조도를 낮춘 상태에서 4-7-8 호흡 4세트 후 다시 눕습니다. 20분 이상 잠 못 들면 짧은 독서 후 재시도하세요.</p>
+                            </div>
                         </section>
                     </div>
                 </div>
