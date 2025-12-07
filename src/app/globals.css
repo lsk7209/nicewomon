@@ -196,6 +196,14 @@
   }
 }
 
+/* TOC: disable sticky follow */
+@media (min-width: 768px) {
+  .md\:sticky {
+    position: static !important;
+    top: auto !important;
+  }
+}
+
 @keyframes slide-up {
   from {
     transform: translateY(20px);
