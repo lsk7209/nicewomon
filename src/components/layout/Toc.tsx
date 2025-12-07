@@ -18,7 +18,7 @@ export function Toc({ items, title = "목차" }: TocProps) {
   if (!items.length) return null;
 
   return (
-    <nav className="rounded-xl border border-gray-200 bg-white/80 p-4 shadow-sm">
+    <nav className="hidden md:block rounded-xl border border-gray-200 bg-white/80 p-4 shadow-sm max-h-[70vh] overflow-auto">
       <p className="text-sm font-semibold text-gray-800 mb-3">{title}</p>
       <ul className="space-y-2 text-sm text-gray-700">
         {items.map((item) => (
