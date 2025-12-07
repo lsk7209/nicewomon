@@ -19,6 +19,7 @@ export default function LowFodmapIntroPost() {
         { id: "foods", label: "먹어도 되는 것/피할 것" },
         { id: "reintro", label: "재도입 단계" },
         { id: "sample", label: "샘플 3일 식단" },
+        { id: "checklist", label: "체크리스트" },
         { id: "faq", label: "FAQ" },
     ];
 
@@ -106,6 +107,16 @@ export default function LowFodmapIntroPost() {
                                 <li>Day1: 아침 오트+블루베리, 점심 쌀국수+닭가슴살, 저녁 연어+감자+시금치</li>
                                 <li>Day2: 아침 스크램블에그+토마토, 점심 현미+닭가슴살+오이, 저녁 두부스테이크+당근</li>
                                 <li>Day3: 아침 라이스케이크+땅콩버터, 점심 김 없는 주먹밥+채소, 저녁 흰살생선+주키니</li>
+                            </ul>
+                        </section>
+
+                        <section id="checklist" className="bg-lime-50 border border-lime-100 rounded-2xl p-6 space-y-2">
+                            <h2 className="text-2xl font-bold text-gray-900">체크리스트</h2>
+                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <li>제거 단계 2~6주: 고FODMAP(양파·마늘·밀·우유·꿀) 엄격히 제한</li>
+                                <li>재도입: 식품군별 3일, 양을 단계적으로 증가시키며 증상 기록</li>
+                                <li>음식·증상 로그를 매일 작성해 허용 범위 파악</li>
+                                <li>프로바이오틱스/보충제는 증상 변하면 중단 후 상담</li>
                             </ul>
                         </section>
 

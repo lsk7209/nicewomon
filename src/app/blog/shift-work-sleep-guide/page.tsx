@@ -25,6 +25,15 @@ export default function ShiftWorkSleepGuidePost() {
         { q: "낮잠 길이는?", a: "근무 전 20분 파워냅, 퇴근 후 90분 코어 수면을 우선 확보하세요." },
     ];
 
+    const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
+        { id: "plan", label: "3단계 전환 계획" },
+        { id: "fuel", label: "카페인·식사 전략" },
+        { id: "schedule", label: "시간대별 스케줄 예시" },
+        { id: "checklist", label: "체크리스트" },
+        { id: "faq", label: "FAQ" },
+    ];
+
     return (
         <div className="bg-gradient-to-b from-slate-50 via-white to-slate-50 min-h-screen">
             <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
@@ -55,7 +64,7 @@ export default function ShiftWorkSleepGuidePost() {
                     </p>
                 </header>
 
-                <ContentWithToc>
+                <ContentWithToc items={tocItems}>
                     <section id="summary" className="bg-white border border-slate-200 rounded-2xl p-6">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">한눈에 보기</h2>
                         <ul className="space-y-2 text-gray-700">
@@ -87,6 +96,28 @@ export default function ShiftWorkSleepGuidePost() {
                             <li>카페인: 근무 시작 1~3시간 사이 분할, 종료 8시간 전 컷오프</li>
                             <li>식사: 근무 전 단백질+섬유, 근무 중 과당·지방 많은 간식 최소화</li>
                             <li>수분/전해질: 카페인 섭취 시 물 1:1, 긴 근무엔 전해질 소량</li>
+                        </ul>
+                    </section>
+
+                    <section id="schedule" className="bg-white border border-slate-200 rounded-2xl p-6 space-y-2">
+                        <h3 className="text-2xl font-bold text-gray-900">시간대별 스케줄 예시 (야간 근무)</h3>
+                        <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <li>근무 4~6h 전: 20분 파워냅, 가벼운 단백질 간식</li>
+                            <li>근무 시작~3h: 카페인 분할, 밝은 빛 노출</li>
+                            <li>근무 중반: 수분·전해질 보충, 가벼운 스트레칭</li>
+                            <li>근무 종료 8h 전 이후: 카페인 중단</li>
+                            <li>퇴근 직후: 햇빛 차단, 90분 코어 수면</li>
+                            <li>오후: 1~2시간 보충 수면, 저녁 전 가벼운 운동/걷기</li>
+                        </ul>
+                    </section>
+
+                    <section id="checklist" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-2">
+                        <h3 className="text-xl font-bold text-gray-900">체크리스트</h3>
+                        <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <li>전환 2~3일 전: 취침/기상 60~90분씩 이동 시작</li>
+                            <li>카페인 컷오프: 근무 종료 8시간 전</li>
+                            <li>퇴근 후 90분 수면 확보, 오후 보충 수면 1~2시간</li>
+                            <li>퇴근 직후부터 블랙아웃 커튼/아이마스크 사용</li>
                         </ul>
                     </section>
 

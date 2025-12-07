@@ -26,6 +26,8 @@ export default function EdemaLowSaltPost() {
         { id: "foods", label: "칼륨 식품" },
         { id: "routine", label: "순환 루틴" },
         { id: "faq", label: "FAQ" },
+        { id: "checklist", label: "체크리스트" },
+        { id: "sample", label: "샘플 하루 식단" },
     ];
 
     return (
@@ -104,6 +106,26 @@ export default function EdemaLowSaltPost() {
                         <p className="text-gray-700 text-sm">
                             식후 10분 걷기, 취침 전 종아리·발목 펌핑 스트레칭 5분. 장시간 앉아있다면 1시간마다 일어나 2~3분 걷기.
                         </p>
+                    </section>
+
+                    <section id="checklist" className="bg-white border border-emerald-100 rounded-2xl p-6 space-y-2">
+                        <h3 className="text-xl font-bold text-gray-900">체크리스트</h3>
+                        <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <li>나트륨: 하루 2000mg 이하(소금 약 5g) 목표</li>
+                            <li>국물: 1끼 3스푼 이내, 건더기 위주</li>
+                            <li>가공식품: 라벨 나트륨 %DV 확인, 고나트륨은 주 1~2회 이하</li>
+                            <li>걷기: 식후 10분, 총 30~40분/일</li>
+                        </ul>
+                    </section>
+
+                    <section id="sample" className="bg-emerald-50 border border-emerald-100 rounded-2xl p-6 space-y-2">
+                        <h3 className="text-xl font-bold text-gray-900">샘플 하루 식단 (저염·칼륨)</h3>
+                        <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <li>아침: 오트+바나나+견과, 달걀 1개</li>
+                            <li>점심: 현미 반공기 + 닭가슴살 + 시금치/브로콜리, 국물 맛만</li>
+                            <li>간식: 키위 1개, 무가당 요거트</li>
+                            <li>저녁: 연어/두부 + 구운 채소, 간은 허브·후추·레몬</li>
+                        </ul>
                     </section>
 
                     <section id="faq" className="space-y-4">

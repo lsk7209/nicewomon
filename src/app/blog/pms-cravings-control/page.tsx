@@ -14,9 +14,13 @@ export const metadata: Metadata = {
 
 export default function PmsCravingsControlPost() {
     const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
         { id: "why", label: "PMS 때 식욕이 폭주하는 이유" },
         { id: "strategy", label: "갈망을 줄이는 식사 전략" },
+        { id: "checklist", label: "체크리스트" },
+        { id: "sample", label: "샘플 하루 식단" },
         { id: "habits", label: "일상 루틴으로 유지하기" },
+        { id: "faq", label: "FAQ" },
     ];
 
     const tips = [
@@ -67,6 +71,15 @@ export default function PmsCravingsControlPost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
+                        <section id="summary" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-2">
+                            <p className="text-sm font-semibold text-rose-700">핵심 요약</p>
+                            <p className="text-gray-800">
+                                아침 단백질 20~30g, 식사 순서(채소·단백질 → 탄수), 식후 10~15분 걷기, 카페인 컷오프 13~14시, 알코올 취침
+                                3시간 전 중단이 갈망을 줄이는 핵심입니다.
+                            </p>
+                            <p className="text-xs text-rose-700">* 금단 두통이 걱정되면 카페인을 1~2주에 걸쳐 점진 감량하세요.</p>
+                        </section>
+
                         <section id="why">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">왜 식욕이 폭주할까?</h2>
                             <p className="text-gray-700 leading-relaxed">
@@ -86,6 +99,26 @@ export default function PmsCravingsControlPost() {
                             </Card>
                         </section>
 
+                        <section id="checklist" className="bg-rose-50 border border-rose-100 rounded-2xl p-6 space-y-2">
+                            <h2 className="text-2xl font-bold text-gray-900">체크리스트</h2>
+                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <li>아침 단백질 20~30g, 식사 간격 3~4시간</li>
+                                <li>카페인 13~14시 컷오프, 알코올 주 2회 이하·취침 3시간 전 금지</li>
+                                <li>식후 10~15분 걷기, 밤 스크린 60분 차단</li>
+                                <li>단 음료·디저트는 주 2회, 식사 직후 소량으로 제한</li>
+                            </ul>
+                        </section>
+
+                        <section id="sample" className="bg-white border border-rose-100 rounded-2xl p-6 space-y-2">
+                            <h2 className="text-2xl font-bold text-gray-900">샘플 하루 식단 (저당·고단백)</h2>
+                            <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                                <li>아침: 스크램블에그+시금치, 그릭요거트+블루베리</li>
+                                <li>점심: 샐러드(채소+닭가슴살)+현미 반공기, 국물은 맛만</li>
+                                <li>간식: 견과 20g + 탄산수, 또는 프로틴 쉐이크 소량</li>
+                                <li>저녁: 연어/두부 + 구운 채소, 과일은 소량(한 손 컵)</li>
+                            </ul>
+                        </section>
+
                         <section id="habits" className="space-y-3">
                             <h2 className="text-2xl font-bold text-gray-900">루틴으로 유지하기</h2>
                             <Card className="border-l-4 border-rose-300">
@@ -95,6 +128,16 @@ export default function PmsCravingsControlPost() {
                                     ))}
                                 </CardContent>
                             </Card>
+                        </section>
+
+                        <section id="faq" className="space-y-4">
+                            <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                            <div className="space-y-2 text-sm text-gray-700">
+                                <p className="font-semibold">Q. 단 음료를 끊기 힘들면?</p>
+                                <p>A. 주 2회로 횟수 제한 후 식사 직후 소량 섭취로 혈당 스파이크를 줄이고, 탄산수/무가당 차로 대체하세요.</p>
+                                <p className="font-semibold">Q. 카페인 줄일 때 두통이 오면?</p>
+                                <p>A. 1~2주에 걸쳐 용량을 20~30%씩 줄이고, 수분을 늘리며 디카페인·허브티로 치환하면 금단 두통을 완화할 수 있습니다.</p>
+                            </div>
                         </section>
                     </div>
                 </div>

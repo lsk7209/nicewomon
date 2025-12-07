@@ -27,9 +27,12 @@ export default function BloodSugarEatingOutPost() {
     ];
 
     const tocItems = [
+        { id: "summary", label: "한눈에 보기" },
         { id: "rules", label: "기본 4원칙" },
         { id: "swaps", label: "메뉴별 스왑" },
+        { id: "choices", label: "주문 예시" },
         { id: "habits", label: "혈당 낮추는 습관" },
+        { id: "faq", label: "FAQ" },
     ];
 
     return (
@@ -67,6 +70,14 @@ export default function BloodSugarEatingOutPost() {
                         <Toc items={tocItems} />
                     </div>
                     <div className="prose prose-lg max-w-none space-y-8">
+                    <section id="summary" className="bg-white rounded-2xl shadow-sm border border-teal-100 p-6 space-y-2">
+                        <p className="text-sm font-semibold text-teal-700">핵심 요약</p>
+                        <p className="text-gray-800">
+                            채소/단백질 먼저, 밥·면은 반공기, 국물·소스는 최소, 식후 10~15분 걷기. 당 음료·디저트는 주 2회, 식사 직후 소량으로
+                            제한하면 혈당 스파이크를 크게 줄일 수 있습니다.
+                        </p>
+                    </section>
+
                     <section id="rules" className="bg-white rounded-2xl shadow-sm border border-teal-100 p-6 space-y-3">
                         <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                             <Utensils className="w-6 h-6 text-teal-600" />
@@ -94,6 +105,16 @@ export default function BloodSugarEatingOutPost() {
                         ))}
                     </section>
 
+                    <section id="choices" className="bg-white rounded-2xl shadow-sm border border-teal-100 p-6 space-y-2">
+                        <h2 className="text-2xl font-bold text-gray-900">주문 예시 (상황별)</h2>
+                        <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                            <li>한식: 샐러드/나물 → 고기/생선 → 밥 반공기, 국물은 건더기 위주</li>
+                            <li>분식: 떡볶이 소스 최소, 삶은 달걀/어묵 추가, 탄산음료 대신 탄산수</li>
+                            <li>양식: 스테이크+샐러드, 파스타는 1/2인분 공유, 빵은 소량</li>
+                            <li>회식 고기: 쌈채소+고기 위주, 양념 대신 소금/후추, 맥주는 잔 단위로 제한</li>
+                        </ul>
+                    </section>
+
                     <section id="habits" className="bg-teal-50 border border-teal-100 rounded-2xl p-6 space-y-2">
                         <h3 className="text-xl font-bold text-teal-900 flex items-center gap-2">
                             <Activity className="w-5 h-5" />
@@ -104,6 +125,16 @@ export default function BloodSugarEatingOutPost() {
                             <li>식사 전 물 1컵, 과식 방지</li>
                             <li>소스는 찍먹으로 양 줄이기</li>
                         </ul>
+                    </section>
+
+                    <section id="faq" className="space-y-4">
+                        <h2 className="text-2xl font-bold text-gray-900">FAQ</h2>
+                        <div className="space-y-2 text-sm text-gray-700">
+                            <p className="font-semibold">Q. 회식에서 술을 마셔야 할 때?</p>
+                            <p>A. 잔 단위로 천천히, 물/탄산수를 사이사이 마시고, 공복 음주는 피하세요.</p>
+                            <p className="font-semibold">Q. 디저트는 어떻게?</p>
+                            <p>A. 주 2회, 식사 직후 소량으로 제한하고, 과일도 컵 1개 분량으로 관리하세요.</p>
+                        </div>
                     </section>
                     </div>
                 </div>
