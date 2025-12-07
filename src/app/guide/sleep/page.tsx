@@ -445,6 +445,7 @@ export default function SleepGuidePage() {
                         </Link>
                     </section>
                 </div>
+                </ContentWithToc>
 
                 {/* Disclaimer */}
                 <div className="mt-16 p-6 bg-gray-50 rounded-xl border border-gray-200">
