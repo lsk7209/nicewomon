@@ -1,0 +1,120 @@
+import { Metadata } from "next";
+import Link from "next/link";
+import { Calendar, Clock, Heart, Activity, Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ContentWithToc } from "@/components/layout/ContentWithToc";
+
+export const metadata: Metadata = {
+    title: "여성 심혈관 경고 신호 놓치지 않기 | 나이스우먼 블로그",
+    description: "여성에게 흔한 비전형적 심혈관 증상, 자가 체크 포인트, 생활 관리 루틴을 정리했습니다.",
+    keywords: ["심혈관", "여성 심장 건강", "가슴 통증", "호흡곤란", "위험 신호"],
+    alternates: { canonical: "https://nicewomen.kr/blog/heart-health-women-signs" },
+};
+
+export default function HeartHealthWomenSignsPost() {
+    const signs = [
+        "턱·목·등 상부 압박감, 소화불량 같은 통증",
+        "가벼운 활동에도 숨참/식은땀, 설명 안 되는 피로",
+        "왼쪽 팔뿐 아니라 양팔, 등, 턱으로 퍼지는 불편감",
+    ];
+
+    const prevent = [
+        "혈압·혈당·지질 연 1회 이상 확인, WHtR(허리/키) 0.5 미만 유지",
+        "주 150분 중강도 유산소 + 주 2회 근력, 좌식 시간 줄이기",
+        "염분 1일 5g 미만, 포화지방·트랜스지방 줄이고 식이섬유 늘리기",
+    ];
+
+    return (
+        <div className="bg-gradient-to-b from-red-50 via-white to-red-50 min-h-screen">
+            <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
+                <Link href="/blog" className="inline-flex items-center gap-2 text-red-700 hover:text-red-800 mb-8">
+                    <span>← 블로그 목록으로</span>
+                </Link>
+
+                <header className="mb-10 space-y-4">
+                    <div className="inline-flex items-center gap-2 bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-medium">
+                        <span>심혈관</span>
+                    </div>
+                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+                        여성 심혈관 경고 신호 놓치지 않기
+                    </h1>
+                    <div className="flex items-center gap-6 text-gray-600">
+                        <div className="flex items-center gap-2">
+                            <Calendar className="w-5 h-5" />
+                            <span>2024.12.06</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Clock className="w-5 h-5" />
+                            <span>5분 읽기</span>
+                        </div>
+                    </div>
+                    <p className="text-lg text-gray-700">
+                        여성은 비전형적 심혈관 증상이 더 흔해 놓치기 쉽습니다.
+                        경고 신호와 생활 관리 포인트를 짧게 정리했습니다. 증상 발생 시 즉시 의료기관을 이용하세요.
+                    </p>
+                </header>
+
+                <ContentWithToc>
+                    <section id="warning" className="bg-white border border-red-100 rounded-2xl p-6">
+                        <h2 className="text-2xl font-bold text-gray-900 mb-3">경고 신호</h2>
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                            {signs.map((s) => (
+                                <li key={s}>{s}</li>
+                            ))}
+                        </ul>
+                        <p className="text-sm text-gray-600 mt-2">급성 증상 시 즉시 119 또는 응급실 방문이 필요합니다.</p>
+                    </section>
+
+                    <section id="prevention" className="space-y-4">
+                        <h2 className="text-3xl font-bold text-gray-900">생활 관리</h2>
+                        {prevent.map((p) => (
+                            <Card key={p} className="border border-red-100">
+                                <CardContent className="pt-5 space-y-2">
+                                    <h3 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+                                        <Shield className="w-5 h-5 text-red-600" />
+                                        예방 포인트
+                                    </h3>
+                                    <p className="text-gray-700 text-sm leading-relaxed">{p}</p>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </section>
+
+                    <section id="checks" className="bg-red-50 border border-red-100 rounded-2xl p-6 space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900">자가 체크</h3>
+                        <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                            <li>혈압·혈당·지질 최근 측정 기록이 1년 이상 비어 있는가?</li>
+                            <li>허리둘레/신장 비율 0.5 이상인가?</li>
+                            <li>주 150분 유산소·주 2회 근력이 유지되고 있는가?</li>
+                        </ul>
+                    </section>
+                </ContentWithToc>
+
+                <section className="mt-16 bg-gradient-to-r from-red-500 to-rose-600 rounded-2xl p-8 md:p-12 text-center text-white">
+                    <h2 className="text-3xl font-bold mb-4">심혈관 위험 자가 점검하고 루틴 받기</h2>
+                    <p className="text-lg mb-8 opacity-90">
+                        스트레스·수면·운동 루틴 점검으로 심혈관 위험을 낮추세요.
+                    </p>
+                    <div className="flex flex-col md:flex-row gap-4 justify-center">
+                        <Link href="/tools/stress">
+                            <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100 px-10 py-6 text-lg font-bold shadow-xl">
+                                스트레스 테스트 →
+                            </Button>
+                        </Link>
+                        <Link href="/guide/40s-health">
+                            <Button size="lg" variant="secondary" className="bg-white/10 border-white text-white hover:bg-white/20 px-10 py-6 text-lg font-bold">
+                                연령별 건강 가이드 →
+                            </Button>
+                        </Link>
+                    </div>
+                    <p className="text-sm mt-4 opacity-80">
+                        외부 참고: <Link href="https://www.heart.org/en/health-topics/heart-attack/warning-signs-of-a-heart-attack" className="underline text-white">AHA Warning Signs</Link>
+                    </p>
+                </section>
+            </article>
+        </div>
+    );
+}
+
+
