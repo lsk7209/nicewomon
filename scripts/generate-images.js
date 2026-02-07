@@ -24,29 +24,27 @@ if (!API_KEY) {
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${API_KEY}`;
 
 // 대상 블로그 슬러그 및 프롬프트
-// batch-generate.js에서 생성된 슬러그들을 우선적으로 처리
-const TARGET_BLOGS = [
-    {
-        slug: 'menopause-facial-flushing-hospital-or-home-care',
-        prompt: 'Illustration of a middle-aged woman feeling facial flushing, calm and soothing style, soft pink and coral colors, minimalist vector art, healthcare concept'
-    },
-    {
-        slug: '40s-irregular-periods-early-menopause-self-diagnosis',
-        prompt: 'Illustration of women periodic calendar and health check list, soft pastel tones, medical icon style, clean and modern'
-    },
-    {
-        slug: 'postmenopause-insomnia-5-habits-no-sleeping-pills',
-        prompt: 'Cozy bedroom scene at night, woman sleeping peacefully, soft moonlight, lavender and dark blue tones, lo-fi style illustration'
-    },
-    {
-        slug: 'menopause-belly-fat-hormone-diet',
-        prompt: 'Healthy food plate with vegetables and avocado, measuring tape, soft green and orange colors, wellness and diet concept illustration'
-    },
-    {
-        slug: 'postmenopause-osteoporosis-prevention-exercise',
-        prompt: 'Woman doing gentle yoga or stretching, strong bones concept, sunlit room, warm yellow and beige tones, health illustration'
-    }
-];
+// src/content/blog 디렉토리의 모든 MDX 파일을 자동으로 읽어옵니다
+import matter from 'gray-matter';
+
+function getMdxFiles() {
+    const blogDir = path.join(__dirname, '..', 'src', 'content', 'blog');
+    const files = fs.readdirSync(blogDir).filter(f => f.endsWith('.mdx'));
+
+    return files.map(file => {
+        const filePath = path.join(blogDir, file);
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        const { data } = matter(fileContent);
+
+        const slug = file.replace('.mdx', '');
+        // AI 프롬프트 생성: 제목과 설명 기반
+        const prompt = `Professional illustration for blog post about "${data.title}". ${data.description}. Soft pastel colors, minimalist modern style, healthcare and wellness concept, clean composition, no text`;
+
+        return { slug, prompt };
+    });
+}
+
+const TARGET_BLOGS = getMdxFiles();
 
 // 이미지 저장 경로
 const PUBLIC_BLOG_DIR = path.join(__dirname, '..', 'public', 'blog');
@@ -109,12 +107,12 @@ async function main() {
     let successCount = 0;
 
     for (const item of TARGET_BLOGS) {
-        // 강제 덮어쓰기 모드 (테스트를 위해)
-        // const filePath = path.join(PUBLIC_BLOG_DIR, `${item.slug}.jpg`);
-        // if (fs.existsSync(filePath)) {
-        //     console.log(`⏭️ 이미 존재: ${item.slug}.jpg`);
-        //     continue;
-        // }
+        // 이미 존재하는 이미지 건너뛰기
+        const filePath = path.join(PUBLIC_BLOG_DIR, `${item.slug}.jpg`);
+        if (fs.existsSync(filePath)) {
+            console.log(`⏭️ 이미 존재: ${item.slug}.jpg`);
+            continue;
+        }
 
         const success = await generateImage(item.slug, item.prompt);
         if (success) successCount++;
