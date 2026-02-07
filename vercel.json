@@ -3,5 +3,15 @@
     "buildCommand": "npm run build",
     "outputDirectory": ".next",
     "cleanUrls": true,
-    "trailingSlash": false
+    "trailingSlash": false,
+    "crons": [
+        {
+            "path": "/api/cron/generate",
+            "schedule": "0 * * * *"
+        },
+        {
+            "path": "/api/cron/publish",
+            "schedule": "0 */13 * * *"
+        }
+    ]
 }

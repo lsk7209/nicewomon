@@ -10,8 +10,8 @@ export default function Home() {
     "@type": "Organization",
     name: "나이스우먼",
     alternateName: "Nice Woman",
-    url: "https://nicewoman.kr",
-    logo: "https://nicewoman.kr/logo.png",
+    url: "https://nicewomen.kr",
+    logo: "https://nicewomen.kr/logo.png",
     description: "30~55세 여성의 신체 변화를 데이터 기반 자가진단, 성분 기반 정보, 연령별 루틴으로 안내하는 건강 플랫폼",
     sameAs: [],
   };
@@ -20,11 +20,11 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "나이스우먼",
-    url: "https://nicewoman.kr",
+    url: "https://nicewomen.kr",
     description: "30~55세 여성의 신체 변화를 데이터 기반 자가진단, 성분 기반 정보, 연령별 루틴으로 안내하는 건강 플랫폼",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://nicewoman.kr/search?q={search_term_string}",
+      target: "https://nicewomen.kr/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };

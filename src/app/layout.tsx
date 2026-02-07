@@ -77,9 +77,16 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased flex flex-col min-h-screen">
+        {/* 스킵 네비게이션: 키보드 사용자를 위한 접근성 개선 */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-rose-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:outline-none"
+        >
+          본문으로 바로가기
+        </a>
         <GoogleAnalytics gaId={SITE_CONFIG.analytics.googleAnalyticsId} />
         <Header />
-        <main className="flex-1">
+        <main id="main-content" className="flex-1">
           {children}
         </main>
         <Footer />

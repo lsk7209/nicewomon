@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FAQS } from "@/lib/config";
+import { createFAQPageSchema } from "@/lib/schema";
+import { LegalLayout } from "@/components/layout/LegalLayout";
 import { HelpCircle, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -12,8 +14,15 @@ export const metadata: Metadata = {
 };
 
 export default function FAQPage() {
+    // FAQ 스키마 생성
+    const faqSchema = createFAQPageSchema(FAQS);
+
     return (
-        <div className="bg-gradient-to-b from-blue-50 via-white to-blue-50 min-h-screen">
+        <LegalLayout title="자주 묻는 질문" lastUpdated="2024년 11월 26일">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
                 <header className="text-center mb-16 space-y-6">
                     <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
@@ -115,6 +124,6 @@ export default function FAQPage() {
                     </Link>
                 </section>
             </article>
-        </div>
+        </LegalLayout>
     );
 }

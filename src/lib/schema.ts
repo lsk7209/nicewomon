@@ -159,3 +159,90 @@ export function createBreadcrumbListSchema(
 export function schemaToScript(schema: object): string {
     return JSON.stringify(schema);
 }
+
+/**
+ * Article 스키마 인터페이스
+ */
+export interface ArticleSchema {
+    "@context": "https://schema.org";
+    "@type": "Article";
+    headline: string;
+    description: string;
+    image?: string;
+    author: {
+        "@type": "Person" | "Organization";
+        name: string;
+        url?: string;
+    };
+    publisher: {
+        "@type": "Organization";
+        name: string;
+        logo?: {
+            "@type": "ImageObject";
+            url: string;
+        };
+    };
+    datePublished: string;
+    dateModified: string;
+    mainEntityOfPage: {
+        "@type": "WebPage";
+        "@id": string;
+    };
+}
+
+/**
+ * Article 스키마 생성
+ * @param headline - 기사 제목
+ * @param description - 기사 설명
+ * @param authorName - 저자 이름
+ * @param authorUrl - 저자 프로필 URL (선택)
+ * @param datePublished - 발행일 (YYYY-MM-DD)
+ * @param dateModified - 수정일 (YYYY-MM-DD)
+ * @param url - 기사 URL
+ * @param image - 대표 이미지 URL (선택)
+ */
+export function createArticleSchema(
+    headline: string,
+    description: string,
+    authorName: string,
+    datePublished: string,
+    dateModified: string,
+    url: string,
+    authorUrl?: string,
+    image?: string
+): ArticleSchema {
+    const schema: ArticleSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline,
+        description,
+        author: {
+            "@type": authorName.includes("Team") ? "Organization" : "Person",
+            name: authorName,
+        },
+        publisher: {
+            "@type": "Organization",
+            name: "나이스우먼",
+            logo: {
+                "@type": "ImageObject",
+                url: "https://nicewomen.kr/logo.png",
+            },
+        },
+        datePublished,
+        dateModified,
+        mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": url,
+        },
+    };
+
+    if (authorUrl) {
+        schema.author.url = authorUrl;
+    }
+
+    if (image) {
+        schema.image = image;
+    }
+
+    return schema;
+}
