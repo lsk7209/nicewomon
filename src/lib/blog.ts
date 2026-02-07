@@ -15,6 +15,8 @@ export interface BlogPost {
     category: string;
     readTime: string;
     excerpt: string;
+    image?: string;
+    toc: { level: number; text: string; slug: string }[];
 }
 
 export function getBlogPosts(): BlogPost[] {
@@ -32,6 +34,20 @@ export function getBlogPosts(): BlogPost[] {
         // 카테고리 매핑 (첫 번째 태그 또는 '기타')
         const category = data.tags && data.tags.length > 0 ? data.tags[0] : '기타';
 
+        // 첫 번째 이미지 추출 (Thumbnail)
+        const imageMatch = content.match(/!\[.*?\]\((.*?)\)/);
+        const image = data.image || (imageMatch ? imageMatch[1] : undefined);
+
+        // 목차(TOC) 추출
+        const toc = content.split('\n')
+            .filter(line => line.match(/^#{1,3}\s/))
+            .map(line => {
+                const level = line.match(/^#+/)?.[0].length || 0;
+                const text = line.replace(/^#+\s/, '');
+                const slug = text.toLowerCase().replace(/[^a-z0-9가-힣\s-]/g, '').trim().replace(/\s+/g, '-');
+                return { level, text, slug };
+            });
+
         return {
             slug,
             title: data.title,
@@ -42,6 +58,8 @@ export function getBlogPosts(): BlogPost[] {
             category,
             readTime,
             excerpt: data.description || content.slice(0, 100) + '...',
+            image,
+            toc,
         };
     });
 
@@ -50,27 +68,31 @@ export function getBlogPosts(): BlogPost[] {
 }
 
 export function getBlogPost(slug: string): BlogPost | null {
+    const posts = getBlogPosts();
+    return posts.find((post) => post.slug === slug) || null;
+}
+
+
+export function getRelatedPosts(currentSlug: string, category: string, limit: number = 3): BlogPost[] {
+    const posts = getBlogPosts();
+    return posts
+        .filter((post) => post.category === category && post.slug !== currentSlug)
+        .slice(0, limit);
+}
+
+export function saveBlogPost(slug: string, data: any, content: string): void {
     const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
+    const fileContent = matter.stringify(content, data);
+    fs.writeFileSync(filePath, fileContent);
+}
 
-    if (!fs.existsSync(filePath)) {
-        return null;
+export function deleteBlogPost(slug: string): void {
+    const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
+    if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
     }
+}
 
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const { data, content } = matter(fileContent);
-
-    const readTime = Math.max(1, Math.ceil(content.length / 500)) + "분 읽기";
-    const category = data.tags && data.tags.length > 0 ? data.tags[0] : '기타';
-
-    return {
-        slug,
-        title: data.title,
-        description: data.description || '',
-        date: data.date,
-        tags: data.tags || [],
-        content,
-        category,
-        readTime,
-        excerpt: data.description || content.slice(0, 100) + '...',
-    };
+export function createBlogPost(slug: string, data: any, content: string): void {
+    saveBlogPost(slug, data, content);
 }

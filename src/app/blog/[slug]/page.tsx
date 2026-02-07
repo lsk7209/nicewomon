@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { getBlogPost, getBlogPosts } from "@/lib/blog";
+import { getBlogPost, getBlogPosts, getRelatedPosts } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
@@ -9,7 +9,11 @@ import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 import { Breadcrumb } from "@/components/seo/Breadcrumb";
 import { AuthorByline } from "@/components/blog/AuthorByline";
 import { References, getReferencesForCategory } from "@/components/blog/References";
+import { TableOfContents } from "@/components/blog/TableOfContents";
+import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { getAuthorByCategory } from "@/lib/authors";
+
+import { SITE_CONFIG } from "@/lib/config";
 
 export async function generateStaticParams() {
     const posts = getBlogPosts();
@@ -25,6 +29,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         return {};
     }
 
+    const ogImages = post.image ? [post.image] : [SITE_CONFIG.ogImage];
+
     return {
         title: `${post.title} | 나이스우먼 블로그`,
         description: post.description,
@@ -36,9 +42,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             publishedTime: post.date,
             tags: post.tags,
             url: `https://nicewomen.kr/blog/${params.slug}`,
+            images: ogImages,
         },
         alternates: {
             canonical: `https://nicewomen.kr/blog/${params.slug}`,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: post.title,
+            description: post.description,
+            images: ogImages,
         },
     };
 }
@@ -53,6 +66,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     // 카테고리 기반 저자 및 참고문헌 가져오기
     const author = getAuthorByCategory(post.category);
     const references = getReferencesForCategory(post.category);
+    const relatedPosts = getRelatedPosts(params.slug, post.category);
 
     return (
         <>
@@ -64,11 +78,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 datePublished={post.date}
                 dateModified={post.date} // MDX에 수정일이 없으면 발행일 사용
                 url={`https://nicewomen.kr/blog/${params.slug}`}
-            // image 프로퍼티는 frontmatter에 image 필드가 있다면 post.image로 전달 가능
+                image={post.image}
             />
 
             <div className="bg-gradient-to-b from-rose-50 via-white to-rose-50 min-h-screen">
-                <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
+                <article className="container mx-auto px-4 py-16 md:py-24 max-w-4xl relative">
                     {/* Breadcrumb */}
                     <Breadcrumb
                         items={[
@@ -116,6 +130,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                         />
                     </header>
 
+                    {/* Table of Contents */}
+                    <TableOfContents toc={post.toc} />
+
                     <div className="prose prose-lg prose-rose max-w-none bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-rose-100">
                         {/* MDX Content Rendering */}
                         <MDXRemote source={post.content} />
@@ -123,6 +140,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
                     {/* References Section */}
                     <References references={references} />
+
+                    {/* Related Posts Section */}
+                    <RelatedPosts posts={relatedPosts} />
 
                     <section className="mt-16 bg-gradient-to-r from-rose-500 to-purple-600 rounded-2xl p-8 md:p-12 text-center text-white shadow-xl">
                         <h2 className="text-3xl font-bold mb-4">나의 갱년기 증상, 정확히 알고 관리하기</h2>
