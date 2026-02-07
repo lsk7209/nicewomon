@@ -1,7 +1,35 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getFileContent, createOrUpdateFile } from '@/lib/github-client';
 
-export const maxDuration = 10;
+export const maxDuration = 30;
+
+const BASE_URL = 'https://nicewomen.kr';
+const INDEXNOW_KEY = 'e037c8c8d8b9487c9360c78486f05928';
+
+// IndexNow API 호출 함수
+async function submitToIndexNow(urls: string[]) {
+    try {
+        const payload = {
+            host: 'nicewomen.kr',
+            key: INDEXNOW_KEY,
+            keyLocation: `${BASE_URL}/${INDEXNOW_KEY}.txt`,
+            urlList: urls,
+        };
+
+        const response = await fetch('https://api.indexnow.org/indexnow', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+            },
+            body: JSON.stringify(payload),
+        });
+
+        return response.ok;
+    } catch (error) {
+        console.error('[IndexNow] Error:', error);
+        return false;
+    }
+}
 
 export async function GET(req: NextRequest) {
     const authHeader = req.headers.get('authorization');
@@ -61,10 +89,20 @@ export async function GET(req: NextRequest) {
         // 큐 파일 저장 (배포 트리거 됨)
         await createOrUpdateFile(queuePath, JSON.stringify(queueData, null, 2), `🤖 [Queue] Published ${postToPublish.slug}`);
 
+        // 🔥 IndexNow에 자동 제출
+        const publishedUrl = `${BASE_URL}/blog/${postToPublish.slug}`;
+        const indexNowSuccess = await submitToIndexNow([
+            publishedUrl,
+            `${BASE_URL}/blog`,        // 블로그 목록도 갱신
+            `${BASE_URL}/sitemap.xml`, // 사이트맵도 갱신 알림
+        ]);
+
         return NextResponse.json({
             success: true,
             slug: postToPublish.slug,
-            status: 'published'
+            status: 'published',
+            indexNow: indexNowSuccess ? 'submitted' : 'failed',
+            urls: [publishedUrl]
         });
 
     } catch (error: any) {

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Activity, Brain, Heart, Moon, Pill, ArrowRight } from "lucide-react";
+import { getBlogPosts } from "@/lib/blog";
 
 export default function Home() {
   // 구조화된 데이터 (JSON-LD)
@@ -240,58 +241,47 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                slug: "menopause-symptoms-guide",
-                title: "갱년기 증상, 이것만은 꼭 알아두세요",
-                excerpt: "갱년기 증상을 조기에 인지하고 대처하는 방법을 알아봅니다. 안면 홍조, 수면 장애, 감정 변화 등 주요 증상과 관리법을 소개합니다.",
-                category: "갱년기",
-                date: "2024.11.20",
-                emoji: "🌸"
-              },
-              {
-                slug: "sleep-quality-improvement",
-                title: "숙면을 위한 7가지 과학적 방법",
-                excerpt: "수면 전문가가 추천하는 수면 질 개선 방법입니다. 수면 위생부터 이완 기법까지, 오늘 밤부터 바로 실천할 수 있는 팁을 공유합니다.",
-                category: "수면",
-                date: "2024.11.18",
-                emoji: "😴"
-              },
-              {
-                slug: "stress-management-techniques",
-                title: "직장인 여성을 위한 스트레스 관리법",
-                excerpt: "바쁜 일상 속에서도 실천 가능한 스트레스 관리 기법을 소개합니다. 5분 명상, 호흡법, 업무 경계 설정 등 실용적인 방법들을 알아봅니다.",
-                category: "스트레스",
-                date: "2024.11.15",
-                emoji: "🧘"
-              }
-            ].map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-                <Card className="h-full hover:shadow-xl transition-all duration-300 overflow-hidden border-2 hover:border-purple-100">
-                  <div className="h-40 bg-gradient-to-br from-purple-50 to-rose-50 flex items-center justify-center">
-                    <span className="text-5xl">{post.emoji}</span>
-                  </div>
-                  <CardHeader>
-                    <div className="flex items-center justify-between text-sm mb-2">
-                      <span className="text-purple-600 font-medium bg-purple-50 px-2 py-1 rounded">{post.category}</span>
-                      <span className="text-gray-500">{post.date}</span>
+            {getBlogPosts().slice(0, 3).map((post) => {
+              // 카테고리별 이모지 매핑
+              const categoryEmoji: Record<string, string> = {
+                '갱년기': '🌸',
+                '수면': '😴',
+                '스트레스': '🧘',
+                '호르몬': '💗',
+                '영양': '🥗',
+                '운동': '🏃‍♀️',
+                '기타': '📝',
+              };
+              const emoji = categoryEmoji[post.category] || '📝';
+
+              return (
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 overflow-hidden border-2 hover:border-purple-100">
+                    <div className="h-40 bg-gradient-to-br from-purple-50 to-rose-50 flex items-center justify-center">
+                      <span className="text-5xl">{emoji}</span>
                     </div>
-                    <CardTitle className="text-lg group-hover:text-purple-600 transition-colors line-clamp-2">
-                      {post.title}
-                    </CardTitle>
-                    <CardDescription className="line-clamp-2 mt-2">
-                      {post.excerpt}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-2 text-sm text-purple-600 font-medium group-hover:gap-3 transition-all">
-                      <span>읽어보기</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+                    <CardHeader>
+                      <div className="flex items-center justify-between text-sm mb-2">
+                        <span className="text-purple-600 font-medium bg-purple-50 px-2 py-1 rounded">{post.category}</span>
+                        <span className="text-gray-500">{post.date}</span>
+                      </div>
+                      <CardTitle className="text-lg group-hover:text-purple-600 transition-colors line-clamp-2">
+                        {post.title}
+                      </CardTitle>
+                      <CardDescription className="line-clamp-2 mt-2">
+                        {post.excerpt}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex items-center gap-2 text-sm text-purple-600 font-medium group-hover:gap-3 transition-all">
+                        <span>읽어보기</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
